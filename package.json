@@ -1,0 +1,17 @@
+{
+  "name": "Finance",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh"
+  },
+  "dependencies": {
+    "react-native": "^0.11.0",
+    "react-native-navbar": "^0.8.2",
+    "react-native-simple-store": "^0.1.0",
+    "react-native-swipeout": "^2.0.8",
+    "tcomb": "^1.1.0",
+    "tcomb-form-native": "^0.2.7",
+    "tcomb-validation": "^1.0.4"
+  }
+}
