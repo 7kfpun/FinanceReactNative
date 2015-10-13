@@ -119,3 +119,12 @@ exports.properties = [
 	'YearLow',
 	'YearRange',
 ];
+
+exports.getNews = function(symbol) {
+  fetch('http://feeds.finance.yahoo.com/rss/2.0/headline?s=' + symbol + '&region=US&lang=en-US')
+    .then(function(response) {
+      return response.text();
+    }).then(function(body) {
+      console.log(body);
+    });
+};
