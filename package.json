@@ -9,9 +9,10 @@
     "react-native": "^0.11.0",
     "react-native-navbar": "^0.8.2",
     "react-native-simple-store": "^0.1.0",
-    "react-native-swipeout": "^2.0.8",
+    "react-native-swipeout": "^2.1.0",
     "tcomb": "^1.1.0",
     "tcomb-form-native": "^0.2.7",
     "tcomb-validation": "^1.0.4"
-  }
+  },
+  "devDependencies": {}
 }

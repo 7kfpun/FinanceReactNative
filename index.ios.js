@@ -12,6 +12,7 @@ var {
 
 // Views
 var AddNewView = require('./App/Views/AddNew');
+var SettingsView = require('./App/Views/Settings');
 var StocksView = require('./App/Views/Stocks');
 
 var Finance = React.createClass({
@@ -29,6 +30,17 @@ var Finance = React.createClass({
     })
   },
 
+  _onPressSettingsButton: function() {
+    this.refs.nav.push({
+      title: 'Stocks',
+      component: SettingsView,
+      leftButtonIcon: require('image!NavBarButtonPlus'),
+      onLeftButtonPress: this._onPressAddButton,
+      rightButtonTitle: 'Done',
+      onRightButtonPress: this._onPressCancelButton,
+    })
+  },
+
   render: function() {
     return (
       <NavigatorIOS
@@ -39,8 +51,9 @@ var Finance = React.createClass({
           title: 'Finance',
           component: StocksView,
           leftButtonTitle: '⚙',
-          rightButtonIcon: require('image!NavBarButtonPlus'),
-          onRightButtonPress: this._onPressAddButton,
+          rightButtonTitle: '☰',
+          // rightButtonIcon: require('image!NavBarButtonPlus'),
+          onRightButtonPress: this._onPressSettingsButton,
         }}/>
     );
   }

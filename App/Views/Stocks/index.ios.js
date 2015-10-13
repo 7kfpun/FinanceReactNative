@@ -412,7 +412,7 @@ var ViewReactClass = React.createClass({
     );
   },
 
-  renderStockCell: function(stock){
+  renderStockCell: function(stock) {
     return(
       <StockCell
         onSelect={() => this.selectStock(stock)}
@@ -437,7 +437,7 @@ var ViewReactClass = React.createClass({
   },
 
   selectStock: function(stock) {
-    console.log('selectStock', stock);
+    // console.log('selectStock', stock);
     this.setState({
       selectedStock: stock,
     });

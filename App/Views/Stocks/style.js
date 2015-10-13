@@ -7,9 +7,6 @@ var {
 } = React;
 
 module.exports = StyleSheet.create({
-  // container: {
-  //   flexDirection: 'column',
-  // },
   container: {
     flexDirection: 'column',
     position: 'absolute',
