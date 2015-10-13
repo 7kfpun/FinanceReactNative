@@ -29,6 +29,7 @@ var ViewReactClass = React.createClass({
     return {
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
       loaded: false,
+      selectedStock: {},
     };
   },
 
@@ -239,7 +240,8 @@ var ViewReactClass = React.createClass({
           that.setState({
             dataSource: that.state.dataSource.cloneWithRows(json.query.results.quote),
             watchlist: result,
-            loaded: true
+            loaded: true,
+            selectedStock: json.query.results.quote[0],
           });
         }).done();
 
@@ -274,7 +276,7 @@ var ViewReactClass = React.createClass({
         <View style={styles.bottomBlock}>
           <View style={styles.stockName}>
             <Text style={styles.stockNameText}>
-              Name
+              {this.state.selectedStock.Name}
             </Text>
           </View>
           <View style={styles.separator}/>
@@ -287,7 +289,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.Open}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -297,7 +299,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  --
+                  {this.state.selectedStock.MarketCapitalization}
                 </Text>
               </View>
             </View>
@@ -311,7 +313,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.DaysHigh}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -321,7 +323,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.YearHigh}
                 </Text>
               </View>
             </View>
@@ -335,7 +337,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.DaysLow}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -345,7 +347,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.YearLow}
                 </Text>
               </View>
             </View>
@@ -359,7 +361,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.Volume}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -369,7 +371,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.AverageDailyVolume}
                 </Text>
               </View>
             </View>
@@ -383,7 +385,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.PERatio}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -393,7 +395,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  3000.00
+                  {this.state.selectedStock.DividendYield}
                 </Text>
               </View>
             </View>
@@ -435,15 +437,19 @@ var ViewReactClass = React.createClass({
   },
 
   selectStock: function(stock) {
-    this.props.navigator.push({
-      title: stock.name,
-      component: StockView,
-      passProps: {
-        stock: stock,
-      },
-      rightButtonTitle: 'Edit',
-      onRightButtonPress: () => this._onPressEditButton(stock.symbol),
+    console.log('selectStock', stock);
+    this.setState({
+      selectedStock: stock,
     });
+    // this.props.navigator.push({
+    //   title: stock.name,
+    //   component: StockView,
+    //   passProps: {
+    //     stock: stock,
+    //   },
+    //   rightButtonTitle: 'Edit',
+    //   onRightButtonPress: () => this._onPressEditButton(stock.symbol),
+    // });
   },
 
 });
