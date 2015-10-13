@@ -10,15 +10,11 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'black',
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginLeft: 15,
     marginRight: 15,
   },
-  base: {
-    borderColor: '#000000',
-    borderWidth: 5
-  },
-  stockContainer: {
+  stockElement: {
     flex: 1,
     flexDirection: 'row',
     height: 40,
@@ -36,9 +32,20 @@ module.exports = StyleSheet.create({
     marginRight: 10,
   },
   stockSymbol: {
-    flex: 10,
+    flex: 8,
   },
   stockSymbolText: {
+    fontSize: 15,
+    color: 'white',
+    textAlign: 'left',
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: 10,
+  },
+  stockMove: {
+    flex: 1,
+  },
+  stockMoveText: {
     fontSize: 15,
     color: 'white',
     textAlign: 'left',

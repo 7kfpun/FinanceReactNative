@@ -50,7 +50,6 @@ var Finance = React.createClass({
         initialRoute={{
           title: 'Finance',
           component: StocksView,
-          leftButtonTitle: '⚙',
           rightButtonTitle: '☰',
           // rightButtonIcon: require('image!NavBarButtonPlus'),
           onRightButtonPress: this._onPressSettingsButton,

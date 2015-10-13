@@ -10,87 +10,50 @@ var {
   View,
 } = React;
 
+// Utils
+var UtilFuncs = require('../../../../Utils/functions');
+
 // Styles
 var styles = require('./style');
-var Swipeout = require('react-native-swipeout')
-
-var that;
-
-// Buttons
-var swipeoutBtns = [
-  {
-    backgroundColor: 'red',
-    text: 'Delete',
-    onPress: function () {
-      console.log('click delete', that.state.selectedStock);
-      var selectedStock = that.state.selectedStock;
-      store.get('watchlist').then((result) => {
-        console.log(result);
-        return UtilFuncs.removeObjectfromArray(result, 'symbol', selectedStock);
-      }).then((result) => {
-        console.log('After deleted', result);
-        store.save('watchlist', result);
-      });
-    },
-  }
-]
 
 var StockCell = React.createClass({
   getInitialState: function() {
     return {};
   },
 
-  _handleSwipeout: function(symbol) {
-    console.log('_handleSwipeout delete symbol', symbol);
-    this.setState({
-      selectedStock: symbol,
+  _onPressDeleteButton: function(symbol) {
+    console.log('_onPressDeleteButton', symbol);
+    store.get('watchlist').then((result) => {
+      return UtilFuncs.removeObjectfromArray(result, 'symbol', symbol);
+    }).then((result) => {
+      store.save('watchlist', result);
     });
   },
 
-  render: function(rowData: string, sectionID: number, rowID: number) {
+  render: function() {
     console.log(this.props.stock);
-    // <View style={styles.stockDelete}>
-    //   <Text style={styles.stockDeleteText}>
-    //     ㊀
-    //   </Text>
-    // </View>
-    that = this;
     return (
       <View style={styles.container}>
-        <View style={styles.stockSymbol}>
-          <Swipeout
-              right={swipeoutBtns}
-              onOpen={(symbol) => this._handleSwipeout(this.props.stock.symbol)}
-              backgroundColor='black'>
-            <View>
-              <Text style={styles.stockSymbolText}>
-                {this.props.stock.symbol}
-              </Text>
-            </View>
-          </Swipeout>
-          <View style={styles.separator}/>
-        </View>
-      </View>
-    );
-
-    return (
-      <TouchableHighlight underlayColor='#4D4D4D'>
-        <View style={styles.container}>
-          <View style={styles.stockContainer}>
-            <View style={styles.stockSymbol}>
-              <Text style={styles.stockSymbolText}>
-                {this.props.stock.symbol}
-              </Text>
-            </View>
-            <View style={styles.stockPrice}>
-              <Text style={styles.stockPriceText}>
-                {this.props.stock.LastTradePriceOnly}
-              </Text>
-            </View>
+        <View style={styles.stockElement}>
+          <TouchableOpacity style={styles.stockDelete}
+              onPress={() => this._onPressDeleteButton(this.props.stock.symbol)}>
+            <Text style={styles.stockDeleteText}>
+              ㊀
+            </Text>
+          </TouchableOpacity>
+          <View style={styles.stockSymbol}>
+            <Text style={styles.stockSymbolText}>
+              {this.props.stock.symbol}
+            </Text>
           </View>
-          <View style={styles.separator}/>
+          <View style={styles.stockMove}>
+            <Text style={styles.stockMoveText}>
+              ☰
+            </Text>
+          </View>
         </View>
-      </TouchableHighlight>
+        <View style={styles.separator}/>
+      </View>
     );
   }
 });
