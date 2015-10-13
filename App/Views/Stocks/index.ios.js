@@ -4,7 +4,6 @@ var React = require('react-native');
 var store = require('react-native-simple-store');
 
 var {
-  AlertIOS,
   ListView,
   Text,
   TouchableHighlight,
@@ -69,14 +68,22 @@ var ViewReactClass = React.createClass({
           return response.json();
         }).then(function(json) {
           console.log('>>', json);
+          var quotes = json.query.results.quote;
           that.setState({
-            dataSource: that.state.dataSource.cloneWithRows(json.query.results.quote),
+            dataSource: that.state.dataSource.cloneWithRows(quotes),
             watchlist: result,
             loaded: true,
-            selectedStock: json.query.results.quote[0],
+            selectedStock: quotes[0],
           });
-        }).done();
 
+          // Caching
+          var watchlistCache = {};
+          quotes.forEach(function (quote) {
+            watchlistCache[quote.symbol] = quote;
+          });
+          store.save('watchlistCache', watchlistCache);
+
+        }).done();
     });
   },
 

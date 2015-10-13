@@ -29,11 +29,10 @@ module.exports = StyleSheet.create({
   },
   stockDeleteText: {
     fontSize: 15,
-    marginBottom: 10,
     color: 'white',
     textAlign: 'left',
     marginTop: 10,
-    marginBottom: 4,
+    marginBottom: 10,
     marginRight: 10,
   },
   stockSymbol: {
@@ -41,11 +40,10 @@ module.exports = StyleSheet.create({
   },
   stockSymbolText: {
     fontSize: 15,
-    marginBottom: 10,
     color: 'white',
     textAlign: 'left',
     marginTop: 10,
-    marginBottom: 4,
+    marginBottom: 10,
     marginRight: 10,
   },
   separator: {

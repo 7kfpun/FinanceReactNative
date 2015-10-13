@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var store = require('react-native-simple-store');
 
 var {
   Text,
@@ -13,13 +14,23 @@ var {
 var styles = require('./style');
 var Swipeout = require('react-native-swipeout')
 
+var that;
+
 // Buttons
 var swipeoutBtns = [
   {
     backgroundColor: 'red',
     text: 'Delete',
-    onPress: function (d) {
-      console.log('click delete', d);
+    onPress: function () {
+      console.log('click delete', that.state.selectedStock);
+      var selectedStock = that.state.selectedStock;
+      store.get('watchlist').then((result) => {
+        console.log(result);
+        return UtilFuncs.removeObjectfromArray(result, 'symbol', selectedStock);
+      }).then((result) => {
+        console.log('After deleted', result);
+        store.save('watchlist', result);
+      });
     },
   }
 ]
@@ -29,23 +40,27 @@ var StockCell = React.createClass({
     return {};
   },
 
-  _handleSwipeout: function(sectionID, rowID) {
-    console.log('sectionID', sectionID, 'rowID', rowID);
+  _handleSwipeout: function(symbol) {
+    console.log('_handleSwipeout delete symbol', symbol);
+    this.setState({
+      selectedStock: symbol,
+    });
   },
 
-  render: function() {
+  render: function(rowData: string, sectionID: number, rowID: number) {
     console.log(this.props.stock);
     // <View style={styles.stockDelete}>
     //   <Text style={styles.stockDeleteText}>
     //     ㊀
     //   </Text>
     // </View>
+    that = this;
     return (
       <View style={styles.container}>
         <View style={styles.stockSymbol}>
           <Swipeout
               right={swipeoutBtns}
-              onOpen={(sectionID, rowID) => this._handleSwipeout(sectionID, rowID)}
+              onOpen={(symbol) => this._handleSwipeout(this.props.stock.symbol)}
               backgroundColor='black'>
             <View>
               <Text style={styles.stockSymbolText}>

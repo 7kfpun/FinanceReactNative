@@ -3,12 +3,11 @@
 var React = require('react-native');
 var store = require('react-native-simple-store');
 
-
 var {
+  ListView,
   Text,
   TouchableHighlight,
   View,
-  ListView,
 } = React;
 
 var StockCell = require('./Elements/StockCell');

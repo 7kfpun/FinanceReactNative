@@ -46,6 +46,7 @@ module.exports = StyleSheet.create({
     flex: 1,
   },
   stockNameText: {
+    fontWeight: 'bold',
     fontSize: 12,
     color: 'white',
     textAlign: 'center',
