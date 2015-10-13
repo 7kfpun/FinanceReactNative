@@ -22,8 +22,14 @@ var Person = t.struct({
 
 var options = {
   auto: 'placeholders',
+
   fields: {
     symbol: {
+      autoFocus: true,
+      placeholderTextColor: 'white',
+      style: {
+        color: 'white',
+      },
     },
   }
 };
@@ -63,11 +69,16 @@ var AddNewView = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <Form
-          ref='form'
-          type={Person}
-          options={options}
-        />
+        <Text style={styles.title}>
+          Type a stock symbol.
+        </Text>
+        <View style={styles.searchBar}>
+          <Form
+            ref='form'
+            type={Person}
+            options={options}
+          />
+        </View>
         <TouchableHighlight style={styles.button}
 		    	underlayColor='#ED6063'
 		    	onPress={this._onPressSaveButton}>

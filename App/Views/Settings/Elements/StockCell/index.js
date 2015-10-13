@@ -53,6 +53,7 @@ var StockCell = React.createClass({
               </Text>
             </View>
           </Swipeout>
+          <View style={styles.separator}/>
         </View>
       </View>
     );

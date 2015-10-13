@@ -46,12 +46,11 @@ module.exports = StyleSheet.create({
     flex: 1,
   },
   stockNameText: {
-    fontSize: 15,
-    marginBottom: 10,
+    fontSize: 12,
     color: 'white',
     textAlign: 'center',
-    marginTop: 10,
-    marginBottom: 4,
+    marginTop: 5,
+    marginBottom: 10,
     marginRight: 10,
   },
   stockDetails: {
@@ -67,7 +66,6 @@ module.exports = StyleSheet.create({
   },
   stockPropertyText: {
     fontSize: 12,
-    marginBottom: 10,
     color: 'gray',
     textAlign: 'left',
     marginTop: 5,
@@ -76,12 +74,11 @@ module.exports = StyleSheet.create({
   },
   stockValueText: {
     fontSize: 12,
-    marginBottom: 10,
     color: 'white',
     textAlign: 'right',
     marginTop: 5,
-    marginBottom: 4,
-    marginRight: 10,
+    marginBottom: 10,
+    marginRight: 5,
   },
   separator: {
     height: 0.5,
@@ -90,5 +87,40 @@ module.exports = StyleSheet.create({
   separatorThin: {
     height: 0.3,
     backgroundColor: 'gray',
+  },
+  footer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginBottom: 5,
+  },
+  yahoo: {
+    flex: 1,
+  },
+  yahooText: {
+    fontSize: 15,
+    color: 'white',
+    textAlign: 'left',
+    marginTop: 5,
+    marginBottom: 4,
+  },
+  marketTime: {
+    flex: 1,
+  },
+  marketTimeText: {
+    fontSize: 12,
+    color: 'white',
+    textAlign: 'left',
+    marginTop: 5,
+    marginBottom: 4,
+  },
+  settings: {
+    flex: 1,
+  },
+  settingsText: {
+    fontSize: 15,
+    color: 'white',
+    textAlign: 'right',
+    marginTop: 5,
+    marginBottom: 4,
   },
 });

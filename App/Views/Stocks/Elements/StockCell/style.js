@@ -50,14 +50,14 @@ module.exports = StyleSheet.create({
     backgroundColor: '#DD1100',
     flex: 1,
     margin: 6,
-    padding: 5,
+    padding: 6,
     borderRadius: 3.
   },
   stockChangeGreen: {
     backgroundColor: 'green',
     flex: 1,
     margin: 6,
-    padding: 5,
+    padding: 6,
     borderRadius: 3,
   },
   stockChangeText: {

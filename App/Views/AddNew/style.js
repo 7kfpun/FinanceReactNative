@@ -11,12 +11,22 @@ module.exports = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 50,
     padding: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: 'black',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  searchBar: {
+    flexDirection: 'column',
+    backgroundColor: '#4D4D4D',
   },
   title: {
-    fontSize: 30,
+    color: 'white',
+    fontSize: 12,
     alignSelf: 'center',
-    marginBottom: 30
+    marginBottom: 10,
   },
   buttonText: {
     fontSize: 18,
