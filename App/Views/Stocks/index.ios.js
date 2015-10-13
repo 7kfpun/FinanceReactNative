@@ -261,13 +261,151 @@ var ViewReactClass = React.createClass({
     );
   },
 
-  renderListView: function(){
+  renderListView: function() {
     return(
-      <View>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this.renderStockCell}
-          style={styles.stocksListView}/>
+      <View style={styles.container}>
+        <View style={styles.topBlock}>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={this.renderStockCell}
+            style={styles.stocksListView}/>
+        </View>
+
+        <View style={styles.bottomBlock}>
+          <View style={styles.stockName}>
+            <Text style={styles.stockNameText}>
+              Name
+            </Text>
+          </View>
+          <View style={styles.separator}/>
+          <View style={styles.stockDetails}>
+            <View style={styles.stockDetailsRow}>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  OPEN
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  MKT CAP
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  --
+                </Text>
+              </View>
+            </View>
+            <View style={styles.separatorThin}/>
+
+            <View style={styles.stockDetailsRow}>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  HIGH
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  52W HIGH
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+            </View>
+            <View style={styles.separatorThin}/>
+
+            <View style={styles.stockDetailsRow}>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  LOW
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  52W LOW
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+            </View>
+            <View style={styles.separatorThin}/>
+
+            <View style={styles.stockDetailsRow}>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  VOL
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  AVG VOL
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+            </View>
+            <View style={styles.separatorThin}/>
+
+            <View style={styles.stockDetailsRow}>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  P/E
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockPropertyText}>
+                  YIELD
+                </Text>
+              </View>
+              <View style={styles.stockDetailsColumn}>
+                <Text style={styles.stockValueText}>
+                  3000.00
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.separator}/>
+
+          <View style={styles.stockName}>
+            <Text style={styles.stockNameText}>
+              FinanceReactNative
+            </Text>
+          </View>
+        </View>
       </View>
     );
   },

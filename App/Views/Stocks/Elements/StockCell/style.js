@@ -9,34 +9,54 @@ var {
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F6F6EF',
-  },
-  stockCount: {
-    fontSize: 12,
-    textAlign: 'left',
-    margin: 10,
-    color: 'gray',
+    backgroundColor: 'black',
     marginLeft: 15,
-    width: 60,
+    marginRight: 15,
   },
-  stockDetailsContainer:{
+  base: {
+    borderColor: '#000000',
+    borderWidth: 5
+  },
+  stockContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 40,
+  },
+  stockSymbol: {
     flex: 1,
   },
-  stockTitle: {
+  stockSymbolText: {
     fontSize: 15,
+    marginBottom: 10,
+    color: 'white',
     textAlign: 'left',
     marginTop: 10,
     marginBottom: 4,
     marginRight: 10,
-    color: '#FF6600'
   },
-  stockDetailsLine: {
-    fontSize: 12,
+  stockPrice: {
+    flex: 1,
+  },
+  stockPriceText: {
+    fontSize: 15,
     marginBottom: 10,
-    color: 'gray',
+    color: 'white',
+    textAlign: 'right',
+    marginTop: 10,
+    marginBottom: 4,
+    marginRight: 10,
+  },
+  stockChange: {
+    backgroundColor: '#DD1100',
+    flex: 1,
+    margin: 6,
+    padding: 5,
+    borderRadius: 4
+  },
+  stockChangeText: {
+    fontSize: 15,
+    color: 'white',
+    textAlign: 'center',
   },
   separator: {
     height: 0.5,
