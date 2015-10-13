@@ -10,7 +10,7 @@ var {
 } = React;
 
 // Styles
-var styles = require("./style");
+var styles = require('./style');
 
 var StockCell = React.createClass({
   getInitialState: function() {
@@ -38,7 +38,7 @@ var StockCell = React.createClass({
   render: function() {
     console.log(this.props.stock);
     return (
-      <TouchableHighlight onPress={this.props.onSelect} underlayColor="#4D4D4D">
+      <TouchableHighlight onPress={this.props.onSelect} underlayColor='#4D4D4D'>
         <View style={styles.container}>
           <View style={styles.stockContainer}>
             <View style={styles.stockSymbol}>
@@ -51,15 +51,21 @@ var StockCell = React.createClass({
                 {this.props.stock.LastTradePriceOnly}
               </Text>
             </View>
-            <TouchableOpacity style={styles.stockChange} onPress={this.changeShowingProperty}>
+            <TouchableOpacity style={(() => {
+              switch (this.props.stock.Change && this.props.stock.Change.startsWith('+')) {
+                case true:                   return styles.stockChangeGreen;
+                case false:                  return styles.stockChangeRed;
+                default:                     return styles.stockChangeGreen;
+              }
+            })()} onPress={this.changeShowingProperty}>
               <View>
                 <Text style={styles.stockChangeText}>
                   {(() => {
                     switch (this.state.showingProperty) {
-                      case "Change":               return this.props.stock.Change;
-                      case "ChangeinPercent":      return this.props.stock.ChangeinPercent;
-                      case "AverageDailyVolume":   return this.props.stock.AverageDailyVolume;
-                      default:                     return this.props.stock.Change;
+                      case 'Change':               return this.props.stock.Change || '--';
+                      case 'ChangeinPercent':      return this.props.stock.ChangeinPercent || '--';
+                      case 'AverageDailyVolume':   return this.props.stock.AverageDailyVolume || '--';
+                      default:                     return this.props.stock.Change || '--';
                     }
                   })()}
                 </Text>
