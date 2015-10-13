@@ -36,7 +36,7 @@ module.exports = StyleSheet.create({
     flex: 2
   },
   bottomBlock: {
-    backgroundColor: '#4D4D4D',
+    backgroundColor: '#202020',
     flex: 1,
     flexDirection: 'column',
     paddingLeft: 15,
@@ -67,7 +67,7 @@ module.exports = StyleSheet.create({
   },
   stockPropertyText: {
     fontSize: 12,
-    color: 'gray',
+    color: '#A6A6A6',
     textAlign: 'left',
     marginTop: 5,
     marginBottom: 4,
@@ -87,7 +87,7 @@ module.exports = StyleSheet.create({
   },
   separatorThin: {
     height: 0.3,
-    backgroundColor: 'gray',
+    backgroundColor: '#A6A6A6',
   },
   footer: {
     flex: 1,

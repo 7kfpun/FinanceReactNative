@@ -20,7 +20,7 @@ module.exports = StyleSheet.create({
   },
   searchBar: {
     flexDirection: 'column',
-    backgroundColor: '#4D4D4D',
+    backgroundColor: '#202020',
   },
   title: {
     color: 'white',

@@ -38,7 +38,7 @@ var StockCell = React.createClass({
   render: function() {
     console.log(this.props.stock);
     return (
-      <TouchableHighlight onPress={this.props.onSelect} underlayColor='#4D4D4D'>
+      <TouchableHighlight onPress={this.props.onSelect} underlayColor='#202020'>
         <View style={styles.container}>
           <View style={styles.stockContainer}>
             <View style={styles.stockSymbol}>

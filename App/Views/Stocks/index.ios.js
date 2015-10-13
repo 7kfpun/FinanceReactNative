@@ -30,7 +30,6 @@ var ViewReactClass = React.createClass({
     return {
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
       loaded: false,
-      selectedStock: {},
     };
   },
 
@@ -39,21 +38,12 @@ var ViewReactClass = React.createClass({
   },
 
   fetchData: function() {
-    // this.setState({
-    //   dataSource: this.state.dataSource.cloneWithRows(responseData),
-    //   loaded: true
-    // });
-
     var that = this;
     store.get('watchlist').then((result) => {
       if (!Array.isArray(result) || result === []) {
         result = [
           {symbol: 'AAPL', share: 100},
           {symbol: 'GOOG', share: 100},
-          {symbol: '0001.HK', share: 100},
-          {symbol: '0002.HK', share: 100},
-          {symbol: '0011.HK', share: 100},
-          {symbol: '1211.HK', share: 100}
         ];
         store.save('watchlist', result);
       }
@@ -67,13 +57,12 @@ var ViewReactClass = React.createClass({
         .then(function(response) {
           return response.json();
         }).then(function(json) {
-          console.log('>>', json);
           var quotes = json.query.results.quote;
           that.setState({
             dataSource: that.state.dataSource.cloneWithRows(quotes),
             watchlist: result,
             loaded: true,
-            selectedStock: quotes[0],
+            selectedStock: that.state.selectedStock || quotes[0],
           });
 
           // Caching
@@ -245,7 +234,7 @@ var ViewReactClass = React.createClass({
             <TouchableHighlight
                 style={styles.yahoo}
                 onPress={() => this.openPage()}
-                underlayColor='#4D4D4D'>
+                underlayColor='#202020'>
               <Text style={styles.yahooText}>
                 Yahoo!
               </Text>
@@ -257,10 +246,10 @@ var ViewReactClass = React.createClass({
             </View>
             <TouchableHighlight
                 style={styles.settings}
-                onPress={() => this.openPage()}
-                underlayColor='#4D4D4D'>
+                onPress={() => this.refreshPage()}
+                underlayColor='#202020'>
               <Text style={styles.settingsText}>
-                ☰
+                ↺
               </Text>
             </TouchableHighlight>
           </View>
@@ -281,36 +270,17 @@ var ViewReactClass = React.createClass({
     this.props.navigator.pop();
   },
 
-  _onPressEditButton: function(stock) {
-    this.props.navigator.push({
-      title: 'Edit',
-      component: EditView,
-      passProps: {
-        stock: stock,
-      },
-      leftButtonTitle: 'Cancel',
-      onLeftButtonPress: this._onPressCancelButton,
-    })
-  },
-
   selectStock: function(stock) {
-    // console.log('selectStock', stock);
     this.setState({
       selectedStock: stock,
     });
-    // this.props.navigator.push({
-    //   title: stock.name,
-    //   component: StockView,
-    //   passProps: {
-    //     stock: stock,
-    //   },
-    //   rightButtonTitle: 'Edit',
-    //   onRightButtonPress: () => this._onPressEditButton(stock.symbol),
-    // });
+  },
+
+  refreshPage: function() {
+    this.fetchData();
   },
 
   openPage: function() {
-    console.log('Click on yahoo!');
     this.props.navigator.push({
       title: this.props.stock_title,
       component: WebView,

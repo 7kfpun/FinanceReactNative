@@ -17,7 +17,7 @@ var StocksView = require('./App/Views/Stocks');
 
 var Finance = React.createClass({
 
-  _onPressCancelButton: function() {
+  _onPressDoneButton: function() {
     this.refs.nav.pop();
   },
 
@@ -26,7 +26,7 @@ var Finance = React.createClass({
       title: 'Add new',
       component: AddNewView,
       leftButtonTitle: 'Cancel',
-      onLeftButtonPress: this._onPressCancelButton,
+      onLeftButtonPress: this._onPressDoneButton,
     })
   },
 
@@ -37,7 +37,7 @@ var Finance = React.createClass({
       leftButtonIcon: require('image!NavBarButtonPlus'),
       onLeftButtonPress: this._onPressAddButton,
       rightButtonTitle: 'Done',
-      onRightButtonPress: this._onPressCancelButton,
+      onRightButtonPress: this._onPressDoneButton,
     })
   },
 
@@ -50,6 +50,8 @@ var Finance = React.createClass({
         initialRoute={{
           title: 'Finance',
           component: StocksView,
+          // leftButtonTitle: '↺',
+          // onLeftButtonPress: this._onPressRefreshButton,
           rightButtonTitle: '☰',
           // rightButtonIcon: require('image!NavBarButtonPlus'),
           onRightButtonPress: this._onPressSettingsButton,
