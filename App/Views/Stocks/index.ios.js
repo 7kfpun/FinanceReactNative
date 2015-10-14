@@ -101,7 +101,7 @@ var ViewReactClass = React.createClass({
         <View style={styles.topBlock}>
           <RefresherListView
             dataSource={this.state.dataSource}
-            onRefresh={this.refreshPage.bind(this)}
+            onRefresh={this.refreshPage}
             renderRow={this.renderStockCell}
             style={styles.stocksListView}/>
         </View>
@@ -267,6 +267,7 @@ var ViewReactClass = React.createClass({
     return(
       <StockCell
         onSelect={() => this.selectStock(stock)}
+        onRefreshStocksView={this.refreshPage}
         stock={stock}/>
     );
   },

@@ -27,6 +27,7 @@ var SettingsView = React.createClass({
   },
 
   _genRows() {
+    console.log('_genRows');
     var that = this;
     store.get('watchlist').then((result) => {
       this.setState({
@@ -39,7 +40,7 @@ var SettingsView = React.createClass({
   renderStockCell: function(stock) {
     return(
       <StockCell
-        onSelect={() => this.selectStock(stock)}
+        onRefreshSettingsView={() => this._genRows()}
         stock={stock}/>
     );
   },

@@ -2,6 +2,7 @@
 
 var React = require('react-native');
 var store = require('react-native-simple-store');
+var NavigationBar = require('react-native-navbar');
 
 var {
   AppRegistry,
@@ -50,7 +51,6 @@ var Finance = React.createClass({
         ref='nav'
         style={styles.container}
         tintColor='#FF6600'
-        configureScene={() => Navigator.SceneConfigs.PushFromRight}
         initialRoute={{
           title: 'Finance',
           component: StocksView,

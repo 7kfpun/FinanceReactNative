@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var store = require('react-native-simple-store');
 
 var {
   Text,
@@ -19,20 +20,36 @@ var StockCell = React.createClass({
     };
   },
 
+  componentDidMount: function() {
+    store.get('showingProperty').then((result) => {
+      if (!result) {
+        result = 'Change';
+        store.save('showingProperty', result);
+      }
+      this.setState({
+        showingProperty: result,
+      });
+    });
+  },
+
+  getShowingProperty: function () {
+    store.get('showingProperty').then((result) => {
+      return result;
+    });
+  },
+
   changeShowingProperty: function() {
-    if (this.state.showingProperty === 'Change') {
-      this.setState({
-        showingProperty: 'ChangeinPercent',
-      });
-    } else if (this.state.showingProperty === 'ChangeinPercent') {
-      this.setState({
-        showingProperty: 'MarketCapitalization',
-      });
-    } else if (this.state.showingProperty === 'MarketCapitalization') {
-      this.setState({
-        showingProperty: 'Change',
-      });
-    }
+    store.get('showingProperty').then((result) => {
+      if (result === 'Change') {
+        store.save('showingProperty', 'ChangeinPercent');
+      } else if (result === 'ChangeinPercent') {
+        store.save('showingProperty', 'MarketCapitalization');
+      } else if (result === 'MarketCapitalization') {
+        store.save('showingProperty', 'Change');
+      }
+
+      this.props.onRefreshStocksView();
+    });
   },
 
   render: function() {

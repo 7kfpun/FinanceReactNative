@@ -27,6 +27,8 @@ var StockCell = React.createClass({
       return UtilFuncs.removeObjectfromArray(result, 'symbol', symbol);
     }).then((result) => {
       store.save('watchlist', result);
+
+      this.props.onRefreshSettingsView();
     });
   },
 
