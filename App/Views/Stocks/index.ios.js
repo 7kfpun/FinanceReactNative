@@ -10,6 +10,10 @@ var {
   View,
 } = React;
 
+var {
+  RefresherListView,
+} = require('react-native-refresher');
+
 // Utils
 var finance = require('../../Utils/finance');
 var UtilFuncs = require('../../Utils/functions');
@@ -95,8 +99,9 @@ var ViewReactClass = React.createClass({
     return(
       <View style={styles.container}>
         <View style={styles.topBlock}>
-          <ListView
+          <RefresherListView
             dataSource={this.state.dataSource}
+            onRefresh={this.refreshPage.bind(this)}
             renderRow={this.renderStockCell}
             style={styles.stocksListView}/>
         </View>
@@ -246,10 +251,10 @@ var ViewReactClass = React.createClass({
             </View>
             <TouchableHighlight
                 style={styles.settings}
-                onPress={() => this.refreshPage()}
+                onPress={() => this.pushSettingsView()}
                 underlayColor='#202020'>
               <Text style={styles.settingsText}>
-                ↺
+                ☰
               </Text>
             </TouchableHighlight>
           </View>
@@ -277,7 +282,12 @@ var ViewReactClass = React.createClass({
   },
 
   refreshPage: function() {
+    console.log('refreshPage');
     this.fetchData();
+  },
+
+  pushSettingsView: function() {
+    this.props.pushSettingsView();
   },
 
   openPage: function() {

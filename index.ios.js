@@ -16,6 +16,9 @@ var SettingsView = require('./App/Views/Settings');
 var StocksView = require('./App/Views/Stocks');
 
 var Finance = React.createClass({
+  getInitialState: function() {
+    return {};
+  },
 
   _onPressDoneButton: function() {
     this.refs.nav.pop();
@@ -47,14 +50,15 @@ var Finance = React.createClass({
         ref='nav'
         style={styles.container}
         tintColor='#FF6600'
+        configureScene={() => Navigator.SceneConfigs.PushFromRight}
         initialRoute={{
           title: 'Finance',
           component: StocksView,
-          // leftButtonTitle: '↺',
-          // onLeftButtonPress: this._onPressRefreshButton,
-          rightButtonTitle: '☰',
+          // rightButtonTitle: '☰',
           // rightButtonIcon: require('image!NavBarButtonPlus'),
-          onRightButtonPress: this._onPressSettingsButton,
+          passProps: {
+            pushSettingsView: this._onPressSettingsButton,
+          },
         }}/>
     );
   }

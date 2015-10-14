@@ -26,9 +26,9 @@ var StockCell = React.createClass({
       });
     } else if (this.state.showingProperty === 'ChangeinPercent') {
       this.setState({
-        showingProperty: 'AverageDailyVolume',
+        showingProperty: 'MarketCapitalization',
       });
-    } else if (this.state.showingProperty === 'AverageDailyVolume') {
+    } else if (this.state.showingProperty === 'MarketCapitalization') {
       this.setState({
         showingProperty: 'Change',
       });
@@ -62,10 +62,10 @@ var StockCell = React.createClass({
                 <Text style={styles.stockChangeText}>
                   {(() => {
                     switch (this.state.showingProperty) {
-                      case 'Change':               return this.props.stock.Change || '--';
-                      case 'ChangeinPercent':      return this.props.stock.ChangeinPercent || '--';
-                      case 'AverageDailyVolume':   return this.props.stock.AverageDailyVolume || '--';
-                      default:                     return this.props.stock.Change || '--';
+                      case 'Change':                 return this.props.stock.Change || '--';
+                      case 'ChangeinPercent':        return this.props.stock.ChangeinPercent || '--';
+                      case 'MarketCapitalization':   return this.props.stock.MarketCapitalization || '--';
+                      default:                       return this.props.stock.Change || '--';
                     }
                   })()}
                 </Text>
