@@ -33,8 +33,18 @@ module.exports = StyleSheet.create({
   },
   button: {
     height: 36,
-    // backgroundColor: '#66CCFF',
-    borderColor: '#A6A6A6',
+    borderColor: '#66CCFF',
+    borderWidth: 1,
+    flex: 1,
+    borderRadius: 4,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
+  buttonSelected: {
+    backgroundColor: '#66CCFF',
+    height: 36,
+    borderColor: '#66CCFF',
+    borderWidth: 1,
     flex: 1,
     borderRadius: 4,
     alignSelf: 'stretch',
@@ -43,6 +53,11 @@ module.exports = StyleSheet.create({
   buttonText: {
     fontSize: 14,
     color: '#66CCFF',
+    alignSelf: 'center'
+  },
+  buttonTextSelected: {
+    fontSize: 14,
+    color: 'white',
     alignSelf: 'center'
   },
 });

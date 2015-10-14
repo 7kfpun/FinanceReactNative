@@ -47,7 +47,9 @@ var StockCell = React.createClass({
       } else if (result === 'MarketCapitalization') {
         store.save('showingProperty', 'Change');
       }
-
+      this.setState({
+        showingProperty: result,
+      });
       this.props.onRefreshStocksView();
     });
   },

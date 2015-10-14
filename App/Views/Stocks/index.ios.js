@@ -295,7 +295,9 @@ var ViewReactClass = React.createClass({
     this.props.navigator.push({
       title: this.props.stock_title,
       component: WebView,
-      passProps: {url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol},
+      passProps: {
+        url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol
+      },
     });
   },
 

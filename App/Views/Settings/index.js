@@ -23,14 +23,19 @@ var SettingsView = React.createClass({
   },
 
   componentDidMount: function() {
-    this._genRows();
+    var that = this;
+    store.get('showingProperty').then((result) => {
+      that.setState({
+        showingProperty: result,
+      });
+      that._genRows();
+    });
   },
 
   _genRows() {
-    console.log('_genRows');
     var that = this;
     store.get('watchlist').then((result) => {
-      this.setState({
+      that.setState({
         dataSource: that.state.dataSource.cloneWithRows(result),
         loaded: true,
       });
@@ -45,7 +50,15 @@ var SettingsView = React.createClass({
     );
   },
 
+  setShowingProperty: function(value) {
+    this.setState({
+      showingProperty: value,
+    });
+    store.save('showingProperty', value);
+  },
+
   render: function() {
+    console.log('this.state.showingProperty', this.state.showingProperty);
     return (
       <View style={styles.container}>
         <View style={styles.topBlock}>
@@ -55,26 +68,24 @@ var SettingsView = React.createClass({
           />
         </View>
         <View style={styles.bottomBlock}>
-          <TouchableHighlight style={styles.button}
+          <TouchableHighlight style={this.state.showingProperty === 'ChangeinPercent' ? styles.buttonSelected: styles.button}
               underlayColor='#66CCFF'
-              onPress={this._onPressSaveButton}>
-            <View backgroundColor='#ED6063'>
-              <Text style={styles.buttonText}>
-                percentage
-              </Text>
-            </View>
+              onPress={() => this.setShowingProperty('ChangeinPercent')}>
+            <Text style={this.state.showingProperty === 'ChangeinPercent' ? styles.buttonTextSelected: styles.buttonText}>
+              percentage
+            </Text>
           </TouchableHighlight>
-          <TouchableHighlight style={styles.button}
+          <TouchableHighlight style={this.state.showingProperty === 'Change' ? styles.buttonSelected: styles.button}
               underlayColor='#66CCFF'
-              onPress={this._onPressSaveButton}>
-            <Text style={styles.buttonText}>
+              onPress={() => this.setShowingProperty('Change')}>
+            <Text style={this.state.showingProperty === 'Change' ? styles.buttonTextSelected: styles.buttonText}>
               price
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight style={styles.button}
+          <TouchableHighlight style={this.state.showingProperty === 'MarketCapitalization' ? styles.buttonSelected: styles.button}
               underlayColor='#66CCFF'
-              onPress={this._onPressSaveButton}>
-            <Text style={styles.buttonText}>
+              onPress={() => this.setShowingProperty('MarketCapitalization')}>
+            <Text style={this.state.showingProperty === 'MarketCapitalization' ? styles.buttonTextSelected: styles.buttonText}>
               market cap
             </Text>
           </TouchableHighlight>
