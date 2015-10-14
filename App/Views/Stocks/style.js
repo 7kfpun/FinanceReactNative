@@ -110,9 +110,15 @@ module.exports = StyleSheet.create({
   marketTimeText: {
     fontSize: 12,
     color: 'white',
-    textAlign: 'left',
+    textAlign: 'center',
     marginTop: 5,
     marginBottom: 4,
+  },
+  changeDetailView: {
+    fontSize: 8,
+    color: 'white',
+    textAlign: 'center',
+    marginTop: 2,
   },
   settings: {
     flex: 1,

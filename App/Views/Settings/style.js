@@ -31,33 +31,73 @@ module.exports = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 30
   },
-  button: {
+  buttonLeft: {
     height: 36,
-    borderColor: '#66CCFF',
+    borderColor: '#3CABDA',
     borderWidth: 1,
     flex: 1,
-    borderRadius: 4,
+    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
-  buttonSelected: {
-    backgroundColor: '#66CCFF',
+  buttonLeftSelected: {
+    backgroundColor: '#3CABDA',
     height: 36,
-    borderColor: '#66CCFF',
+    borderColor: '#3CABDA',
     borderWidth: 1,
     flex: 1,
-    borderRadius: 4,
+    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
+  buttonMiddle: {
+    height: 36,
+    borderColor: '#3CABDA',
+    borderWidth: 1,
+    flex: 1,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
+  buttonMiddleSelected: {
+    backgroundColor: '#3CABDA',
+    height: 36,
+    borderColor: '#3CABDA',
+    borderWidth: 1,
+    flex: 1,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
+  buttonRight: {
+    height: 36,
+    borderColor: '#3CABDA',
+    borderWidth: 1,
+    flex: 1,
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
+  buttonRightSelected: {
+    backgroundColor: '#3CABDA',
+    height: 36,
+    borderColor: '#3CABDA',
+    borderWidth: 1,
+    flex: 1,
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
   buttonText: {
     fontSize: 14,
-    color: '#66CCFF',
+    color: '#3CABDA',
     alignSelf: 'center'
   },
   buttonTextSelected: {
     fontSize: 14,
-    color: 'white',
+    color: 'black',
     alignSelf: 'center'
   },
 });

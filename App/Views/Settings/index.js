@@ -68,21 +68,21 @@ var SettingsView = React.createClass({
           />
         </View>
         <View style={styles.bottomBlock}>
-          <TouchableHighlight style={this.state.showingProperty === 'ChangeinPercent' ? styles.buttonSelected: styles.button}
+          <TouchableHighlight style={this.state.showingProperty === 'ChangeinPercent' ? styles.buttonLeftSelected: styles.buttonLeft}
               underlayColor='#66CCFF'
               onPress={() => this.setShowingProperty('ChangeinPercent')}>
             <Text style={this.state.showingProperty === 'ChangeinPercent' ? styles.buttonTextSelected: styles.buttonText}>
               percentage
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight style={this.state.showingProperty === 'Change' ? styles.buttonSelected: styles.button}
+          <TouchableHighlight style={this.state.showingProperty === 'Change' ? styles.buttonMiddleSelected: styles.buttonMiddle}
               underlayColor='#66CCFF'
               onPress={() => this.setShowingProperty('Change')}>
             <Text style={this.state.showingProperty === 'Change' ? styles.buttonTextSelected: styles.buttonText}>
               price
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight style={this.state.showingProperty === 'MarketCapitalization' ? styles.buttonSelected: styles.button}
+          <TouchableHighlight style={this.state.showingProperty === 'MarketCapitalization' ? styles.buttonRightSelected: styles.buttonRight}
               underlayColor='#66CCFF'
               onPress={() => this.setShowingProperty('MarketCapitalization')}>
             <Text style={this.state.showingProperty === 'MarketCapitalization' ? styles.buttonTextSelected: styles.buttonText}>

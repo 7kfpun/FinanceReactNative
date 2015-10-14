@@ -47,6 +47,9 @@ var StockCell = React.createClass({
             <Text style={styles.stockSymbolText}>
               {this.props.stock.symbol}
             </Text>
+            <Text style={styles.stockSymbolText}>
+              Hong Kong
+            </Text>
           </View>
           <View style={styles.stockMove}>
             <Text style={styles.stockMoveText}>

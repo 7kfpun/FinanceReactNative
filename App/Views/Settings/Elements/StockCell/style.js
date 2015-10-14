@@ -33,6 +33,7 @@ module.exports = StyleSheet.create({
   },
   stockSymbol: {
     flex: 8,
+    flexDirection: 'row',
   },
   stockSymbolText: {
     fontSize: 15,

@@ -248,6 +248,9 @@ var ViewReactClass = React.createClass({
               <Text style={styles.marketTimeText}>
                 Market closed
               </Text>
+              <Text style={styles.changeDetailView}>
+                . . .
+              </Text>
             </View>
             <TouchableHighlight
                 style={styles.settings}
