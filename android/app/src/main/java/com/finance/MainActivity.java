@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.finance;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
-        mReactRootView.startReactApplication(mReactInstanceManager, "AwesomeProject", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "Finance", null);
 
         setContentView(mReactRootView);
     }
