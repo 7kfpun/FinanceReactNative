@@ -13,7 +13,7 @@ var Web = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <WebView url={this.props.url}/>
+        <WebView url={this.props.route.url}/>
       </View>
     );
   }

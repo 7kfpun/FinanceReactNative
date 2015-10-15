@@ -11,7 +11,7 @@ module.exports = StyleSheet.create({
     backgroundColor: '#000000',
     flexDirection: 'column',
     position: 'absolute',
-    top: 0,
+    top: 40,
     left: 0,
     right: 0,
     bottom: 0,

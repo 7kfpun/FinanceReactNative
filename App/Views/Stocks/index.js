@@ -44,7 +44,7 @@ var ViewReactClass = React.createClass({
   fetchData: function() {
     var that = this;
     store.get('watchlist').then((result) => {
-      if (!Array.isArray(result) || result === []) {
+      if (!Array.isArray(result) || result.length === 0) {
         result = [
           {symbol: 'AAPL', share: 100},
           {symbol: 'GOOG', share: 100},
@@ -61,7 +61,9 @@ var ViewReactClass = React.createClass({
         .then(function(response) {
           return response.json();
         }).then(function(json) {
-          var quotes = json.query.results.quote;
+          var quotes = json.query.results.quote ;
+          quotes = Array.isArray(quotes) ? quotes : [quotes];
+
           that.setState({
             dataSource: that.state.dataSource.cloneWithRows(quotes),
             watchlist: result,
@@ -291,17 +293,19 @@ var ViewReactClass = React.createClass({
   },
 
   pushSettingsView: function() {
-    this.props.pushSettingsView();
+    this.props.navigator.push({title: 'Stocks', id: 'settings'});
+    // this.props.pushSettingsView();
   },
 
   openPage: function() {
-    this.props.navigator.push({
-      title: this.props.stock_title,
-      component: WebView,
-      passProps: {
-        url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol
-      },
-    });
+    this.props.navigator.push({title: 'Yahoo', id: 'yahoo', url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol})
+    // this.props.navigator.push({
+    //   title: this.props.stock_title,
+    //   component: WebView,
+    //   passProps: {
+    //     url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol
+    //   },
+    // });
   },
 
 });
