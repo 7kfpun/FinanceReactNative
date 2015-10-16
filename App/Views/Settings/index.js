@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var Reflux = require('reflux');
 var store = require('react-native-simple-store');
 
 var {
@@ -10,11 +11,23 @@ var {
   View,
 } = React;
 
+// Flux
+var Actions = require('../../Utils/actions');
+var Store = require('../../Utils/store');
+
 var StockCell = require('./Elements/StockCell');
 
 var styles = require('./style');
 
 var SettingsView = React.createClass({
+  mixins: [Reflux.ListenerMixin],
+
+  onChangeShowingProperty: function(data) {
+    this.setState({
+      showingProperty: data,
+    });
+  },
+
   getInitialState() {
     return {
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
@@ -23,12 +36,13 @@ var SettingsView = React.createClass({
   },
 
   componentDidMount: function() {
-    var that = this;
+    this.listenTo(Store, this.onChangeShowingProperty);
+
     store.get('showingProperty').then((result) => {
-      that.setState({
+      this.setState({
         showingProperty: result,
       });
-      that._genRows();
+      this._genRows();
     });
   },
 
@@ -55,6 +69,7 @@ var SettingsView = React.createClass({
       showingProperty: value,
     });
     store.save('showingProperty', value);
+    Actions.changeShowingProperty(value);
   },
 
   render: function() {

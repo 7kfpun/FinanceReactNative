@@ -14,6 +14,9 @@ var {
   RefresherListView,
 } = require('react-native-refresher');
 
+// Flux
+var Actions = require('../../Utils/actions');
+
 // Utils
 var finance = require('../../Utils/finance');
 var UtilFuncs = require('../../Utils/functions');
@@ -246,7 +249,9 @@ var ViewReactClass = React.createClass({
                 Yahoo!
               </Text>
             </TouchableHighlight>
-            <View style={styles.marketTime}>
+            <View
+                style={styles.marketTime}
+                underlayColor='#202020'>
               <Text style={styles.marketTimeText}>
                 Market closed
               </Text>

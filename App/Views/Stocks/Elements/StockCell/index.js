@@ -1,19 +1,31 @@
 'use strict';
 
 var React = require('react-native');
+var Reflux = require('reflux');
 var store = require('react-native-simple-store');
 
 var {
   Text,
   TouchableHighlight,
-  TouchableOpacity,
   View,
 } = React;
+
+// Flux
+var Actions = require('../../../../Utils/actions');
+var Store = require('../../../../Utils/store');
 
 // Styles
 var styles = require('./style');
 
 var StockCell = React.createClass({
+  mixins: [Reflux.ListenerMixin],
+
+  onChangeShowingProperty: function(data) {
+    this.setState({
+      showingProperty: data,
+    });
+  },
+
   getInitialState: function() {
     return {
       showingProperty: 'Change',
@@ -21,6 +33,8 @@ var StockCell = React.createClass({
   },
 
   componentDidMount: function() {
+    this.listenTo(Store, this.onChangeShowingProperty);
+
     store.get('showingProperty').then((result) => {
       if (!result) {
         result = 'Change';
@@ -38,20 +52,18 @@ var StockCell = React.createClass({
     });
   },
 
-  changeShowingProperty: function() {
-    store.get('showingProperty').then((result) => {
-      if (result === 'Change') {
-        store.save('showingProperty', 'ChangeinPercent');
-      } else if (result === 'ChangeinPercent') {
-        store.save('showingProperty', 'MarketCapitalization');
-      } else if (result === 'MarketCapitalization') {
-        store.save('showingProperty', 'Change');
+  changeShowingProperty: function(currentShowingProperty) {
+      var newShowingProperty;
+      if (currentShowingProperty === 'Change') {
+        newShowingProperty = 'ChangeinPercent';
+      } else if (currentShowingProperty === 'ChangeinPercent') {
+        newShowingProperty = 'MarketCapitalization';
+      } else if (currentShowingProperty === 'MarketCapitalization') {
+        newShowingProperty = 'Change';
       }
-      this.setState({
-        showingProperty: result,
-      });
-      this.props.onRefreshStocksView();
-    });
+      store.save('showingProperty', newShowingProperty);
+      Actions.changeShowingProperty(newShowingProperty);
+      // this.props.onRefreshStocksView();
   },
 
   render: function() {
@@ -70,13 +82,22 @@ var StockCell = React.createClass({
                 {this.props.stock.LastTradePriceOnly}
               </Text>
             </View>
-            <TouchableOpacity style={(() => {
-              switch (this.props.stock.Change && this.props.stock.Change.startsWith('+')) {
-                case true:                   return styles.stockChangeGreen;
-                case false:                  return styles.stockChangeRed;
-                default:                     return styles.stockChangeGreen;
-              }
-            })()} onPress={this.changeShowingProperty}>
+            <TouchableHighlight
+                style={(() => {
+                  switch (this.props.stock.Change && this.props.stock.Change.startsWith('+')) {
+                    case true:                   return styles.stockChangeGreen;
+                    case false:                  return styles.stockChangeRed;
+                    default:                     return styles.stockChangeGreen;
+                  }
+                })()}
+                underlayColor={(() => {
+                  switch (this.props.stock.Change && this.props.stock.Change.startsWith('+')) {
+                    case true:                   return '#53D769';
+                    case false:                  return '#FC3D39';
+                    default:                     return '#53D769';
+                  }
+                })()}
+                onPress={() => this.changeShowingProperty(this.state.showingProperty)}>
               <View>
                 <Text style={styles.stockChangeText}>
                   {(() => {
@@ -89,7 +110,7 @@ var StockCell = React.createClass({
                   })()}
                 </Text>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
           </View>
           <View style={styles.separator}/>
         </View>
