@@ -26,7 +26,6 @@ var UtilFuncs = require('../../Utils/functions');
 var StockCell = require('./Elements/StockCell');
 
 // Views
-var StockView = require('../Stock');
 var WebView = require('../Web');
 
 // Styles
@@ -63,10 +62,9 @@ var ViewReactClass = React.createClass({
         store.save('watchlist', result);
       }
 
-      var symbols = [];
-      for (var i=0; i < result.length; i++) {
-        symbols.push(result[i].symbol);
-      }
+      var symbols = result.map(function(item) {
+        return item.symbol;
+      });
 
       finance.getStock({stock: symbols}, 'quotes')
         .then(function(response) {
@@ -84,7 +82,7 @@ var ViewReactClass = React.createClass({
 
           // Caching
           var watchlistCache = {};
-          quotes.forEach(function (quote) {
+          quotes.forEach(function(quote) {
             watchlistCache[quote.symbol] = quote;
           });
           store.save('watchlistCache', watchlistCache);
@@ -285,13 +283,8 @@ var ViewReactClass = React.createClass({
     return(
       <StockCell
         onSelect={() => this.selectStock(stock)}
-        onRefreshStocksView={this.refreshPage}
         stock={stock}/>
     );
-  },
-
-  _onPressCancelButton: function() {
-    this.props.navigator.pop();
   },
 
   selectStock: function(stock) {
@@ -307,7 +300,6 @@ var ViewReactClass = React.createClass({
 
   pushSettingsView: function() {
     this.props.navigator.push({title: 'Stocks', id: 'settings'});
-    // this.props.pushSettingsView();
   },
 
   openPage: function() {

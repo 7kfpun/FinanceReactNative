@@ -18,6 +18,9 @@ var StockStore = require('../../Utils/Stock/store');
 
 var StockCell = require('./Elements/StockCell');
 
+// Utils
+var finance = require('../../Utils/finance');
+
 var styles = require('./style');
 
 var SettingsView = React.createClass({

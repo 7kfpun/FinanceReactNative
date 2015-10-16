@@ -53,17 +53,16 @@ var StockCell = React.createClass({
   },
 
   changeShowingProperty: function(currentShowingProperty) {
-      var newShowingProperty;
-      if (currentShowingProperty === 'Change') {
-        newShowingProperty = 'ChangeinPercent';
-      } else if (currentShowingProperty === 'ChangeinPercent') {
-        newShowingProperty = 'MarketCapitalization';
-      } else if (currentShowingProperty === 'MarketCapitalization') {
-        newShowingProperty = 'Change';
-      }
-      store.save('showingProperty', newShowingProperty);
-      PropertyActions.changeShowingProperty(newShowingProperty);
-      // this.props.onRefreshStocksView();
+    var newShowingProperty;
+    if (currentShowingProperty === 'Change') {
+      newShowingProperty = 'ChangeinPercent';
+    } else if (currentShowingProperty === 'ChangeinPercent') {
+      newShowingProperty = 'MarketCapitalization';
+    } else if (currentShowingProperty === 'MarketCapitalization') {
+      newShowingProperty = 'Change';
+    }
+    store.save('showingProperty', newShowingProperty);
+    PropertyActions.changeShowingProperty(newShowingProperty);
   },
 
   render: function() {

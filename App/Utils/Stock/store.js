@@ -1,4 +1,6 @@
 var Reflux = require('reflux');
+
+// Flux
 var Actions = require('./actions');
 
 var Store = Reflux.createStore({
@@ -6,7 +8,6 @@ var Store = Reflux.createStore({
 
   onUpdateStocks: function() {
     console.log('onUpdateStocks');
-    // this.data.push(item);
     this.trigger();
   },
 });

@@ -7,7 +7,6 @@ var NavigationBar = require('react-native-navbar');
 var {
   Navigator,
   PixelRatio,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -52,14 +51,14 @@ var Finance = React.createClass({
 
   configureScene : function(route){
     switch (route.id) {
-      case 'empty':
-        return Navigator.SceneConfigs.HorizontalSwipeJump;
-      case 'stocks':
-        return Navigator.SceneConfigs.FloatFromRight;
       case 'settings':
         return Navigator.SceneConfigs.FloatFromBottom;
       case 'add':
-          return Navigator.SceneConfigs.HorizontalSwipeJump;
+        return Navigator.SceneConfigs.FloatFromBottom;
+      case 'yahoo':
+        return Navigator.SceneConfigs.HorizontalSwipeJump;
+      default:
+        return Navigator.SceneConfigs.HorizontalSwipeJump;
       }
   },
 
@@ -90,7 +89,6 @@ var Finance = React.createClass({
         Component = WebView;
         navBar = null;
         break;
-
       }
 
     if (navBar) {
@@ -125,36 +123,9 @@ var Finance = React.createClass({
         }
         configureScene={this.configureScene}
       />
-
-      // <NavigatorIOS
-      //   ref='nav'
-      //   style={styles.container}
-      //   tintColor='#FF6600'
-      //   initialRoute={{
-      //     title: 'Finance',
-      //     component: StocksView,
-      //     // rightButtonTitle: '☰',
-      //     // rightButtonIcon: require('image!NavBarButtonPlus'),
-      //     passProps: {
-      //       pushSettingsView: this._onPressSettingsButton,
-      //     },
-      //   }}/>
     );
   }
 });
-
-class NavButton extends React.Component {
-  render() {
-    return (
-      <TouchableHighlight
-        style={styles.button}
-        underlayColor="#B5B5B5"
-        onPress={this.props.onPress}>
-        <Text style={styles.buttonText}>{this.props.text}</Text>
-      </TouchableHighlight>
-    );
-  }
-}
 
 var NavigationBarRouteMapper = {
   LeftButton: function(route, navigator, index, navState) {
@@ -224,7 +195,6 @@ var NavigationBarRouteMapper = {
       </Text>
     );
   },
-
 };
 
 var styles = StyleSheet.create({
