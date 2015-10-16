@@ -11,8 +11,8 @@ var {
 } = React;
 
 // Flux
-var Actions = require('../../../../Utils/actions');
-var Store = require('../../../../Utils/store');
+var PropertyActions = require('../../../../Utils/Property/actions');
+var PropertyStore = require('../../../../Utils/Property/store');
 
 // Styles
 var styles = require('./style');
@@ -33,7 +33,7 @@ var StockCell = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listenTo(Store, this.onChangeShowingProperty);
+    this.listenTo(PropertyStore, this.onChangeShowingProperty);
 
     store.get('showingProperty').then((result) => {
       if (!result) {
@@ -62,7 +62,7 @@ var StockCell = React.createClass({
         newShowingProperty = 'Change';
       }
       store.save('showingProperty', newShowingProperty);
-      Actions.changeShowingProperty(newShowingProperty);
+      PropertyActions.changeShowingProperty(newShowingProperty);
       // this.props.onRefreshStocksView();
   },
 

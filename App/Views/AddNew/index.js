@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var Reflux = require('reflux');
 var store = require('react-native-simple-store');
 var t = require('tcomb-form-native');
 
@@ -11,6 +12,9 @@ var {
   TouchableHighlight,
   View,
 } = React;
+
+// Flux
+var StockActions = require('../../Utils/Stock/actions');
 
 var styles = require('./style');
 
@@ -58,7 +62,8 @@ var AddNewView = React.createClass({
           result.push({symbol: value.symbol.toUpperCase(), share: 100});
           result.sort(UtilFuncs.dynamicSort('symbol'));
           store.save('watchlist', result);
-          console.log(result, value);
+          StockActions.updateStocks();
+          console.log('Add stock', result, value);
         }
       });
 

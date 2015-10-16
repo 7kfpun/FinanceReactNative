@@ -1,9 +1,7 @@
 var Reflux = require('reflux');
 
 var Actions = Reflux.createActions([
-  'changeShowingProperty',
-  'addStock',
-  'deleteStock',
+  'updateStocks',
 ]);
 
 module.exports = Actions;

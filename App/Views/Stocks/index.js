@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var Reflux = require('reflux');
 var store = require('react-native-simple-store');
 
 var {
@@ -15,7 +16,7 @@ var {
 } = require('react-native-refresher');
 
 // Flux
-var Actions = require('../../Utils/actions');
+var StockStore = require('../../Utils/Stock/store');
 
 // Utils
 var finance = require('../../Utils/finance');
@@ -33,6 +34,12 @@ var WebView = require('../Web');
 var styles = require('./style');
 
 var ViewReactClass = React.createClass({
+  mixins: [Reflux.ListenerMixin],
+
+  onUpdateStocks: function() {
+    this.fetchData();
+  },
+
   getInitialState: function() {
     return {
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
@@ -41,6 +48,8 @@ var ViewReactClass = React.createClass({
   },
 
   componentDidMount: function() {
+    this.listenTo(StockStore, this.onUpdateStocks);
+
     this.fetchData();
   },
 
@@ -303,15 +312,12 @@ var ViewReactClass = React.createClass({
   },
 
   openPage: function() {
-    this.props.navigator.push({title: 'Yahoo', id: 'yahoo', url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol})
-    // this.props.navigator.push({
-    //   title: this.props.stock_title,
-    //   component: WebView,
-    //   passProps: {
-    //     url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol
-    //   },
-    // });
+    this.props.navigator.push({
+      title: 'Yahoo',
+      id: 'yahoo',
+      url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol,
+    });
   },
-
 });
+
 module.exports = ViewReactClass;

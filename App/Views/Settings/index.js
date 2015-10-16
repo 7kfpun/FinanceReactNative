@@ -12,8 +12,8 @@ var {
 } = React;
 
 // Flux
-var Actions = require('../../Utils/actions');
-var Store = require('../../Utils/store');
+var PropertyStore = require('../../Utils/Property/store');
+var StockStore = require('../../Utils/Stock/store');
 
 var StockCell = require('./Elements/StockCell');
 
@@ -28,6 +28,10 @@ var SettingsView = React.createClass({
     });
   },
 
+  onUpdateStocks: function() {
+    this._genRows();
+  },
+
   getInitialState() {
     return {
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
@@ -36,7 +40,8 @@ var SettingsView = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listenTo(Store, this.onChangeShowingProperty);
+    this.listenTo(PropertyStore, this.onChangeShowingProperty);
+    this.listenTo(StockStore, this.onUpdateStocks);
 
     store.get('showingProperty').then((result) => {
       this.setState({
@@ -58,9 +63,7 @@ var SettingsView = React.createClass({
 
   renderStockCell: function(stock) {
     return(
-      <StockCell
-        onRefreshSettingsView={() => this._genRows()}
-        stock={stock}/>
+      <StockCell stock={stock}/>
     );
   },
 
@@ -73,7 +76,6 @@ var SettingsView = React.createClass({
   },
 
   render: function() {
-    console.log('this.state.showingProperty', this.state.showingProperty);
     return (
       <View style={styles.container}>
         <View style={styles.topBlock}>

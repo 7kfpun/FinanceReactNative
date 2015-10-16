@@ -9,18 +9,6 @@ var Store = Reflux.createStore({
     // this.data.push(item);
     this.trigger(item);
   },
-
-  onAddStock: function() {
-    console.log('onAddStock');
-    // this.data.push(item);
-    // this.trigger(item);
-  },
-
-  onDeleteStock: function() {
-    console.log('onDeleteStock');
-    // this.data.push(item);
-    // this.trigger(item);
-  },
 });
 
 module.exports = Store;

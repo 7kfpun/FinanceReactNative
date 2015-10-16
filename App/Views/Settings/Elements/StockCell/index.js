@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var Reflux = require('reflux');
 var store = require('react-native-simple-store');
 
 var {
@@ -9,6 +10,9 @@ var {
   TouchableOpacity,
   View,
 } = React;
+
+// Flux
+var StockActions = require('../../../../Utils/Stock/actions');
 
 // Utils
 var UtilFuncs = require('../../../../Utils/functions');
@@ -28,12 +32,12 @@ var StockCell = React.createClass({
     }).then((result) => {
       store.save('watchlist', result);
 
-      this.props.onRefreshSettingsView();
+      console.log('Delete', result, symbol);
+      StockActions.updateStocks();
     });
   },
 
   render: function() {
-    console.log(this.props.stock);
     return (
       <View style={styles.container}>
         <View style={styles.stockElement}>
