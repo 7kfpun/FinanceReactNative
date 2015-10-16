@@ -13,19 +13,19 @@ module.exports = StyleSheet.create({
     top: 40,
     left: 0,
     right: 0,
-    bottom: 0
+    bottom: 0,
   },
   loadingText: {
-    fontSize: 25,
+    fontSize: 15,
     textAlign: 'center',
-    marginTop: 10,
+    marginTop: 40,
     marginBottom: 10,
     marginRight: 10,
-    color: '#FF6600'
+    color: 'white',
   },
   stocksListView: {
     flex: 3,
-    backgroundColor: '#000000',
+    backgroundColor: 'black',
   },
   detailedBox: {
     flexDirection: 'row',
@@ -33,7 +33,7 @@ module.exports = StyleSheet.create({
   },
   topBlock: {
     flexDirection: 'row',
-    flex: 2
+    flex: 2,
   },
   bottomBlock: {
     backgroundColor: '#202020',
@@ -42,10 +42,10 @@ module.exports = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
   },
-  stockName: {
+  name: {
     flex: 1,
   },
-  stockNameText: {
+  nameText: {
     fontWeight: 'bold',
     fontSize: 12,
     color: 'white',

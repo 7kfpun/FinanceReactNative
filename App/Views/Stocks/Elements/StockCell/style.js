@@ -22,10 +22,10 @@ module.exports = StyleSheet.create({
     flexDirection: 'row',
     height: 40,
   },
-  stockSymbol: {
+  symbol: {
     flex: 1,
   },
-  stockSymbolText: {
+  symbolText: {
     fontSize: 15,
     marginBottom: 10,
     color: 'white',
@@ -34,10 +34,10 @@ module.exports = StyleSheet.create({
     marginBottom: 4,
     marginRight: 10,
   },
-  stockPrice: {
+  price: {
     flex: 1,
   },
-  stockPriceText: {
+  priceText: {
     fontSize: 15,
     marginBottom: 10,
     color: 'white',
@@ -46,21 +46,21 @@ module.exports = StyleSheet.create({
     marginBottom: 4,
     marginRight: 10,
   },
-  stockChangeRed: {
+  changeRed: {
     backgroundColor: '#FC3D39',
     flex: 1,
     margin: 6,
     padding: 6,
     borderRadius: 3.
   },
-  stockChangeGreen: {
+  changeGreen: {
     backgroundColor: '#53D769',
     flex: 1,
     margin: 6,
     padding: 6,
     borderRadius: 3,
   },
-  stockChangeText: {
+  changeText: {
     fontSize: 15,
     color: 'white',
     textAlign: 'center',

@@ -40,23 +40,30 @@ var StockCell = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <View style={styles.stockElement}>
-          <TouchableOpacity style={styles.stockDelete}
+        <View style={styles.element}>
+          <TouchableOpacity style={styles.delete}
               onPress={() => this._onPressDeleteButton(this.props.stock.symbol)}>
-            <Text style={styles.stockDeleteText}>
+            <Text style={styles.deleteText}>
               ㊀
             </Text>
           </TouchableOpacity>
-          <View style={styles.stockSymbol}>
-            <Text style={styles.stockSymbolText}>
-              {this.props.stock.symbol}
-            </Text>
-            <Text style={styles.stockSymbolText}>
-              Hong Kong
-            </Text>
+          <View style={styles.stock}>
+            <View style={styles.symbol}>
+              <Text style={styles.symbolText}>
+                {this.props.stock.symbol}
+              </Text>
+              <Text style={styles.marketText}>
+                {this.props.watchlistCache && this.props.watchlistCache[this.props.stock.symbol] && this.props.watchlistCache[this.props.stock.symbol].StockExchange}
+              </Text>
+            </View>
+            <View style={styles.name}>
+              <Text style={styles.nameText}>
+                {this.props.watchlistCache && this.props.watchlistCache[this.props.stock.symbol] && this.props.watchlistCache[this.props.stock.symbol].Name}
+              </Text>
+            </View>
           </View>
-          <View style={styles.stockMove}>
-            <Text style={styles.stockMoveText}>
+          <View style={styles.move}>
+            <Text style={styles.moveText}>
               ☰
             </Text>
           </View>

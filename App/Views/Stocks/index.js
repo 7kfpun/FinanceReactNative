@@ -26,7 +26,6 @@ var UtilFuncs = require('../../Utils/functions');
 var StockCell = require('./Elements/StockCell');
 
 // Views
-var EditView = require('../Edit');
 var StockView = require('../Stock');
 var WebView = require('../Web');
 
@@ -99,7 +98,7 @@ var ViewReactClass = React.createClass({
       return(
         <View style={styles.container}>
           <Text style={styles.loadingText}>
-            Fetching watchlist...
+            Loading...
           </Text>
         </View>
       );
@@ -121,8 +120,8 @@ var ViewReactClass = React.createClass({
         </View>
 
         <View style={styles.bottomBlock}>
-          <View style={styles.stockName}>
-            <Text style={styles.stockNameText}>
+          <View style={styles.name}>
+            <Text style={styles.nameText}>
               {this.state.selectedStock.Name}
             </Text>
           </View>

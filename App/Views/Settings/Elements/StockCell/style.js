@@ -14,43 +14,66 @@ module.exports = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
   },
-  stockElement: {
+  element: {
     flex: 1,
     flexDirection: 'row',
-    height: 40,
+    height: 60,
     backgroundColor: 'black',
   },
-  stockDelete: {
+  delete: {
     flex: 1,
   },
-  stockDeleteText: {
+  deleteText: {
     fontSize: 15,
-    color: 'white',
+    color: '#FC3D39',
     textAlign: 'left',
-    marginTop: 10,
+    marginTop: 20,
     marginBottom: 10,
     marginRight: 10,
   },
-  stockSymbol: {
+  stock: {
     flex: 8,
+    flexDirection: 'column',
+  },
+  symbol: {
+    flex: 1,
     flexDirection: 'row',
   },
-  stockSymbolText: {
+  symbolText: {
     fontSize: 15,
     color: 'white',
     textAlign: 'left',
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 5,
     marginRight: 10,
   },
-  stockMove: {
+  marketText: {
+    fontSize: 15,
+    color: '#A6A6A6',
+    textAlign: 'left',
+    marginTop: 10,
+    marginBottom: 5,
+    marginRight: 10,
+  },
+  name: {
     flex: 1,
   },
-  stockMoveText: {
+  nameText: {
+    fontSize: 10,
+    color: 'white',
+    textAlign: 'left',
+    marginTop: 5,
+    marginBottom: 5,
+    marginRight: 10,
+  },
+  move: {
+    flex: 1,
+  },
+  moveText: {
     fontSize: 15,
     color: 'white',
     textAlign: 'left',
-    marginTop: 10,
+    marginTop: 20,
     marginBottom: 10,
     marginRight: 10,
   },

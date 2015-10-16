@@ -11,6 +11,7 @@ var {
   Text,
   TouchableHighlight,
   View,
+  TextInput,
 } = React;
 
 // Flux
@@ -31,9 +32,6 @@ var options = {
     symbol: {
       autoFocus: true,
       placeholderTextColor: 'white',
-      style: {
-        color: 'white',
-      },
     },
   }
 };
@@ -74,7 +72,7 @@ var AddNewView = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>
+        <Text style={styles.helpText}>
           Type a stock symbol.
         </Text>
         <View style={styles.searchBar}>
@@ -85,7 +83,7 @@ var AddNewView = React.createClass({
           />
         </View>
         <TouchableHighlight style={styles.button}
-		    	underlayColor='#ED6063'
+		    	underlayColor='#66C2FF'
 		    	onPress={this._onPressSaveButton}>
 		    	<Text style={styles.buttonText}>
 		    		Add

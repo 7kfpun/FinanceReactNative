@@ -72,22 +72,22 @@ var StockCell = React.createClass({
       <TouchableHighlight onPress={this.props.onSelect} underlayColor='#202020'>
         <View style={styles.container}>
           <View style={styles.stockContainer}>
-            <View style={styles.stockSymbol}>
-              <Text style={styles.stockSymbolText}>
+            <View style={styles.symbol}>
+              <Text style={styles.symbolText}>
                 {this.props.stock.Symbol}
               </Text>
             </View>
-            <View style={styles.stockPrice}>
-              <Text style={styles.stockPriceText}>
+            <View style={styles.price}>
+              <Text style={styles.priceText}>
                 {this.props.stock.LastTradePriceOnly}
               </Text>
             </View>
             <TouchableHighlight
                 style={(() => {
                   switch (this.props.stock.Change && this.props.stock.Change.startsWith('+')) {
-                    case true:                   return styles.stockChangeGreen;
-                    case false:                  return styles.stockChangeRed;
-                    default:                     return styles.stockChangeGreen;
+                    case true:                   return styles.changeGreen;
+                    case false:                  return styles.changeRed;
+                    default:                     return styles.changeGreen;
                   }
                 })()}
                 underlayColor={(() => {
@@ -99,7 +99,7 @@ var StockCell = React.createClass({
                 })()}
                 onPress={() => this.changeShowingProperty(this.state.showingProperty)}>
               <View>
-                <Text style={styles.stockChangeText}>
+                <Text style={styles.changeText}>
                   {(() => {
                     switch (this.state.showingProperty) {
                       case 'Change':                 return this.props.stock.Change || '--';

@@ -8,7 +8,6 @@ var {
 
 module.exports = StyleSheet.create({
   container: {
-    justifyContent: 'center',
     marginTop: 50,
     padding: 20,
     backgroundColor: 'black',
@@ -22,11 +21,11 @@ module.exports = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#202020',
   },
-  title: {
+  helpText: {
     color: 'white',
     fontSize: 12,
     alignSelf: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   buttonText: {
     fontSize: 18,

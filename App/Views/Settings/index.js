@@ -12,6 +12,7 @@ var {
 } = React;
 
 // Flux
+var PropertyActions = require('../../Utils/Property/actions');
 var PropertyStore = require('../../Utils/Property/store');
 var StockStore = require('../../Utils/Stock/store');
 
@@ -49,6 +50,12 @@ var SettingsView = React.createClass({
       });
       this._genRows();
     });
+
+    store.get('watchlistCache').then((result) => {
+      this.setState({
+        watchlistCache: result,
+      });
+    });
   },
 
   _genRows() {
@@ -63,7 +70,7 @@ var SettingsView = React.createClass({
 
   renderStockCell: function(stock) {
     return(
-      <StockCell stock={stock}/>
+      <StockCell stock={stock} watchlistCache={this.state.watchlistCache}/>
     );
   },
 
@@ -72,7 +79,7 @@ var SettingsView = React.createClass({
       showingProperty: value,
     });
     store.save('showingProperty', value);
-    Actions.changeShowingProperty(value);
+    PropertyActions.changeShowingProperty(value);
   },
 
   render: function() {
