@@ -4,6 +4,8 @@ var React = require('react-native');
 var Reflux = require('reflux');
 var store = require('react-native-simple-store');
 
+var mock = require('../../Utils/data').mock;
+
 var {
   ListView,
   Text,
@@ -86,8 +88,15 @@ var ViewReactClass = React.createClass({
             watchlistCache[quote.symbol] = quote;
           });
           store.save('watchlistCache', watchlistCache);
-
-        }).done();
+        }).catch(function(error) {
+          console.log('Request failed', error)
+          that.setState({
+            dataSource: that.state.dataSource.cloneWithRows(mock),
+            watchlist: result,
+            loaded: true,
+            selectedStock: that.state.selectedStock || mock[0],
+          });
+        });
     });
   },
 
