@@ -7,11 +7,13 @@ var NavigationBar = require('react-native-navbar');
 var {
   Navigator,
   PixelRatio,
+  StatusBarIOS,
   StyleSheet,
   Text,
   TouchableHighlight,
   TouchableOpacity,
   View,
+  Platform,
 } = React;
 
 // Views
@@ -19,6 +21,8 @@ var AddNewView = require('./App/Views/AddNew');
 var SettingsView = require('./App/Views/Settings');
 var StocksView = require('./App/Views/Stocks');
 var WebView = require('./App/Views/Web');
+
+Platform.OS === 'ios' ? StatusBarIOS.setStyle('light-content', false): null;
 
 var Finance = React.createClass({
   getInitialState: function() {
@@ -71,23 +75,59 @@ var Finance = React.createClass({
         //Com <View />;
       case 'stocks':
         Component = StocksView;
-        navBar = null;
         // navBar = <NavigationBar
-        //     customPrev = {<View style={styles.navBarLeftButton}></View>}
-        //     title='Finance'/>;
+        //     style={styles.navBar}
+        //     customPrev={<View style={styles.navBarLeftButton}></View>}
+        //     title='Finance'
+        //     titleColor='white'/>;
         break;
       case 'settings':
         Component = SettingsView;
-        navBar = null;
-        // navBar = <NavigationBar title='Settings'/>;
+        navBar = <NavigationBar
+          style={styles.navBar}
+          customPrev={<TouchableOpacity
+              onPress={() => navigator.push({title: 'Add', id: 'add'})}
+              style={styles.navBarLeftButton}>
+              <Text style={[styles.navBarText, styles.navBarButtonText]}>
+                ＋
+              </Text>
+            </TouchableOpacity>}
+          customNext={<TouchableOpacity
+              onPress={() => navigator.pop()}
+              style={styles.navBarRightButton}>
+              <Text style={[styles.navBarText, styles.navBarButtonText]}>
+                Done
+              </Text>
+            </TouchableOpacity>}
+          title='Settings'
+          titleColor='white'/>;
         break;
       case 'add':
         Component = AddNewView;
-        navBar = null;
+        navBar = <NavigationBar
+          style={styles.navBar}
+          customPrev={<TouchableOpacity
+            onPress={() => navigator.pop()}
+            style={styles.navBarLeftButton}>
+            <Text style={[styles.navBarText, styles.navBarButtonText]}>
+              Cancel
+            </Text>
+          </TouchableOpacity>}
+          title='Add'
+          titleColor='white'/>;
         break;
       case 'yahoo':
         Component = WebView;
-        navBar = null;
+        navBar = <NavigationBar
+          customPrev={<TouchableOpacity
+            onPress={() => navigator.pop()}
+            style={styles.navBarLeftButton}>
+            <Text style={[styles.navBarText, styles.navBarButtonText]}>
+              Cancel
+            </Text>
+          </TouchableOpacity>}
+          title='Yahoo'
+          titleColor='white'/>;
         break;
       }
 
@@ -99,7 +139,8 @@ var Finance = React.createClass({
     }
 
     return (
-      <View style={ styles.container }>
+      <View style={styles.container}>
+        <View style={styles.statusBar} />
         {navBar}
         <Component
           navigator={navigator}
@@ -112,15 +153,15 @@ var Finance = React.createClass({
     return (
       <Navigator
         debugOverlay={false}
-        style={ styles.nav }
+        style={styles.nav}
         initialRoute={{title: 'Finance', index: 0, id: 'stocks'}}
         renderScene={this.renderScene}
-        navigationBar={
-          <Navigator.NavigationBar
-            routeMapper={NavigationBarRouteMapper}
-            style={styles.navBar}
-          />
-        }
+        // navigationBar={
+        //   <Navigator.NavigationBar
+        //     routeMapper={NavigationBarRouteMapper}
+        //     style={styles.navBar}
+        //   />
+        // }
         configureScene={this.configureScene}
       />
     );
@@ -202,18 +243,17 @@ var styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
   },
-  button: {
-    backgroundColor: 'white',
-    padding: 15,
-    borderBottomWidth: 1 / PixelRatio.get(),
-    borderBottomColor: '#CDCDCD',
-  },
   buttonText: {
     fontSize: 17,
     fontWeight: '500',
   },
+  statusBar: {
+    height: 20,
+  },
   navBar: {
+    height: 44,
     backgroundColor: '#141414',
+    justifyContent: 'space-between',
   },
   navBarText: {
     fontSize: 18,

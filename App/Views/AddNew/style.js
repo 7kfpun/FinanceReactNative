@@ -8,11 +8,10 @@ var {
 
 module.exports = StyleSheet.create({
   container: {
-    marginTop: 50,
+    flex: 1,
     padding: 20,
-    backgroundColor: 'black',
     position: 'absolute',
-    top: 0,
+    top: 60,
     left: 0,
     right: 0,
     bottom: 0,

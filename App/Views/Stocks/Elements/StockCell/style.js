@@ -15,7 +15,7 @@ module.exports = StyleSheet.create({
   },
   base: {
     borderColor: '#000000',
-    borderWidth: 5
+    borderWidth: 5,
   },
   stockContainer: {
     flex: 1,
