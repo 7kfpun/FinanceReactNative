@@ -6,6 +6,7 @@ var store = require('react-native-simple-store');
 
 var {
   ListView,
+  Platform,
   Text,
   TouchableHighlight,
   View,
@@ -271,11 +272,13 @@ var ViewReactClass = React.createClass({
   },
 
   openPage: function() {
-    this.props.navigator.push({
-      title: 'Yahoo',
-      id: 'yahoo',
-      url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol,
-    });
+    if (Platform.OS === 'ios') {
+      this.props.navigator.push({
+        title: 'Yahoo',
+        id: 'yahoo',
+        url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol,
+      });
+    }
   },
 });
 
