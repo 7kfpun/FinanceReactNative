@@ -37,16 +37,25 @@ var AddNewView = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.helpText}>
-          Type a stock symbol. {this.state.text}
+          Type stock symbol.
         </Text>
-        <TextInput
-          style={styles.searchBar}
-          autoFocus={true}
-          placeholder='symbol..'
-          placeholderTextColor='gray'
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />
+        <View style={styles.searchBar}>
+          <TextInput
+            style={styles.searchBarInput}
+            autoFocus={true}
+            placeholder='symbol..'
+            placeholderTextColor='gray'
+            onChangeText={(text) => this.setState({text})}
+            value={this.state.text}
+          />
+          <TouchableHighlight style={styles.cancelButton}
+  		    	underlayColor='black'
+  		    	onPress={() => this.props.navigator.pop()}>
+  		    	<Text style={styles.cancelButtonText}>
+  		    		Cancel
+  		    	</Text>
+  		  	</TouchableHighlight>
+        </View>
         <TouchableHighlight style={styles.button}
 		    	underlayColor='#66C2FF'
 		    	onPress={this._onPressSaveButton}>

@@ -9,7 +9,11 @@ var {
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F6F6EF',
-    flexDirection: 'column',
+    backgroundColor: 'white',
+    position: 'absolute',
+    top: 60,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });

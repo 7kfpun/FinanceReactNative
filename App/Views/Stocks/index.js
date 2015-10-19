@@ -50,7 +50,7 @@ var ViewReactClass = React.createClass({
     this.listenTo(StockStore, this.onDeleteStock);
     this.listenTo(StockStore, this.onUpdateStocks);
 
-    this._genRows();
+    StockActions.updateStocks();
   },
 
   _genRows: function(result) {

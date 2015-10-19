@@ -51,11 +51,7 @@ var Finance = React.createClass({
         //Com <View />;
       case 'stocks':
         Component = StocksView;
-        // navBar = <NavigationBar
-        //     style={styles.navBar}
-        //     customPrev={<View style={styles.navBarLeftButton}></View>}
-        //     title='Finance'
-        //     titleColor='white'/>;
+        navBar = null;
         break;
       case 'settings':
         Component = SettingsView;
@@ -91,10 +87,12 @@ var Finance = React.createClass({
           </TouchableOpacity>}
           title='Add'
           titleColor='white'/>;
+        navBar = null;
         break;
       case 'yahoo':
         Component = WebView;
         navBar = <NavigationBar
+          style={styles.navBar}
           customPrev={<TouchableOpacity
             onPress={() => navigator.pop()}
             style={styles.navBarLeftButton}>
@@ -132,87 +130,11 @@ var Finance = React.createClass({
         style={styles.nav}
         initialRoute={{title: 'Finance', index: 0, id: 'stocks'}}
         renderScene={this.renderScene}
-        // navigationBar={
-        //   <Navigator.NavigationBar
-        //     routeMapper={NavigationBarRouteMapper}
-        //     style={styles.navBar}
-        //   />
-        // }
         configureScene={this.configureScene}
       />
     );
   }
 });
-
-var NavigationBarRouteMapper = {
-  LeftButton: function(route, navigator, index, navState) {
-    if (route.id === 'stocks') {
-      return null;
-    } else if (route.id === 'settings') {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.push({title: 'Add', id: 'add'})}
-          style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText]}>
-            ＋
-          </Text>
-        </TouchableOpacity>
-      );
-    } else if (route.id === 'add') {
-      return null;
-    } else if (route.id === 'yahoo') {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.pop()}
-          style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText]}>
-            Back
-          </Text>
-        </TouchableOpacity>
-      );
-    } else {
-      return null;
-    }
-  },
-
-  RightButton: function(route, navigator, index, navState) {
-    if (route.id === 'stocks') {
-      return null;
-    } else if (route.id === 'settings') {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.pop()}
-          style={styles.navBarRightButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText]}>
-            Done
-          </Text>
-        </TouchableOpacity>
-      );
-    } else if (route.id === 'add') {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.pop()}
-          style={styles.navBarRightButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText]}>
-            Cancel
-          </Text>
-        </TouchableOpacity>
-      );
-    } else if (route.id === 'yahoo') {
-      return null;
-    } else {
-      return null;
-    }
-  },
-
-  Title: function(route, navigator, index, navState) {
-    return (
-      <Text style={[styles.navBarText, styles.navBarTitleText]}>
-        {route.title}
-      </Text>
-    );
-  },
-};
 
 var styles = StyleSheet.create({
   container: {
