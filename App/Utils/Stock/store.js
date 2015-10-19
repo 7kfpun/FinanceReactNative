@@ -22,9 +22,7 @@ var Store = Reflux.createStore({
         result.sort(UtilFuncs.dynamicSort('symbol'));
         console.log('onAddStock', result, symbol);
         store.save('watchlist', result).then(() => {
-          Promise.resolve(
-            this.onUpdateStocks()
-          ).then(() => this.trigger(result));
+          this.onUpdateStocks();
         });
       }
     });
@@ -38,9 +36,8 @@ var Store = Reflux.createStore({
       store.save('watchlist', result);
       return result;
     }).then((result) => {
-      Promise.resolve(
-        this.onUpdateStocks()
-      ).then(() => this.trigger(result));
+      this.trigger(result);
+      this.onUpdateStocks();
     });
   },
 
@@ -76,6 +73,7 @@ var Store = Reflux.createStore({
           });
           store.save('watchlistResultCache', watchlistCache);
         }).then((result) => {
+          console.log('onUpdateStocks trigger');
           this.trigger(result);
         }).catch((error) => {
           console.log('Request failed', error);

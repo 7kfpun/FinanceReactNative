@@ -47,8 +47,8 @@ var ViewReactClass = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listenTo(StockStore, this.onUpdateStocks);
     this.listenTo(StockStore, this.onDeleteStock);
+    this.listenTo(StockStore, this.onUpdateStocks);
 
     this._genRows();
   },
@@ -85,7 +85,7 @@ var ViewReactClass = React.createClass({
         <View style={styles.topBlock}>
           <RefresherListView
             dataSource={this.state.dataSource}
-            onRefresh={this.__genRows}
+            onRefresh={this._genRows}
             renderRow={this.renderStockCell}
             style={styles.stocksListView}/>
         </View>

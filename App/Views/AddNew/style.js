@@ -18,7 +18,12 @@ module.exports = StyleSheet.create({
   },
   searchBar: {
     flexDirection: 'column',
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 2,
     backgroundColor: '#202020',
+    color: 'white',
+    marginBottom: 10,
   },
   helpText: {
     color: 'white',
@@ -36,7 +41,7 @@ module.exports = StyleSheet.create({
     backgroundColor: '#48BBEC',
     borderColor: '#48BBEC',
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 4,
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
