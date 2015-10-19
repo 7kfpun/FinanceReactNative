@@ -14,27 +14,13 @@ var {
 // Flux
 var StockActions = require('../../../../Utils/Stock/actions');
 
-// Utils
-var UtilFuncs = require('../../../../Utils/functions');
-
 // Styles
 var styles = require('./style');
 
 var StockCell = React.createClass({
-  getInitialState: function() {
-    return {};
-  },
-
   _onPressDeleteButton: function(symbol) {
     console.log('_onPressDeleteButton', symbol);
-    store.get('watchlist').then((result) => {
-      return UtilFuncs.removeObjectfromArray(result, 'symbol', symbol);
-    }).then((result) => {
-      store.save('watchlist', result);
-
-      console.log('Delete', result, symbol);
-      StockActions.updateStocks();
-    });
+    StockActions.deleteStock(symbol);
   },
 
   render: function() {

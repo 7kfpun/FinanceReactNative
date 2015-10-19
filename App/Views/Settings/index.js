@@ -18,9 +18,6 @@ var StockStore = require('../../Utils/Stock/store');
 
 var StockCell = require('./Elements/StockCell');
 
-// Utils
-var finance = require('../../Utils/finance');
-
 var styles = require('./style');
 
 var SettingsView = React.createClass({
@@ -30,6 +27,10 @@ var SettingsView = React.createClass({
     this.setState({
       showingProperty: data,
     });
+  },
+
+  onDeleteStock: function() {
+    this._genRows();
   },
 
   onUpdateStocks: function() {
@@ -45,6 +46,7 @@ var SettingsView = React.createClass({
 
   componentDidMount: function() {
     this.listenTo(PropertyStore, this.onChangeShowingProperty);
+    this.listenTo(StockStore, this.onDeleteStock);
     this.listenTo(StockStore, this.onUpdateStocks);
 
     store.get('showingProperty').then((result) => {
@@ -54,7 +56,7 @@ var SettingsView = React.createClass({
       this._genRows();
     });
 
-    store.get('watchlistCache').then((result) => {
+    store.get('watchlistResultCache').then((result) => {
       this.setState({
         watchlistCache: result,
       });

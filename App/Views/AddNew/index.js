@@ -46,25 +46,7 @@ var AddNewView = React.createClass({
     var value = this.refs.form.getValue();
     if (value) {
       console.log('New added', value);
-
-      var that = this;
-      var result;
-      store.get('watchlist').then((result) => {
-
-        var symbols = [];
-        for (var i=0; i < result.length; i++) {
-          symbols.push(result[i].symbol.toUpperCase());
-        }
-
-        if (symbols.indexOf(value.symbol.toUpperCase()) === -1) {
-          result.push({symbol: value.symbol.toUpperCase(), share: 100});
-          result.sort(UtilFuncs.dynamicSort('symbol'));
-          store.save('watchlist', result);
-          StockActions.updateStocks();
-          console.log('Add stock', result, value);
-        }
-      });
-
+      StockActions.addStock(value.symbol);
       this.props.navigator.pop();
     }
   },

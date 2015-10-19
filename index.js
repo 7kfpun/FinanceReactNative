@@ -29,30 +29,6 @@ var Finance = React.createClass({
     return {};
   },
 
-  _onPressDoneButton: function() {
-    this.refs.nav.pop();
-  },
-
-  _onPressAddButton: function() {
-    this.refs.nav.push({
-      title: 'Add new',
-      component: AddNewView,
-      leftButtonTitle: 'Cancel',
-      onLeftButtonPress: this._onPressDoneButton,
-    })
-  },
-
-  _onPressSettingsButton: function() {
-    this.refs.nav.push({
-      title: 'Stocks',
-      component: SettingsView,
-      leftButtonIcon: require('image!NavBarButtonPlus'),
-      onLeftButtonPress: this._onPressAddButton,
-      rightButtonTitle: 'Done',
-      onRightButtonPress: this._onPressDoneButton,
-    })
-  },
-
   configureScene : function(route){
     switch (route.id) {
       case 'settings':

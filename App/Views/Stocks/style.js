@@ -10,11 +10,6 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    position: 'absolute',
-    top: 60,
-    left: 0,
-    right: 0,
-    bottom: 0,
   },
   loadingText: {
     fontSize: 15,

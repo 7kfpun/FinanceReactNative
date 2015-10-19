@@ -4,8 +4,6 @@ var React = require('react-native');
 var Reflux = require('reflux');
 var store = require('react-native-simple-store');
 
-var mock = require('../../Utils/data').mock;
-
 var {
   ListView,
   Text,
@@ -18,11 +16,8 @@ var {
 } = require('react-native-refresher');
 
 // Flux
+var StockActions = require('../../Utils/Stock/actions');
 var StockStore = require('../../Utils/Stock/store');
-
-// Utils
-var finance = require('../../Utils/finance');
-var UtilFuncs = require('../../Utils/functions');
 
 // View Elements
 var StockCell = require('./Elements/StockCell');
@@ -36,8 +31,12 @@ var styles = require('./style');
 var ViewReactClass = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
-  onUpdateStocks: function() {
-    this.fetchData();
+  onUpdateStocks: function(result) {
+    this._genRows(result);
+  },
+
+  onDeleteStock: function(result) {
+    this._genRows(result);
   },
 
   getInitialState: function() {
@@ -49,54 +48,19 @@ var ViewReactClass = React.createClass({
 
   componentDidMount: function() {
     this.listenTo(StockStore, this.onUpdateStocks);
+    this.listenTo(StockStore, this.onDeleteStock);
 
-    this.fetchData();
+    this._genRows();
   },
 
-  fetchData: function() {
+  _genRows: function(result) {
     var that = this;
-    store.get('watchlist').then((result) => {
-      if (!Array.isArray(result) || result.length === 0) {
-        result = [
-          {symbol: 'AAPL', share: 100},
-          {symbol: 'GOOG', share: 100},
-        ];
-        store.save('watchlist', result);
-      }
-
-      var symbols = result.map(function(item) {
-        return item.symbol;
+    store.get('watchlistResult').then((result) => {
+      this.setState({
+        dataSource: that.state.dataSource.cloneWithRows(result),
+        loaded: true,
+        selectedStock: that.state.selectedStock || result[0],
       });
-
-      finance.getStock({stock: symbols}, 'quotes')
-        .then(function(response) {
-          return response.json();
-        }).then(function(json) {
-          var quotes = json.query.results.quote ;
-          quotes = Array.isArray(quotes) ? quotes : [quotes];
-
-          that.setState({
-            dataSource: that.state.dataSource.cloneWithRows(quotes),
-            watchlist: result,
-            loaded: true,
-            selectedStock: that.state.selectedStock || quotes[0],
-          });
-
-          // Caching
-          var watchlistCache = {};
-          quotes.forEach(function(quote) {
-            watchlistCache[quote.symbol] = quote;
-          });
-          store.save('watchlistCache', watchlistCache);
-        }).catch(function(error) {
-          console.log('Request failed', error)
-          that.setState({
-            dataSource: that.state.dataSource.cloneWithRows(mock),
-            watchlist: result,
-            loaded: true,
-            selectedStock: that.state.selectedStock || mock[0],
-          });
-        });
     });
   },
 
@@ -121,7 +85,7 @@ var ViewReactClass = React.createClass({
         <View style={styles.topBlock}>
           <RefresherListView
             dataSource={this.state.dataSource}
-            onRefresh={this.refreshPage}
+            onRefresh={this.__genRows}
             renderRow={this.renderStockCell}
             style={styles.stocksListView}/>
         </View>
@@ -300,11 +264,6 @@ var ViewReactClass = React.createClass({
     this.setState({
       selectedStock: stock,
     });
-  },
-
-  refreshPage: function() {
-    console.log('refreshPage');
-    this.fetchData();
   },
 
   pushSettingsView: function() {
