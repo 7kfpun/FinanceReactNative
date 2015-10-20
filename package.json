@@ -10,6 +10,7 @@
     "react-native": "^0.11.0",
     "react-native-refresher": "^0.1.1",
     "react-native-simple-store": "^0.1.0",
+    "react-native-swiper": "^1.3.0",
     "reflux": "^0.3.0"
   },
   "devDependencies": {}

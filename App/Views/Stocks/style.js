@@ -126,4 +126,39 @@ module.exports = StyleSheet.create({
     marginTop: 5,
     marginBottom: 4,
   },
+
+  swiper: {
+    height: 100,
+  },
+  slide: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  slide1: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    backgroundColor: '#9DD6EB',
+  },
+  slide2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#97CAE5',
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#92BBD9',
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  image: {
+    flex: 1,
+  }
 });

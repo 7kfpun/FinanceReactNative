@@ -3,6 +3,7 @@
 var React = require('react-native');
 var Reflux = require('reflux');
 var store = require('react-native-simple-store');
+var Swiper = require('react-native-swiper');
 
 var {
   ListView,
@@ -10,6 +11,7 @@ var {
   Text,
   TouchableHighlight,
   View,
+  Image,
 } = React;
 
 var {
@@ -69,7 +71,6 @@ var ViewReactClass = React.createClass({
         watchlistResult: result,
       });
     });
-
   },
 
   render: function() {
@@ -88,6 +89,197 @@ var ViewReactClass = React.createClass({
   },
 
   renderListView: function() {
+    return(
+      <View style={styles.container}>
+        <View style={styles.topBlock}>
+          <RefresherListView
+            dataSource={this.state.dataSource}
+            onRefresh={this._genRows}
+            renderRow={this.renderStockCell}
+            style={styles.stocksListView}/>
+        </View>
+
+        <View>
+          <Swiper height={240} horizontal={false} autoplay={false}>
+            <View style={styles.slide1}>
+              {this.renderStockDetails()}
+            </View>
+            <View style={styles.slide2}>
+              <Text style={styles.text}>Beautiful</Text>
+            </View>
+            <View style={styles.slide3}>
+              <Text style={styles.text}>And simple</Text>
+            </View>
+          </Swiper>
+        </View>
+      </View>
+    );
+  },
+
+  renderStockDetails: function() {
+    return (
+      <View style={styles.bottomBlock}>
+        <View style={styles.name}>
+          <Text style={styles.nameText}>
+            {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].Name}
+          </Text>
+        </View>
+        <View style={styles.separator}/>
+        <View style={styles.stockDetails}>
+          <View style={styles.stockDetailsRow}>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                OPEN
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].Open}
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                MKT CAP
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].MarketCapitalization}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.separatorThin}/>
+
+          <View style={styles.stockDetailsRow}>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                HIGH
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].DaysHigh}
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                52W HIGH
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].YearHigh}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.separatorThin}/>
+
+          <View style={styles.stockDetailsRow}>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                LOW
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].DaysLow}
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                52W LOW
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].YearLow}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.separatorThin}/>
+
+          <View style={styles.stockDetailsRow}>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                VOL
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].Volume}
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                AVG VOL
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].AverageDailyVolume}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.separatorThin}/>
+
+          <View style={styles.stockDetailsRow}>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                P/E
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].PERatio}
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockPropertyText}>
+                YIELD
+              </Text>
+            </View>
+            <View style={styles.stockDetailsColumn}>
+              <Text style={styles.stockValueText}>
+                {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].DividendYield}
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.separator}/>
+
+        <View style={styles.footer}>
+          <TouchableHighlight
+              style={styles.yahoo}
+              onPress={() => this.openPage()}
+              underlayColor='#202020'>
+            <Text style={styles.yahooText}>
+              Yahoo!
+            </Text>
+          </TouchableHighlight>
+          <View
+              style={styles.marketTime}
+              underlayColor='#202020'>
+            <Text style={styles.marketTimeText}>
+              Market closed
+            </Text>
+            <Text style={styles.changeDetailView}>
+              . . .
+            </Text>
+          </View>
+          <TouchableHighlight
+              style={styles.settings}
+              onPress={() => this.pushSettingsView()}
+              underlayColor='#202020'>
+            <Text style={styles.settingsText}>
+              ☰
+            </Text>
+          </TouchableHighlight>
+        </View>
+      </View>
+    );
+  },
+
+  renderListViewBack: function() {
     return(
       <View style={styles.container}>
         <View style={styles.topBlock}>
