@@ -13,6 +13,7 @@ var {
 // Flux
 var PropertyActions = require('../../../../Utils/Property/actions');
 var PropertyStore = require('../../../../Utils/Property/store');
+var StockStore = require('../../../../Utils/Stock/store');
 
 // Styles
 var styles = require('./style');
@@ -26,6 +27,14 @@ var StockCell = React.createClass({
     });
   },
 
+  onUpdateStocks: function() {
+    store.get('watchlistResult').then((result) => {
+      this.setState({
+        watchlistResult: result,
+      });
+    });
+  },
+
   getInitialState: function() {
     return {
       showingProperty: 'Change',
@@ -34,6 +43,7 @@ var StockCell = React.createClass({
 
   componentDidMount: function() {
     this.listenTo(PropertyStore, this.onChangeShowingProperty);
+    this.listenTo(StockStore, this.onUpdateStocks);
 
     store.get('showingProperty').then((result) => {
       if (!result) {
@@ -42,6 +52,12 @@ var StockCell = React.createClass({
       }
       this.setState({
         showingProperty: result,
+      });
+    });
+
+    store.get('watchlistResult').then((result) => {
+      this.setState({
+        watchlistResult: result,
       });
     });
   },
@@ -72,17 +88,17 @@ var StockCell = React.createClass({
           <View style={styles.stockContainer}>
             <View style={styles.symbol}>
               <Text style={styles.symbolText}>
-                {this.props.stock.Symbol}
+                {this.props.stock.symbol}
               </Text>
             </View>
             <View style={styles.price}>
               <Text style={styles.priceText}>
-                {this.props.stock.LastTradePriceOnly}
+                {this.state.watchlistResult && this.state.watchlistResult[this.props.stock.symbol] && this.state.watchlistResult[this.props.stock.symbol].LastTradePriceOnly}
               </Text>
             </View>
             <TouchableHighlight
                 style={(() => {
-                  switch (this.props.stock.Change && this.props.stock.Change.startsWith('+')) {
+                  switch (this.state.watchlistResult && this.state.watchlistResult[this.props.stock.symbol] && this.state.watchlistResult[this.props.stock.symbol].Change && this.state.watchlistResult[this.props.stock.symbol].Change.startsWith('+')) {
                     case true:                   return styles.changeGreen;
                     case false:                  return styles.changeRed;
                     default:                     return styles.changeGreen;
@@ -100,10 +116,10 @@ var StockCell = React.createClass({
                 <Text style={styles.changeText}>
                   {(() => {
                     switch (this.state.showingProperty) {
-                      case 'Change':                 return this.props.stock.Change || '--';
-                      case 'ChangeinPercent':        return this.props.stock.ChangeinPercent || '--';
-                      case 'MarketCapitalization':   return this.props.stock.MarketCapitalization || '--';
-                      default:                       return this.props.stock.Change || '--';
+                      case 'Change':                 return this.state.watchlistResult && this.state.watchlistResult[this.props.stock.symbol] && this.state.watchlistResult[this.props.stock.symbol].Change || '--';
+                      case 'ChangeinPercent':        return this.state.watchlistResult && this.state.watchlistResult[this.props.stock.symbol] && this.state.watchlistResult[this.props.stock.symbol].ChangeinPercent || '--';
+                      case 'MarketCapitalization':   return this.state.watchlistResult && this.state.watchlistResult[this.props.stock.symbol] && this.state.watchlistResult[this.props.stock.symbol].MarketCapitalization || '--';
+                      default:                       return this.state.watchlistResult && this.state.watchlistResult[this.props.stock.symbol] && this.state.watchlistResult[this.props.stock.symbol].Change || '--';
                     }
                   })()}
                 </Text>

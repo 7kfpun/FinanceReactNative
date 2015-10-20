@@ -67,7 +67,7 @@ var SettingsView = React.createClass({
       });
     });
 
-    store.get('watchlistResultCache').then((result) => {
+    store.get('watchlistResult').then((result) => {
       this.setState({
         watchlistCache: result,
       });

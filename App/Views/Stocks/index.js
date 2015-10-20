@@ -56,13 +56,20 @@ var ViewReactClass = React.createClass({
 
   _genRows: function(result) {
     var that = this;
-    store.get('watchlistResult').then((result) => {
+    store.get('watchlist').then((result) => {
       this.setState({
         dataSource: that.state.dataSource.cloneWithRows(result),
         loaded: true,
         selectedStock: that.state.selectedStock || result[0],
       });
     });
+
+    store.get('watchlistResult').then((result) => {
+      this.setState({
+        watchlistResult: result,
+      });
+    });
+
   },
 
   render: function() {
@@ -94,7 +101,7 @@ var ViewReactClass = React.createClass({
         <View style={styles.bottomBlock}>
           <View style={styles.name}>
             <Text style={styles.nameText}>
-              {this.state.selectedStock.Name}
+              {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].Name}
             </Text>
           </View>
           <View style={styles.separator}/>
@@ -107,7 +114,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.Open}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].Open}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -117,7 +124,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.MarketCapitalization}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].MarketCapitalization}
                 </Text>
               </View>
             </View>
@@ -131,7 +138,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.DaysHigh}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].DaysHigh}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -141,7 +148,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.YearHigh}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].YearHigh}
                 </Text>
               </View>
             </View>
@@ -155,7 +162,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.DaysLow}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].DaysLow}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -165,7 +172,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.YearLow}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].YearLow}
                 </Text>
               </View>
             </View>
@@ -179,7 +186,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.Volume}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].Volume}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -189,7 +196,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.AverageDailyVolume}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].AverageDailyVolume}
                 </Text>
               </View>
             </View>
@@ -203,7 +210,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.PERatio}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].PERatio}
                 </Text>
               </View>
               <View style={styles.stockDetailsColumn}>
@@ -213,7 +220,7 @@ var ViewReactClass = React.createClass({
               </View>
               <View style={styles.stockDetailsColumn}>
                 <Text style={styles.stockValueText}>
-                  {this.state.selectedStock.DividendYield}
+                  {this.state.watchlistResult && this.state.watchlistResult[this.state.selectedStock.symbol] && this.state.watchlistResult[this.state.selectedStock.symbol].DividendYield}
                 </Text>
               </View>
             </View>

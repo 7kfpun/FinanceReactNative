@@ -64,14 +64,11 @@ var Store = Reflux.createStore({
           var quotes = json.query.results.quote ;
           quotes = Array.isArray(quotes) ? quotes : [quotes];
 
-          // Caching
-          store.save('watchlistResult', quotes);
-
-          var watchlistCache = {};
+          var watchlistResult = {};
           quotes.forEach((quote) => {
-            watchlistCache[quote.symbol] = quote;
+            watchlistResult[quote.symbol] = quote;
           });
-          store.save('watchlistResultCache', watchlistCache);
+          store.save('watchlistResult', watchlistResult);
         }).then((result) => {
           console.log('onUpdateStocks trigger');
           this.trigger(result);
