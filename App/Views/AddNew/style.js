@@ -30,27 +30,13 @@ module.exports = StyleSheet.create({
     backgroundColor: '#202020',
     color: 'white',
     marginBottom: 10,
+    paddingLeft: 10,
   },
   helpText: {
     color: 'white',
     fontSize: 12,
     alignSelf: 'center',
     marginBottom: 5,
-  },
-  buttonText: {
-    fontSize: 16,
-    color: 'white',
-    alignSelf: 'center'
-  },
-  button: {
-    height: 40,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
-    borderWidth: 1,
-    borderRadius: 4,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
   },
   cancelButtonText: {
     fontSize: 16,
@@ -64,5 +50,8 @@ module.exports = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  suggestion: {
+    flex: 10,
   },
 });

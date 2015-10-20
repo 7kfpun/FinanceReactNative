@@ -7,6 +7,7 @@ var store = require('react-native-simple-store');
 var UtilFuncs = require('../../Utils/functions.js');
 
 var {
+  ListView,
   Text,
   TouchableHighlight,
   View,
@@ -16,36 +17,71 @@ var {
 // Flux
 var StockActions = require('../../Utils/Stock/actions');
 
+// Elements
+var StockCell = require('./Elements/StockCell');
+
+// Utils
+var finance = require('../../Utils/finance');
+
 var styles = require('./style');
 
 var AddNewView = React.createClass({
   getInitialState() {
     return {
+      dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
+      loaded: false,
       text: null,
+      helpText: 'Type a company name or stock symbol.',
     };
   },
 
-  _onPressSaveButton: function () {
-    if (this.state.text) {
-      console.log('New added', this.state.text);
-      StockActions.addStock(this.state.text);
-      this.props.navigator.pop();
-    }
+  _onTyping: function(text) {
+    this.setState({text});
+    this.setState({
+      helpText: 'Validating symbol...',
+    });
+
+    var that = this;
+    finance.symbolSuggest(text.text)
+      .then(function(response) {
+        var result = response.text();
+        result = result._12.replace(/(YAHOO\.util\.ScriptNodeDataSource\.callbacks\()(.*)(\);)/g, '$2');
+        return JSON.parse(result);
+      }).then(function(json) {
+        that.setState({
+          dataSource: that.state.dataSource.cloneWithRows(json.ResultSet.Result),
+          loaded: true,
+          helpText: 'Type a company name or stock symbol.',
+        });
+      }).catch((error) => {
+        console.log('Request failed', error);
+      });
+  },
+
+  renderStockCell: function(stock) {
+    return(
+      <StockCell
+        stock={stock}
+        navigator={this.props.navigator}
+        watchlistCache={this.state.watchlistCache}
+      />
+    );
   },
 
   render: function() {
     return (
       <View style={styles.container}>
         <Text style={styles.helpText}>
-          Type stock symbol.
+          {this.state.helpText} {this.state.text}
         </Text>
         <View style={styles.searchBar}>
           <TextInput
             style={styles.searchBarInput}
+            autoCapitalize={'characters'}
             autoFocus={true}
             placeholder='symbol..'
             placeholderTextColor='gray'
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(text) => this._onTyping({text})}
             value={this.state.text}
           />
           <TouchableHighlight style={styles.cancelButton}
@@ -56,13 +92,12 @@ var AddNewView = React.createClass({
   		    	</Text>
   		  	</TouchableHighlight>
         </View>
-        <TouchableHighlight style={styles.button}
-		    	underlayColor='#66C2FF'
-		    	onPress={this._onPressSaveButton}>
-		    	<Text style={styles.buttonText}>
-		    		Add
-		    	</Text>
-		  	</TouchableHighlight>
+        <View style={styles.suggestion}>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={this.renderStockCell}
+          />
+        </View>
       </View>
     );
   }

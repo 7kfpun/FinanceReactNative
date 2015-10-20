@@ -128,3 +128,10 @@ exports.getNews = function(symbol) {
       console.log(body);
     });
 };
+
+exports.symbolSuggest = function(query) {
+  // http://d.yimg.com/aq/autoc?query=0050&region=US&lang=en-US&callback=YAHOO.util.ScriptNodeDataSource.callbacks
+  var url = 'http://d.yimg.com/aq/autoc?query=' + query + '&region=US&lang=en-US&callback=YAHOO.util.ScriptNodeDataSource.callbacks';
+  console.log(url);
+  return fetch(url);
+};

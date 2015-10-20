@@ -16,6 +16,7 @@ var PropertyActions = require('../../Utils/Property/actions');
 var PropertyStore = require('../../Utils/Property/store');
 var StockStore = require('../../Utils/Stock/store');
 
+// Elements
 var StockCell = require('./Elements/StockCell');
 
 var styles = require('./style');
