@@ -36,6 +36,7 @@ var Store = Reflux.createStore({
       store.save('watchlist', result);
       return result;
     }).then((result) => {
+      console.log('onDeleteStock trigger');
       this.trigger(result);
       this.onUpdateStocks();
     });

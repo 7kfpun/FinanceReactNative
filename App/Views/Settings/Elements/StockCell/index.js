@@ -1,8 +1,6 @@
 'use strict';
 
 var React = require('react-native');
-var Reflux = require('reflux');
-var store = require('react-native-simple-store');
 
 var {
   Text,

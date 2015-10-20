@@ -1,10 +1,6 @@
 'use strict';
 
 var React = require('react-native');
-var Reflux = require('reflux');
-var store = require('react-native-simple-store');
-
-var UtilFuncs = require('../../Utils/functions.js');
 
 var {
   ListView,
@@ -13,9 +9,6 @@ var {
   View,
   TextInput,
 } = React;
-
-// Flux
-var StockActions = require('../../Utils/Stock/actions');
 
 // Elements
 var StockCell = require('./Elements/StockCell');
@@ -72,7 +65,7 @@ var AddNewView = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.helpText}>
-          {this.state.helpText} {this.state.text}
+          {this.state.helpText}
         </Text>
         <View style={styles.searchBar}>
           <TextInput
