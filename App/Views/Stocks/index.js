@@ -101,6 +101,7 @@ var ViewReactClass = React.createClass({
             switch (this.state.middleBlockShowing) {
               case 'DETAILS':              return this.renderDetails();
               case 'CHART':                return this.renderChart();
+              case 'NEWS':                return this.renderNews();
               default:                     return this.renderDetails();
             }
           })()}
@@ -131,6 +132,7 @@ var ViewReactClass = React.createClass({
                 </Text>
               </TouchableHighlight>
               <TouchableHighlight
+                onPress={() => this.setState({middleBlockShowing: 'NEWS'})}
                 underlayColor='#202020'>
                 <Text style={styles.changeDetailView}>
                   ●
@@ -349,8 +351,18 @@ var ViewReactClass = React.createClass({
           </TouchableHighlight>
         </View>
         <View style={styles.chart}>
-        <Image style={styles.image} source={{uri: 'http://chart.finance.yahoo.com/z?s=' + this.state.selectedStock.symbol + '&z=s&t=' + this.state.chartTimeSpan.toLowerCase()}} />
+        <Image style={styles.image} source={{uri: 'http://chart.finance.yahoo.com/z?s=' + this.state.selectedStock.symbol + '&t=' + this.state.chartTimeSpan.toLowerCase()}} />
         </View>
+      </View>
+    );
+  },
+
+  renderNews: function() {
+    return (
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <Text style={{fontSize: 15, color: 'white', textAlign: 'center'}}>
+          Under construction
+        </Text>
       </View>
     );
   },

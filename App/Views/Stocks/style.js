@@ -162,9 +162,9 @@ module.exports = StyleSheet.create({
     fontWeight: 'bold',
   },
   chart: {
-    flex: 5,
+    flex: 4,
   },
   image: {
-    flex: 11,
+    flex: 1,
   },
 });
