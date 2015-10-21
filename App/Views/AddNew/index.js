@@ -29,8 +29,8 @@ var AddNewView = React.createClass({
   },
 
   _onTyping: function(text) {
-    this.setState({text});
     this.setState({
+      text: text.text,
       helpText: 'Validating symbol...',
     });
 
