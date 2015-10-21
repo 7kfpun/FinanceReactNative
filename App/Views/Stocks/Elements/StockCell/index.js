@@ -105,7 +105,7 @@ var StockCell = React.createClass({
                   }
                 })()}
                 underlayColor={(() => {
-                  switch (this.props.stock.Change && this.props.stock.Change.startsWith('+')) {
+                  switch (this.state.watchlistResult && this.state.watchlistResult[this.props.stock.symbol] && this.state.watchlistResult[this.props.stock.symbol].Change && this.state.watchlistResult[this.props.stock.symbol].Change.startsWith('+')) {
                     case true:                   return '#53D769';
                     case false:                  return '#FC3D39';
                     default:                     return '#53D769';
