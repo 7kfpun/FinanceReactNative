@@ -32,7 +32,9 @@ exports.getStock = function(opts, type) {
     .replace('{startDate}', opts.startDate)
     .replace('{endDate}', opts.endDate);
 
-  return fetch(defs.baseURL + query + (defs.suffixURL[type] || ''));
+    var url = defs.baseURL + query + (defs.suffixURL[type] || '');
+  console.log(url);
+  return fetch(url);
 };
 
 exports.properties = [
