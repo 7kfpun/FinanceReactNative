@@ -92,7 +92,7 @@ var ViewReactClass = React.createClass({
         <View style={styles.stocksBlock}>
           <RefresherListView
             dataSource={this.state.dataSource}
-            onRefresh={this._genRows}
+            onRefresh={() => StockActions.updateStocks()}
             renderRow={this.renderStockCell}
             style={styles.stocksListView}/>
         </View>
