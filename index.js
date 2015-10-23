@@ -6,7 +6,6 @@ var NavigationBar = require('react-native-navbar');
 
 var {
   Navigator,
-  PixelRatio,
   StatusBarIOS,
   StyleSheet,
   Text,

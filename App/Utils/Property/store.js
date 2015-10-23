@@ -6,7 +6,6 @@ var Store = Reflux.createStore({
 
   onChangeShowingProperty: function(item) {
     console.log('onChangeShowingProperty');
-    // this.data.push(item);
     this.trigger(item);
   },
 });
