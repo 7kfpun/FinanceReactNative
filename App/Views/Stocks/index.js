@@ -13,9 +13,7 @@ var {
   Image,
 } = React;
 
-var {
-  RefresherListView,
-} = require('react-native-refresher');
+var RefreshableListView = require('react-native-refreshable-listview')
 
 // Flux
 var StockActions = require('../../Utils/Stock/actions');
@@ -90,9 +88,9 @@ var ViewReactClass = React.createClass({
     return(
       <View style={styles.container}>
         <View style={styles.stocksBlock}>
-          <RefresherListView
+          <RefreshableListView
             dataSource={this.state.dataSource}
-            onRefresh={() => StockActions.updateStocks()}
+            loadData={() => StockActions.updateStocks()}
             renderRow={this.renderStockCell}
             style={styles.stocksListView}/>
         </View>
