@@ -17,28 +17,10 @@ module.exports = StyleSheet.create({
   },
   statusBar: {
     height: 20,
+    backgroundColor: 'white',
   },
   navBar: {
-    height: 44,
+    flex: 1,
     backgroundColor: '#141414',
-    justifyContent: 'space-between',
-  },
-  navBarText: {
-    fontSize: 18,
-    marginVertical: 10,
-  },
-  navBarTitleText: {
-    color: 'white',
-    fontWeight: '500',
-    marginVertical: 9,
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
-  },
-  navBarRightButton: {
-    paddingRight: 10,
-  },
-  navBarButtonText: {
-    color: '#3CABDA',
   },
 });

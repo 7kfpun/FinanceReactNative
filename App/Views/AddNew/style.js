@@ -11,7 +11,7 @@ module.exports = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     position: 'absolute',
-    top: 60,
+    top: 30,
     left: 0,
     right: 0,
     bottom: 0,

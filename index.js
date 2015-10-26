@@ -24,7 +24,7 @@ var WebView = require('./App/Views/Web');
 // Styles
 var styles = require('./style');
 
-Platform.OS === 'ios' ? StatusBarIOS.setStyle('light-content', false): null;
+Platform.OS === 'ios' ? StatusBarIOS.setStyle('default', false): null;
 
 var Finance = React.createClass({
   getInitialState: function() {
@@ -59,64 +59,41 @@ var Finance = React.createClass({
         Component = SettingsView;
         navBar = <NavigationBar
           style={styles.navBar}
-          customPrev={<TouchableOpacity
-              onPress={() => navigator.push({title: 'Add', id: 'add'})}
-              style={styles.navBarLeftButton}>
-              <Text style={[styles.navBarText, styles.navBarButtonText]}>
-                ＋
-              </Text>
-            </TouchableOpacity>}
-          customNext={<TouchableOpacity
-              onPress={() => navigator.pop()}
-              style={styles.navBarRightButton}>
-              <Text style={[styles.navBarText, styles.navBarButtonText]}>
-                Done
-              </Text>
-            </TouchableOpacity>}
-          title='Settings'
-          titleColor='white'/>;
+          leftButton={{
+            title: '＋',
+            handler: () => navigator.push({title: 'Add', id: 'add'}),
+            tintColor: '#3CABDA',
+          }}
+          rightButton={{
+            title: 'Done',
+            handler: () => navigator.pop(),
+            tintColor: '#3CABDA',
+          }}
+          title={{"title": "Stocks", "tintColor": "white"}} />;
         break;
       case 'add':
         Component = AddNewView;
-        navBar = <NavigationBar
-          style={styles.navBar}
-          customPrev={<TouchableOpacity
-            onPress={() => navigator.pop()}
-            style={styles.navBarLeftButton}>
-            <Text style={[styles.navBarText, styles.navBarButtonText]}>
-              Cancel
-            </Text>
-          </TouchableOpacity>}
-          title='Add'
-          titleColor='white'/>;
-        navBar = null;
+        navBar = null
         break;
       case 'yahoo':
         Component = WebView;
         navBar = <NavigationBar
           style={styles.navBar}
-          customPrev={<TouchableOpacity
-            onPress={() => navigator.pop()}
-            style={styles.navBarLeftButton}>
-            <Text style={[styles.navBarText, styles.navBarButtonText]}>
-              Cancel
-            </Text>
-          </TouchableOpacity>}
-          title='Yahoo'
-          titleColor='white'/>;
+          leftButton={{
+            title: 'Back',
+            handler: () => navigator.pop(),
+            tintColor: '#3CABDA',
+          }}
+          title={{"title": "Yahoo", "tintColor": "white"}} />;
         break;
       }
 
-    if (navBar) {
-      navBar = React.addons.cloneWithProps(navBar, {
-        navigator: navigator,
-        route: route
-      });
+    if (navBar === null) {
+      navBar = <View style={styles.statusBar} />;
     }
 
     return (
       <View style={styles.container}>
-        <View style={styles.statusBar} />
         {navBar}
         <Component
           navigator={navigator}
@@ -129,7 +106,6 @@ var Finance = React.createClass({
     return (
       <Navigator
         debugOverlay={false}
-        style={styles.nav}
         initialRoute={{title: 'Finance', index: 0, id: 'stocks'}}
         renderScene={this.renderScene}
         configureScene={this.configureScene}
