@@ -40,7 +40,7 @@ var Finance = React.createClass({
       case 'yahoo':
         return Navigator.SceneConfigs.HorizontalSwipeJump;
       default:
-        return Navigator.SceneConfigs.HorizontalSwipeJump;
+        return Navigator.SceneConfigs.FloatFromBottom;
       }
   },
 

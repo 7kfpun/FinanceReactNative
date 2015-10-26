@@ -13,7 +13,9 @@ var {
   Image,
 } = React;
 
+// 3rd Elements
 var RefreshableListView = require('react-native-refreshable-listview')
+var ViewPager = require('react-native-viewpager');
 
 // Flux
 var StockActions = require('../../Utils/Stock/actions');
@@ -37,11 +39,14 @@ var ViewReactClass = React.createClass({
   },
 
   getInitialState: function() {
+    var viewPagerDataSource = new ViewPager.DataSource({pageHasChanged: (p1, p2) => p1 !== p2});
+
     return {
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
       loaded: false,
       middleBlockShowing: 'DETAILS',
       chartTimeSpan: '1D',
+      dataSourcePage: viewPagerDataSource.cloneWithPages(['DETAILS', 'CHARTS', 'NEWS']),
     };
   },
 
@@ -95,14 +100,12 @@ var ViewReactClass = React.createClass({
             style={styles.stocksListView}/>
         </View>
         <View style={styles.middleBlock}>
-          {(() => {
-            switch (this.state.middleBlockShowing) {
-              case 'DETAILS':              return this.renderDetails();
-              case 'CHART':                return this.renderChart();
-              case 'NEWS':                return this.renderNews();
-              default:                     return this.renderDetails();
-            }
-          })()}
+          <ViewPager
+            dataSource={this.state.dataSourcePage}
+            renderPage={this._renderPage}
+            onChangePage={this._onChangePage}
+            isLoop={true}
+            autoPlay={false} />
         </View>
         <View style={styles.footerBlock}>
           <TouchableHighlight
@@ -114,29 +117,6 @@ var ViewReactClass = React.createClass({
             </Text>
           </TouchableHighlight>
           <View style={styles.footerMiddle}>
-            <View style={styles.changeSlide}>
-              <TouchableHighlight
-                onPress={() => this.setState({middleBlockShowing: 'DETAILS'})}
-                underlayColor='#202020'>
-                <Text style={styles.changeDetailView}>
-                  ●
-                </Text>
-              </TouchableHighlight>
-              <TouchableHighlight
-                onPress={() => this.setState({middleBlockShowing: 'CHART'})}
-                underlayColor='#202020'>
-                <Text style={styles.changeDetailView}>
-                  ●
-                </Text>
-              </TouchableHighlight>
-              <TouchableHighlight
-                onPress={() => this.setState({middleBlockShowing: 'NEWS'})}
-                underlayColor='#202020'>
-                <Text style={styles.changeDetailView}>
-                  ●
-                </Text>
-              </TouchableHighlight>
-            </View>
             <Text style={styles.marketTimeText}>
               Market closed
             </Text>
@@ -152,6 +132,25 @@ var ViewReactClass = React.createClass({
         </View>
       </View>
     );
+  },
+
+  _renderPage: function(data: Object, pageID: number | string) {
+    return (
+      <View style={styles.middleBlock}>
+        {(() => {
+          switch (data) {
+            case 'DETAILS':              return this.renderDetails();
+            case 'CHARTS':               return this.renderCharts();
+            case 'NEWS':                 return this.renderNews();
+            default:                     return this.renderDetails();
+          }
+        })()}
+      </View>
+    );
+  },
+
+  _onChangePage: function(page: number | string) {
+    console.log('Change page.');
   },
 
   renderDetails: function() {
@@ -266,7 +265,7 @@ var ViewReactClass = React.createClass({
     );
   },
 
-  renderChart: function() {
+  renderCharts: function() {
     return (
       <View style={styles.chartBlock}>
         <View style={styles.chartTimeSpan}>

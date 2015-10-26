@@ -30,6 +30,7 @@
     "react-native-navbar": "^1.0.3",
     "react-native-refreshable-listview": "^1.3.0",
     "react-native-simple-store": "^0.1.0",
+    "react-native-viewpager": "^0.1.2",
     "reflux": "^0.3.0"
   },
   "devDependencies": {}
