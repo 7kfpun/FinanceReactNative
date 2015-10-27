@@ -50,6 +50,7 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 
 #### Android
 
+* Run `android avd` and start an emulator
 * Run `react-native run-android`
 
 ## License
