@@ -22,8 +22,6 @@ module.exports = StyleSheet.create({
   },
   delete: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: 'white',
   },
   deleteText: {
     fontSize: 15,
