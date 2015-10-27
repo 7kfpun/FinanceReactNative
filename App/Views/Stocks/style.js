@@ -107,8 +107,6 @@ module.exports = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'left',
-    marginTop: 5,
-    marginBottom: 4,
   },
   footerMiddle: {
     flex: 1,
@@ -129,11 +127,9 @@ module.exports = StyleSheet.create({
     flex: 1,
   },
   settingsText: {
-    fontSize: 15,
+    fontSize: 22,
     color: 'white',
     textAlign: 'right',
-    marginTop: 5,
-    marginBottom: 4,
   },
   changeSlide: {
     flex: 1,

@@ -37,12 +37,12 @@ var StockCell = React.createClass({
                 {this.props.stock.symbol}
               </Text>
               <Text style={styles.marketText}>
-                {this.props.watchlistCache && this.props.watchlistCache[this.props.stock.symbol] && this.props.watchlistCache[this.props.stock.symbol].StockExchange}
+                {this.props.watchlistResult && this.props.watchlistResult[this.props.stock.symbol] && this.props.watchlistResult[this.props.stock.symbol].StockExchange}
               </Text>
             </View>
             <View style={styles.name}>
               <Text style={styles.nameText}>
-                {this.props.watchlistCache && this.props.watchlistCache[this.props.stock.symbol] && this.props.watchlistCache[this.props.stock.symbol].Name}
+                {this.props.watchlistResult && this.props.watchlistResult[this.props.stock.symbol] && this.props.watchlistResult[this.props.stock.symbol].Name}
               </Text>
             </View>
           </View>

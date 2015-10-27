@@ -30,12 +30,12 @@ var SettingsView = React.createClass({
     });
   },
 
-  onDeleteStock: function(result) {
-    this._genRows(result);
+  onUpdateStocks: function(watchlist, result) {
+    this._genRows(watchlist, result);
   },
 
-  onUpdateStocks: function(result) {
-    this._genRows(result);
+  onDeleteStock: function(watchlist, result) {
+    this._genRows(watchlist, result);
   },
 
   getInitialState() {
@@ -54,29 +54,26 @@ var SettingsView = React.createClass({
       this.setState({
         showingProperty: result,
       });
-      this._genRows();
+    });
+
+    store.get('watchlist').then((watchlist) => {
+      store.get('watchlistResult').then((result) => {
+        this._genRows(watchlist, result);
+      });
     });
   },
 
-  _genRows() {
-    var that = this;
-    store.get('watchlist').then((result) => {
-      this.setState({
-        dataSource: that.state.dataSource.cloneWithRows(result),
-        loaded: true,
-      });
-    });
-
-    store.get('watchlistResult').then((result) => {
-      this.setState({
-        watchlistCache: result,
-      });
+  _genRows: function(watchlist, result) {
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(watchlist),
+      loaded: true,
+      watchlistResult: result,
     });
   },
 
   renderStockCell: function(stock) {
     return(
-      <StockCell stock={stock} watchlistCache={this.state.watchlistCache}/>
+      <StockCell stock={stock} watchlistResult={this.state.watchlistResult}/>
     );
   },
 

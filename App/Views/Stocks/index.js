@@ -2,7 +2,6 @@
 
 var React = require('react-native');
 var Reflux = require('reflux');
-var store = require('react-native-simple-store');
 
 var {
   ListView,
@@ -30,12 +29,12 @@ var styles = require('./style');
 var ViewReactClass = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
-  onUpdateStocks: function(result) {
-    this._genRows(result);
+  onUpdateStocks: function(watchlist, result) {
+    this._genRows(watchlist, result);
   },
 
-  onDeleteStock: function(result) {
-    this._genRows(result);
+  onDeleteStock: function(watchlist, result) {
+    this._genRows(watchlist, result);
   },
 
   getInitialState: function() {
@@ -57,20 +56,12 @@ var ViewReactClass = React.createClass({
     StockActions.updateStocks();
   },
 
-  _genRows: function(result) {
-    var that = this;
-    store.get('watchlist').then((result) => {
-      this.setState({
-        dataSource: that.state.dataSource.cloneWithRows(result),
-        loaded: true,
-        selectedStock: that.state.selectedStock || result[0],
-      });
-    });
-
-    store.get('watchlistResult').then((result) => {
-      this.setState({
-        watchlistResult: result,
-      });
+  _genRows: function(watchlist, result) {
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(watchlist),
+      loaded: true,
+      selectedStock: this.state.selectedStock || watchlist[0],
+      watchlistResult: result,
     });
   },
 
@@ -97,7 +88,7 @@ var ViewReactClass = React.createClass({
             dataSource={this.state.dataSource}
             loadData={() => StockActions.updateStocks()}
             renderRow={this.renderStockCell}
-            style={styles.stocksListView}/>
+            style={styles.stocksListView} />
         </View>
         <View style={styles.middleBlock}>
           <ViewPager

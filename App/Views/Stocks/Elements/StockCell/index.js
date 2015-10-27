@@ -27,11 +27,9 @@ var StockCell = React.createClass({
     });
   },
 
-  onUpdateStocks: function() {
-    store.get('watchlistResult').then((result) => {
-      this.setState({
-        watchlistResult: result,
-      });
+  onUpdateStocks: function(watchlist, result) {
+    this.setState({
+      watchlistResult: result,
     });
   },
 

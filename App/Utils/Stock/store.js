@@ -37,7 +37,7 @@ var Store = Reflux.createStore({
       return result;
     }).then((result) => {
       console.log('onDeleteStock trigger');
-      this.trigger(result);
+      // this.trigger(result);
       this.onUpdateStocks();
     });
   },
@@ -45,16 +45,16 @@ var Store = Reflux.createStore({
   onUpdateStocks: function() {
     console.log('onUpdateStocks');
     var that = this;
-    store.get('watchlist').then((result) => {
-      if (!Array.isArray(result) || result.length === 0) {
-        result = [
+    store.get('watchlist').then((watchlist) => {
+      if (!Array.isArray(watchlist) || watchlist.length === 0) {
+        watchlist = [
           {symbol: 'AAPL', share: 100},
           {symbol: 'GOOG', share: 100},
         ];
-        store.save('watchlist', result);
+        store.save('watchlist', watchlist);
       }
 
-      var symbols = result.map((item) => {
+      var symbols = watchlist.map((item) => {
         return item.symbol;
       });
 
@@ -70,11 +70,16 @@ var Store = Reflux.createStore({
             watchlistResult[quote.symbol] = quote;
           });
           store.save('watchlistResult', watchlistResult);
+          return watchlistResult;
         }).then((result) => {
           console.log('onUpdateStocks trigger');
-          this.trigger(result);
+          this.trigger(watchlist, result);
         }).catch((error) => {
           console.log('Request failed', error);
+          store.get('watchlistResult').then((result) => {
+            this.trigger(watchlist, result);
+          });
+
         });
     });
   },
