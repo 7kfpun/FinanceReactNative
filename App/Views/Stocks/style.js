@@ -142,20 +142,24 @@ module.exports = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   },
-  chartTimeSpan: {
+  chartTimeSpanGroup: {
     flex: 1,
     flexDirection: 'row',
+  },
+  chartTimeSpan: {
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
   chartTimeSpanText: {
     fontSize: 12,
     color: 'white',
+    marginTop: 10,
   },
   chartTimeSpanSelectedText: {
     fontSize: 12,
     color: 'white',
     fontWeight: 'bold',
+    marginTop: 10,
   },
   chart: {
     flex: 4,

@@ -259,8 +259,9 @@ var ViewReactClass = React.createClass({
   renderCharts: function() {
     return (
       <View style={styles.chartBlock}>
-        <View style={styles.chartTimeSpan}>
+        <View style={styles.chartTimeSpanGroup}>
           <TouchableHighlight
+            style={styles.chartTimeSpan}
             onPress={() => this.setState({chartTimeSpan: '1D'})}
             underlayColor='#202020'>
             <Text style={(() => {
@@ -272,6 +273,7 @@ var ViewReactClass = React.createClass({
             })()}>1D</Text>
           </TouchableHighlight>
           <TouchableHighlight
+            style={styles.chartTimeSpan}
             onPress={() => this.setState({chartTimeSpan: '5D'})}
             underlayColor='#202020'>
           <Text style={(() => {
@@ -283,6 +285,7 @@ var ViewReactClass = React.createClass({
           })()}>1W</Text>
           </TouchableHighlight>
           <TouchableHighlight
+            style={styles.chartTimeSpan}
             onPress={() => this.setState({chartTimeSpan: '1M'})}
             underlayColor='#202020'>
             <Text style={(() => {
@@ -294,6 +297,7 @@ var ViewReactClass = React.createClass({
             })()}>1M</Text>
           </TouchableHighlight>
           <TouchableHighlight
+            style={styles.chartTimeSpan}
             onPress={() => this.setState({chartTimeSpan: '3M'})}
             underlayColor='#202020'>
             <Text style={(() => {
@@ -305,6 +309,7 @@ var ViewReactClass = React.createClass({
             })()}>3M</Text>
           </TouchableHighlight>
           <TouchableHighlight
+            style={styles.chartTimeSpan}
             onPress={() => this.setState({chartTimeSpan: '6M'})}
             underlayColor='#202020'>
             <Text style={(() => {
@@ -316,6 +321,7 @@ var ViewReactClass = React.createClass({
             })()}>6M</Text>
           </TouchableHighlight>
           <TouchableHighlight
+            style={styles.chartTimeSpan}
             onPress={() => this.setState({chartTimeSpan: '1Y'})}
             underlayColor='#202020'>
             <Text style={(() => {
@@ -327,6 +333,7 @@ var ViewReactClass = React.createClass({
             })()}>1Y</Text>
           </TouchableHighlight>
           <TouchableHighlight
+            style={styles.chartTimeSpan}
             onPress={() => this.setState({chartTimeSpan: '2Y'})}
             underlayColor='#202020'>
             <Text style={(() => {
