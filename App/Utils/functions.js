@@ -1,4 +1,5 @@
-exports.dynamicSort = function(property) {
+/* @flow */
+exports.dynamicSort = function(property: string) : Function {
   var sortOrder = 1;
   if (property[0] === '-') {
     sortOrder = -1;
@@ -10,13 +11,13 @@ exports.dynamicSort = function(property) {
   };
 };
 
-exports.removeObjectfromArray = function(array, key, value) {
+exports.removeObjectfromArray = function(array: Array<Object>, key: string, value: string | number) : Array<Object> {
   return array.filter(function(el) {
     return el[key] !== value;
   });
 };
 
-exports.changeObjectinArray = function(array, key, oldValue, newValue) {
+exports.changeObjectinArray = function(array: Array<Object>, key: string, oldValue: string | number, newValue: string | number) : Array<Object> {
   array.forEach(function(item) {
     if (item[key] === oldValue) {
       item[key] = newValue;

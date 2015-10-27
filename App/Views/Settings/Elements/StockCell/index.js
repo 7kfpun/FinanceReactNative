@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
@@ -16,7 +17,7 @@ var StockActions = require('../../../../Utils/Stock/actions');
 var styles = require('./style');
 
 var StockCell = React.createClass({
-  _onPressDeleteButton: function(symbol) {
+  _onPressDeleteButton: function(symbol: Object) {
     console.log('_onPressDeleteButton', symbol);
     StockActions.deleteStock(symbol);
   },

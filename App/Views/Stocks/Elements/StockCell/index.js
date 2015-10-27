@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
@@ -21,13 +22,13 @@ var styles = require('./style');
 var StockCell = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
-  onChangeShowingProperty: function(data) {
+  onChangeShowingProperty: function(data: string) {
     this.setState({
       showingProperty: data,
     });
   },
 
-  onUpdateStocks: function(watchlist, result) {
+  onUpdateStocks: function(watchlist: Array<Object>, result: Array<Object>) {
     this.setState({
       watchlistResult: result,
     });
@@ -66,7 +67,7 @@ var StockCell = React.createClass({
     });
   },
 
-  changeShowingProperty: function(currentShowingProperty) {
+  changeShowingProperty: function(currentShowingProperty: string) {
     var newShowingProperty;
     if (currentShowingProperty === 'Change') {
       newShowingProperty = 'ChangeinPercent';

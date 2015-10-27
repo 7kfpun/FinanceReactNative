@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
@@ -29,11 +30,11 @@ var styles = require('./style');
 var ViewReactClass = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
-  onUpdateStocks: function(watchlist, result) {
+  onUpdateStocks: function(watchlist: Array<Object>, result: Array<Object>) {
     this._genRows(watchlist, result);
   },
 
-  onDeleteStock: function(watchlist, result) {
+  onDeleteStock: function(watchlist: Array<Object>, result: Array<Object>) {
     this._genRows(watchlist, result);
   },
 
@@ -56,7 +57,7 @@ var ViewReactClass = React.createClass({
     StockActions.updateStocks();
   },
 
-  _genRows: function(watchlist, result) {
+  _genRows: function(watchlist: Array<Object>, result: Array<Object>) {
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(watchlist),
       loaded: true,
@@ -362,7 +363,7 @@ var ViewReactClass = React.createClass({
     );
   },
 
-  renderStockCell: function(stock) {
+  renderStockCell: function(stock: Object) {
     return (
       <StockCell
         onSelect={() => this.selectStock(stock)}
@@ -370,7 +371,7 @@ var ViewReactClass = React.createClass({
     );
   },
 
-  selectStock: function(stock) {
+  selectStock: function(stock: Object) {
     this.setState({
       selectedStock: stock,
     });

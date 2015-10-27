@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
@@ -24,17 +25,17 @@ var styles = require('./style');
 var SettingsView = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
-  onChangeShowingProperty: function(data) {
+  onChangeShowingProperty: function(data: string) {
     this.setState({
       showingProperty: data,
     });
   },
 
-  onUpdateStocks: function(watchlist, result) {
+  onUpdateStocks: function(watchlist: Array<Object>, result: Array<Object>) {
     this._genRows(watchlist, result);
   },
 
-  onDeleteStock: function(watchlist, result) {
+  onDeleteStock: function(watchlist: Array<Object>, result: Array<Object>) {
     this._genRows(watchlist, result);
   },
 
@@ -63,7 +64,7 @@ var SettingsView = React.createClass({
     });
   },
 
-  _genRows: function(watchlist, result) {
+  _genRows: function(watchlist: Array<Object>, result: Array<Object>) {
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(watchlist),
       loaded: true,
@@ -71,13 +72,13 @@ var SettingsView = React.createClass({
     });
   },
 
-  renderStockCell: function(stock) {
+  renderStockCell: function(stock: Object) {
     return(
       <StockCell stock={stock} watchlistResult={this.state.watchlistResult}/>
     );
   },
 
-  setShowingProperty: function(value) {
+  setShowingProperty: function(value: string) {
     this.setState({
       showingProperty: value,
     });

@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
@@ -16,7 +17,7 @@ var StockActions = require('../../../../Utils/Stock/actions');
 var styles = require('./style');
 
 var StockCell = React.createClass({
-  _onPressAdd: function(symbol) {
+  _onPressAdd: function(symbol: Object) {
     console.log('_onPressAdd', symbol);
     StockActions.addStock(symbol);
     this.props.navigator.pop();

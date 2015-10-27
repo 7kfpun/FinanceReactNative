@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
@@ -28,7 +29,7 @@ var AddNewView = React.createClass({
     };
   },
 
-  _onTyping: function(text) {
+  _onTyping: function(text: Object) {
     this.setState({
       text: text.text,
       helpText: 'Validating symbol...',
@@ -51,7 +52,7 @@ var AddNewView = React.createClass({
       });
   },
 
-  renderStockCell: function(stock) {
+  renderStockCell: function(stock: Object) {
     return(
       <StockCell
         stock={stock}

@@ -1,3 +1,4 @@
+/* @flow */
 var Reflux = require('reflux');
 var store = require('react-native-simple-store');
 

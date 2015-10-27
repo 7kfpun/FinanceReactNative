@@ -1,9 +1,11 @@
-exports.getStock = function(opts, type) {
+/* @flow */
+exports.getStock = function(opts: Object, type: string) : Object {
   var defs = {
     desc: false,
+    sortBy: false,
     baseURL: 'http://query.yahooapis.com/v1/public/yql?q=',
     query: {
-      quotes: "select * from yahoo.finance.quotes where symbol in ('{stock}')",
+      quotes: 'select * from yahoo.finance.quotes where symbol in ("{stock}") | sort(field="{sortBy}", descending="{desc}")"',
       historicaldata: 'select * from yahoo.finance.historicaldata where symbol = "{stock}" and startDate = "{startDate}" and endDate = "{endDate}"',
     },
     suffixURL: {
@@ -15,7 +17,7 @@ exports.getStock = function(opts, type) {
   opts = opts || {};
 
   if (!opts.stock) {
-    complete('No stock defined');
+    console.log('No stock defined');
     return;
   }
 
@@ -122,8 +124,10 @@ exports.properties = [
 	'YearRange',
 ];
 
-exports.getNews = function(symbol) {
-  fetch('http://feeds.finance.yahoo.com/rss/2.0/headline?s=' + symbol + '&region=US&lang=en-US')
+exports.getNews = function(symbol: string) : Object {
+  var url = 'http://feeds.finance.yahoo.com/rss/2.0/headline?s=' + symbol + '&region=US&lang=en-US';
+  console.log(url);
+  return fetch(url)
     .then(function(response) {
       return response.text();
     }).then(function(body) {
@@ -131,7 +135,7 @@ exports.getNews = function(symbol) {
     });
 };
 
-exports.symbolSuggest = function(query) {
+exports.symbolSuggest = function(query: string) : Object {
   // http://d.yimg.com/aq/autoc?query=0050&region=US&lang=en-US&callback=YAHOO.util.ScriptNodeDataSource.callbacks
   var url = 'http://d.yimg.com/aq/autoc?query=' + query + '&region=US&lang=en-US&callback=YAHOO.util.ScriptNodeDataSource.callbacks';
   console.log(url);

@@ -27,6 +27,10 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 * **View** - A container that supports layout with flexbox, style, some touch handling, and accessibility controls, and is designed to be nested inside other views and to have 0 to many children of any type.
 * **WebView**
 
+## Additional
+
+* [flow](https://github.com/facebook/flow): Adds static typing to JavaScript to improve developer productivity and code quality.
+
 ## Known Issues
 
 * WebView is not working for Android App
