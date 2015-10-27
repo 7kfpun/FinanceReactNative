@@ -10,11 +10,6 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    position: 'absolute',
-    top: 30,
-    left: 0,
-    right: 0,
-    bottom: 0,
     paddingLeft: 20,
     paddingRight: 20,
   },
@@ -36,6 +31,7 @@ module.exports = StyleSheet.create({
     color: 'white',
     fontSize: 12,
     alignSelf: 'center',
+    marginTop: 5,
     marginBottom: 5,
   },
   cancelButtonText: {

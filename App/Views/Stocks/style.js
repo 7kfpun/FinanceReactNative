@@ -3,6 +3,7 @@
 var React = require('react-native');
 
 var {
+  PixelRatio,
   StyleSheet,
 } = React;
 
@@ -63,8 +64,8 @@ module.exports = StyleSheet.create({
   details: {
     flex: 5,
     flexDirection: 'column',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    borderTopWidth: 1 / PixelRatio.get(),
+    borderBottomWidth: 1 / PixelRatio.get(),
     borderColor: 'white',
   },
   detailsRow: {
@@ -82,11 +83,11 @@ module.exports = StyleSheet.create({
     paddingRight: 5,
   },
   separator: {
-    height: 1.5,
+    height: 1.5 / PixelRatio.get(),
     backgroundColor: '#CCCCCC',
   },
   separatorThin: {
-    height: 1,
+    height: 1 / PixelRatio.get(),
     backgroundColor: '#A6A6A6',
   },
   propertyText: {

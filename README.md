@@ -17,11 +17,14 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 * **Image** - A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll.
 * **ListView** - A core component designed for efficient display of vertically scrolling lists of changing data.
 * **Navigator** - Use Navigator to transition between different scenes in your app.
+* **PixelRatio** - A class gives access to the device pixel density.
 * **Platform**
 * **StatusBarIOS**
 * **StyleSheet** - A StyleSheet is an abstraction similar to CSS StyleSheets.
 * **Text** - A React component for displaying text which supports nesting, styling, and touch handling.
 * **TextInput** - A foundational component for inputting text into the app via a keyboard.
+* **ToastAndroid**
+* **ToolbarAndroid** - React component that wraps the Android-only Toolbar widget.
 * **TouchableHighlight** - A wrapper for making views respond properly to touches.
 * **TouchableOpacity** - A wrapper for making views respond properly to touches.
 * **View** - A container that supports layout with flexbox, style, some touch handling, and accessibility controls, and is designed to be nested inside other views and to have 0 to many children of any type.

@@ -13,6 +13,8 @@ var {
   TouchableOpacity,
   View,
   Platform,
+  ToolbarAndroid,
+  BackAndroid,
 } = React;
 
 // Views
@@ -26,12 +28,55 @@ var styles = require('./style');
 
 Platform.OS === 'ios' ? StatusBarIOS.setStyle('default', false): null;
 
+var _navigator;
+
+var NavToolbar = React.createClass({
+
+  componentWillMount: function() {
+    var navigator = this.props.navigator;
+  },
+
+  render: function () {
+    if (this.props.navIcon) {
+      return (
+        <ToolbarAndroid
+          style={styles.toolbar}
+          navIcon={{uri: 'ic_arrow_back_white_24dp', isStatic: true}}
+          onIconClicked={this.props.navigator.pop}
+          actions={this.props.actions}
+          onActionSelected={this.props.onActionSelected}
+          title={this.props.route.title}
+          titleColor='white' />
+      )
+    }
+    return (
+      <ToolbarAndroid
+        style={styles.toolbar}
+        onIconClicked={this.props.navigator.pop}
+        titleColor='white'
+        title='FinanceReactNative' />
+    )
+  }
+})
+
+BackAndroid.addEventListener('hardwareBackPress', () => {
+  if (_navigator.getCurrentRoutes().length === 1  ) {
+     return false;
+  }
+  _navigator.pop();
+  return true;
+});
+
 var Finance = React.createClass({
   getInitialState: function() {
     return {};
   },
 
-  configureScene : function(route){
+  configureSceneAndroid: function(route) {
+    return Navigator.SceneConfigs.FadeAndroid;
+  },
+
+  configureSceneIOS: function(route) {
     switch (route.id) {
       case 'settings':
         return Navigator.SceneConfigs.FloatFromBottom;
@@ -41,10 +86,52 @@ var Finance = React.createClass({
         return Navigator.SceneConfigs.HorizontalSwipeJump;
       default:
         return Navigator.SceneConfigs.FloatFromBottom;
-      }
+    }
   },
 
-  renderScene: function(route, navigator) {
+  renderSceneAndroid: function(route, navigator) {
+    _navigator = navigator;
+    if (route.id === 'stocks') {
+      return (
+        <View style={styles.container}>
+          <NavToolbar navigator={navigator} route={route} />
+          <StocksView navigator={navigator} route={route} />
+        </View>
+      );
+    }
+    if (route.id === 'settings') {
+      return (
+        <View style={styles.container}>
+          <NavToolbar
+            navIcon={true}
+            navigator={navigator}
+            route={route}
+            actions={[{title: 'Add', icon: require('image!ic_plus_white'), show: 'always'}]}
+            onActionSelected={() => _navigator.push({title: 'Add', id: 'add'})} />
+          <SettingsView navigator={navigator} route={route} />
+        </View>
+      )
+    }
+    if (route.id === 'add') {
+      return (
+        <View style={styles.container}>
+          <NavToolbar navIcon={true} navigator={navigator} route={route} />
+          <AddNewView navigator={navigator} route={route} />
+        </View>
+      )
+    }
+    // WebView is not working for Android App
+    // if (route.id === 'yahoo') {
+    //   return (
+    //     <View style={styles.container}>
+    //       <NavToolbar navIcon={true} navigator={navigator} route={route} />
+    //       <WebView title={route.title} url={route.url} />
+    //     </View>
+    //   )
+    // }
+  },
+
+  renderSceneIOS: function(route, navigator) {
     var Component = route.component;
     var navBar = route.navigationBar;
 
@@ -103,15 +190,18 @@ var Finance = React.createClass({
   },
 
   render: function() {
+    var renderScene = Platform.OS === 'ios' ? this.renderSceneIOS: this.renderSceneAndroid;
+    var configureScene = Platform.OS === 'ios' ? this.configureSceneIOS: this.configureSceneAndroid;
+
     return (
       <Navigator
         debugOverlay={false}
-        initialRoute={{title: 'Finance', index: 0, id: 'stocks'}}
-        renderScene={this.renderScene}
-        configureScene={this.configureScene}
+        initialRoute={{title: 'Finance', id: 'stocks'}}
+        configureScene={configureScene}
+        renderScene={renderScene}
       />
     );
-  }
+  },
 });
 
 module.exports = Finance;

@@ -5,12 +5,13 @@ var React = require('react-native');
 var Reflux = require('reflux');
 
 var {
+  Image,
   ListView,
   Platform,
   Text,
+  ToastAndroid,
   TouchableHighlight,
   View,
-  Image,
 } = React;
 
 // 3rd Elements
@@ -388,6 +389,8 @@ var ViewReactClass = React.createClass({
         id: 'yahoo',
         url: 'http://finance.yahoo.com/q?s=' + this.state.selectedStock.symbol,
       });
+    } else if (Platform.OS === 'android') {
+      ToastAndroid.show('WebView is not working for Android App.', ToastAndroid.SHORT);
     }
   },
 });

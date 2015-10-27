@@ -3,6 +3,7 @@
 var React = require('react-native');
 
 var {
+  PixelRatio,
   StyleSheet,
 } = React;
 
@@ -34,7 +35,7 @@ module.exports = StyleSheet.create({
   buttonLeft: {
     height: 36,
     borderColor: '#3CABDA',
-    borderWidth: 1,
+    borderWidth: 1 / PixelRatio.get(),
     flex: 1,
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
@@ -45,7 +46,7 @@ module.exports = StyleSheet.create({
     backgroundColor: '#3CABDA',
     height: 36,
     borderColor: '#3CABDA',
-    borderWidth: 1,
+    borderWidth: 1 / PixelRatio.get(),
     flex: 1,
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
@@ -55,7 +56,7 @@ module.exports = StyleSheet.create({
   buttonMiddle: {
     height: 36,
     borderColor: '#3CABDA',
-    borderWidth: 1,
+    borderWidth: 1 / PixelRatio.get(),
     flex: 1,
     alignSelf: 'stretch',
     justifyContent: 'center'
@@ -64,7 +65,7 @@ module.exports = StyleSheet.create({
     backgroundColor: '#3CABDA',
     height: 36,
     borderColor: '#3CABDA',
-    borderWidth: 1,
+    borderWidth: 1 / PixelRatio.get(),
     flex: 1,
     alignSelf: 'stretch',
     justifyContent: 'center'
@@ -72,7 +73,7 @@ module.exports = StyleSheet.create({
   buttonRight: {
     height: 36,
     borderColor: '#3CABDA',
-    borderWidth: 1,
+    borderWidth: 1 / PixelRatio.get(),
     flex: 1,
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4,
@@ -83,7 +84,7 @@ module.exports = StyleSheet.create({
     backgroundColor: '#3CABDA',
     height: 36,
     borderColor: '#3CABDA',
-    borderWidth: 1,
+    borderWidth: 1 / PixelRatio.get(),
     flex: 1,
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4,
