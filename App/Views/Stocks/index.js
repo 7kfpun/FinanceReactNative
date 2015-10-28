@@ -143,9 +143,7 @@ var ViewReactClass = React.createClass({
               style={styles.settings}
               onPress={() => this.pushSettingsView()}
               underlayColor='#202020'>
-            <Text style={styles.settingsText}>
-              ☰
-            </Text>
+              <Image style={styles.icon} source={require('image!ic_three_lines_white')} />
           </TouchableHighlight>
         </View>
       </View>

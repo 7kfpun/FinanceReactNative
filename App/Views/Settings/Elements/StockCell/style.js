@@ -3,6 +3,7 @@
 var React = require('react-native');
 
 var {
+  PixelRatio,
   StyleSheet,
 } = React;
 
@@ -19,20 +20,13 @@ module.exports = StyleSheet.create({
     flexDirection: 'row',
     height: 65,
     backgroundColor: 'black',
+    alignItems: 'center',
   },
   delete: {
     flex: 1,
   },
-  deleteText: {
-    fontSize: 15,
-    color: '#FC3D39',
-    textAlign: 'left',
-    marginTop: 20,
-    marginBottom: 10,
-    marginRight: 10,
-  },
   stock: {
-    flex: 8,
+    flex: 7,
     flexDirection: 'column',
   },
   symbol: {
@@ -69,16 +63,12 @@ module.exports = StyleSheet.create({
   move: {
     flex: 1,
   },
-  moveText: {
-    fontSize: 15,
-    color: 'white',
-    textAlign: 'left',
-    marginTop: 20,
-    marginBottom: 10,
-    marginRight: 10,
-  },
   separator: {
-    height: 0.5,
+    height: 1 / PixelRatio.get(),
     backgroundColor: '#CCCCCC',
+  },
+  icon: {
+    width: 20,
+    height: 20,
   },
 });

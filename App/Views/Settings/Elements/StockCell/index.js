@@ -4,6 +4,7 @@
 var React = require('react-native');
 
 var {
+  Image,
   Text,
   TouchableHighlight,
   TouchableOpacity,
@@ -26,11 +27,10 @@ var StockCell = React.createClass({
     return (
       <View style={styles.container}>
         <View style={styles.element}>
-          <TouchableOpacity style={styles.delete}
-              onPress={() => this._onPressDeleteButton(this.props.stock.symbol)}>
-            <Text style={styles.deleteText}>
-              ㊀
-            </Text>
+          <TouchableOpacity
+            style={styles.delete}
+            onPress={() => this._onPressDeleteButton(this.props.stock.symbol)}>
+            <Image style={styles.icon} source={require('image!ic_remove_red')} />
           </TouchableOpacity>
           <View style={styles.stock}>
             <View style={styles.symbol}>
@@ -48,9 +48,7 @@ var StockCell = React.createClass({
             </View>
           </View>
           <View style={styles.move}>
-            <Text style={styles.moveText}>
-              ☰
-            </Text>
+            <Image style={styles.icon} source={require('image!ic_three_lines_white')} />
           </View>
         </View>
         <View style={styles.separator}/>

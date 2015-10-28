@@ -27,7 +27,6 @@ module.exports = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     backgroundColor: '#202020',
-    justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 10,
     paddingRight: 10,
@@ -126,11 +125,7 @@ module.exports = StyleSheet.create({
   },
   settings: {
     flex: 1,
-  },
-  settingsText: {
-    fontSize: 22,
-    color: 'white',
-    textAlign: 'right',
+    alignItems: 'flex-end',
   },
   changeSlide: {
     flex: 1,
@@ -167,5 +162,9 @@ module.exports = StyleSheet.create({
   },
   image: {
     flex: 1,
+  },
+  icon: {
+    width: 20,
+    height: 20,
   },
 });
