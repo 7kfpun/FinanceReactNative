@@ -1,6 +1,11 @@
 # FinanceReactNative
 
-iOS's Stocks App clone written in [React Native](https://github.com/facebook/react-native) for demo purpose. Data is pulled from Yahoo Finance.
+
+[![Dependency Status](https://img.shields.io/david/7kfpun/FinanceReactNative.svg)](https://img.shields.io/david/7kfpun/FinanceReactNative)
+[![devDependency Status](https://img.shields.io/david/dev/7kfpun/FinanceReactNative.svg)](https://github.com/7kfpun/FinanceReactNative#info=devDependencies)
+
+
+iOS's Stocks App clone written in [React Native](https://github.com/facebook/react-native) for demo purpose (available both iOS and Android). Data is pulled from [Yahoo Finance](finance.yahoo.com).
 
 ![Preview](https://raw.github.com/7kfpun/FinanceReactNative/master/preview.gif)
 
@@ -28,6 +33,7 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 * **TouchableHighlight** - A wrapper for making views respond properly to touches.
 * **TouchableOpacity** - A wrapper for making views respond properly to touches.
 * **View** - A container that supports layout with flexbox, style, some touch handling, and accessibility controls, and is designed to be nested inside other views and to have 0 to many children of any type.
+* **ViewPagerAndroid** - Container that allows to flip left and right between child views.
 * **WebView**
 
 ## Additional

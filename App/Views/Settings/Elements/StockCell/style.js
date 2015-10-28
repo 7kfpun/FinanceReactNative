@@ -17,7 +17,7 @@ module.exports = StyleSheet.create({
   element: {
     flex: 1,
     flexDirection: 'row',
-    height: 60,
+    height: 65,
     backgroundColor: 'black',
   },
   delete: {

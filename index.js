@@ -94,7 +94,7 @@ var Finance = React.createClass({
     if (route.id === 'stocks') {
       return (
         <View style={styles.container}>
-          <NavToolbar navigator={navigator} route={route} />
+
           <StocksView navigator={navigator} route={route} />
         </View>
       );

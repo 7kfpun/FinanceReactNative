@@ -8,10 +8,12 @@ var {
   Image,
   ListView,
   Platform,
+  Platform,
   Text,
   ToastAndroid,
   TouchableHighlight,
   View,
+  ViewPagerAndroid,
 } = React;
 
 // 3rd Elements
@@ -45,7 +47,6 @@ var ViewReactClass = React.createClass({
     return {
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
       loaded: false,
-      middleBlockShowing: 'DETAILS',
       chartTimeSpan: '1D',
       dataSourcePage: viewPagerDataSource.cloneWithPages(['DETAILS', 'CHARTS', 'NEWS']),
     };
@@ -82,6 +83,29 @@ var ViewReactClass = React.createClass({
     );
   },
 
+  renderViewPagerAndroid: function() {
+    return (
+      <ViewPagerAndroid
+        style={{flex: 1}}
+        initialPage={0}>
+        {this.renderDetails()}
+        {this.renderCharts()}
+        {this.renderNews()}
+      </ViewPagerAndroid>
+    );
+  },
+
+  renderViewPagerIOS: function() {
+    return (
+      <ViewPager
+        dataSource={this.state.dataSourcePage}
+        renderPage={this._renderPage}
+        onChangePage={this._onChangePage}
+        isLoop={true}
+        autoPlay={false} />
+    );
+  },
+
   renderListView: function() {
     return(
       <View style={styles.container}>
@@ -93,12 +117,13 @@ var ViewReactClass = React.createClass({
             style={styles.stocksListView} />
         </View>
         <View style={styles.middleBlock}>
-          <ViewPager
-            dataSource={this.state.dataSourcePage}
-            renderPage={this._renderPage}
-            onChangePage={this._onChangePage}
-            isLoop={true}
-            autoPlay={false} />
+          {(() => {
+            switch (Platform.OS) {
+              case 'ios':                   return this.renderViewPagerIOS();
+              case 'android':               return this.renderViewPagerAndroid();
+              default:                      return this.renderViewPagerIOS();
+            }
+          })()}
         </View>
         <View style={styles.footerBlock}>
           <TouchableHighlight
