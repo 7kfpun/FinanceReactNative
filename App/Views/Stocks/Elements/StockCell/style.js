@@ -3,6 +3,7 @@
 var React = require('react-native');
 
 var {
+  PixelRatio,
   StyleSheet,
 } = React;
 
@@ -64,7 +65,7 @@ module.exports = StyleSheet.create({
     textAlign: 'center',
   },
   separator: {
-    height: 0.5,
+    height: 1.5 / PixelRatio.get(),
     backgroundColor: '#CCCCCC',
   },
 });

@@ -64,7 +64,7 @@ module.exports = StyleSheet.create({
     flex: 1,
   },
   separator: {
-    height: 1 / PixelRatio.get(),
+    height: 1.5 / PixelRatio.get(),
     backgroundColor: '#CCCCCC',
   },
   icon: {

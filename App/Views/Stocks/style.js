@@ -63,8 +63,8 @@ module.exports = StyleSheet.create({
   details: {
     flex: 5,
     flexDirection: 'column',
-    borderTopWidth: 1 / PixelRatio.get(),
-    borderBottomWidth: 1 / PixelRatio.get(),
+    borderTopWidth: 2 / PixelRatio.get(),
+    borderBottomWidth: 2 / PixelRatio.get(),
     borderColor: 'white',
   },
   detailsRow: {
@@ -82,7 +82,7 @@ module.exports = StyleSheet.create({
     paddingRight: 5,
   },
   separator: {
-    height: 1.5 / PixelRatio.get(),
+    height: 2 / PixelRatio.get(),
     backgroundColor: '#CCCCCC',
   },
   separatorThin: {

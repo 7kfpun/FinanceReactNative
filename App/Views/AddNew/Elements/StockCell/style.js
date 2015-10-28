@@ -3,6 +3,7 @@
 var React = require('react-native');
 
 var {
+  PixelRatio,
   StyleSheet,
 } = React;
 
@@ -11,8 +12,6 @@ module.exports = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
     flexDirection: 'column',
-    marginLeft: 15,
-    marginRight: 15,
   },
   element: {
     flex: 1,
@@ -78,7 +77,7 @@ module.exports = StyleSheet.create({
     marginRight: 10,
   },
   separator: {
-    height: 0.5,
+    height: 1.5 / PixelRatio.get(),
     backgroundColor: '#CCCCCC',
   },
 });

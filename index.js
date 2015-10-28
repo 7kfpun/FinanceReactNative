@@ -124,7 +124,7 @@ var Finance = React.createClass({
     if (route.id === 'add') {
       return (
         <View style={styles.container}>
-          <NavToolbar navIcon={true} navigator={navigator} route={route} />
+          <NavToolbar navigator={navigator} route={route} />
           <AddNewView navigator={navigator} route={route} />
         </View>
       )
