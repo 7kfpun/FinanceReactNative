@@ -51,14 +51,13 @@ module.exports = StyleSheet.create({
   nameBlock: {
     flex: 1,
     paddingTop: 4,
+    justifyContent: 'center',
     alignItems: 'center',
   },
   nameText: {
     fontWeight: 'bold',
     fontSize: 12,
     color: 'white',
-    marginTop: 5,
-    marginBottom: 5,
   },
   details: {
     flex: 5,
@@ -145,6 +144,7 @@ module.exports = StyleSheet.create({
   chartTimeSpan: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   chartTimeSpanText: {
     fontSize: 12,

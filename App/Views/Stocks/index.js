@@ -371,7 +371,9 @@ var ViewReactClass = React.createClass({
           </TouchableHighlight>
         </View>
         <View style={styles.chart}>
-        <Image style={styles.image} source={{uri: 'http://chart.finance.yahoo.com/z?s=' + this.state.selectedStock.symbol + '&t=' + this.state.chartTimeSpan.toLowerCase()}} />
+        <Image
+          style={styles.image}
+          source={{uri: 'http://chart.finance.yahoo.com/z?s=' + this.state.selectedStock.symbol + '&t=' + this.state.chartTimeSpan.toLowerCase() + '&random=' + new Date().getTime()}} />
         </View>
       </View>
     );
