@@ -3,7 +3,6 @@
 var React = require('react-native');
 
 var {
-  PixelRatio,
   StyleSheet,
 } = React;
 

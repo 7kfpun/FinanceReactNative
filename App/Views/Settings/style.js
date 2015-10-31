@@ -18,14 +18,14 @@ module.exports = StyleSheet.create({
     bottom: 0,
   },
   topBlock: {
-    flex: 10
+    flex: 1
   },
   bottomBlock: {
     backgroundColor: 'black',
-    flex: 1,
     flexDirection: 'row',
     paddingLeft: 15,
     paddingRight: 15,
+    marginBottom: 10,
   },
   title: {
     fontSize: 30,
