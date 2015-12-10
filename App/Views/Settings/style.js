@@ -21,7 +21,6 @@ module.exports = StyleSheet.create({
     flex: 1
   },
   bottomBlock: {
-    backgroundColor: 'black',
     flexDirection: 'row',
     paddingLeft: 15,
     paddingRight: 15,
@@ -39,18 +38,6 @@ module.exports = StyleSheet.create({
     flex: 1,
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  buttonLeftSelected: {
-    backgroundColor: '#3CABDA',
-    height: 36,
-    borderColor: '#3CABDA',
-    borderWidth: 1 / PixelRatio.get(),
-    flex: 1,
-    borderTopLeftRadius: 4,
-    borderBottomLeftRadius: 4,
-    alignSelf: 'stretch',
     justifyContent: 'center'
   },
   buttonMiddle: {
@@ -58,16 +45,6 @@ module.exports = StyleSheet.create({
     borderColor: '#3CABDA',
     borderWidth: 1 / PixelRatio.get(),
     flex: 1,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  buttonMiddleSelected: {
-    backgroundColor: '#3CABDA',
-    height: 36,
-    borderColor: '#3CABDA',
-    borderWidth: 1 / PixelRatio.get(),
-    flex: 1,
-    alignSelf: 'stretch',
     justifyContent: 'center'
   },
   buttonRight: {
@@ -77,19 +54,10 @@ module.exports = StyleSheet.create({
     flex: 1,
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4,
-    alignSelf: 'stretch',
     justifyContent: 'center'
   },
-  buttonRightSelected: {
+  buttonSelected: {
     backgroundColor: '#3CABDA',
-    height: 36,
-    borderColor: '#3CABDA',
-    borderWidth: 1 / PixelRatio.get(),
-    flex: 1,
-    borderTopRightRadius: 4,
-    borderBottomRightRadius: 4,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
   },
   buttonText: {
     fontSize: 14,
@@ -97,8 +65,6 @@ module.exports = StyleSheet.create({
     alignSelf: 'center'
   },
   buttonTextSelected: {
-    fontSize: 14,
     color: 'black',
-    alignSelf: 'center'
   },
 });

@@ -47,7 +47,7 @@ module.exports = StyleSheet.create({
   },
   separator: {
     height: 2 / PixelRatio.get(),
-    backgroundColor: '#CCCCCC',
+    backgroundColor: 'white',
   },
   separatorThin: {
     height: 1 / PixelRatio.get(),

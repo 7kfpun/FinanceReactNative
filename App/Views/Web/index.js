@@ -10,7 +10,7 @@ var {
 // Styles
 var styles = require('./style');
 
-var Web = React.createClass({
+var WebClass = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
@@ -20,4 +20,4 @@ var Web = React.createClass({
   }
 });
 
-module.exports = Web;
+module.exports = WebClass;

@@ -3,6 +3,7 @@
 var React = require('react-native');
 
 var {
+  PixelRatio,
   StyleSheet,
 } = React;
 
@@ -10,8 +11,8 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   searchBar: {
     flexDirection: 'row',
@@ -21,10 +22,10 @@ module.exports = StyleSheet.create({
     flexDirection: 'column',
     height: 40,
     borderColor: 'gray',
-    borderWidth: 2,
+    borderWidth: 1 / PixelRatio.get(),
     backgroundColor: '#202020',
+    borderRadius: 4,
     color: 'white',
-    marginBottom: 10,
     paddingLeft: 10,
   },
   helpText: {
@@ -42,7 +43,7 @@ module.exports = StyleSheet.create({
   cancelButton: {
     flex: 1,
     height: 40,
-    backgroundColor: 'black',
+    marginLeft: 4,
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'

@@ -121,7 +121,7 @@ var DetailsPage = React.createClass({
                 YIELD
               </Text>
               <Text style={styles.valueText}>
-                {this.props.watchlistResult && this.props.watchlistResult[this.props.stock.symbol] && this.props.watchlistResult[this.props.stock.symbol].DividendYield || '--'}
+                {this.props.watchlistResult && this.props.watchlistResult[this.props.stock.symbol] && this.props.watchlistResult[this.props.stock.symbol].DividendYield && this.props.watchlistResult[this.props.stock.symbol].DividendYield + '%' || '--'}
               </Text>
             </View>
           </View>
