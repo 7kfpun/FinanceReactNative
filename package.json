@@ -4,7 +4,7 @@
   "description": "iOS's Stocks App clone written in React Native for demo purpose. Data is pulled from Yahoo Finance.",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "repository": {
     "type": "git",
@@ -25,13 +25,17 @@
   },
   "homepage": "https://github.com/7kfpun/FinanceReactNative#readme",
   "dependencies": {
-    "react": "^0.14.0",
-    "react-native": "^0.13.1",
-    "react-native-navbar": "^1.0.3",
+    "react-native": "0.18.0-rc",
+    "react-native-navbar": "^1.1.7",
     "react-native-refreshable-listview": "^1.3.0",
+    "react-native-router-flux": "^2.0.9",
     "react-native-simple-store": "^0.1.0",
-    "react-native-viewpager": "^0.1.2",
+    "react-native-vector-icons": "^1.0.4",
+    "react-native-viewpager": "^0.1.6",
     "reflux": "^0.3.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-eslint": "^5.0.0-beta6",
+    "react-native-cli": "^0.1.10"
+  }
 }

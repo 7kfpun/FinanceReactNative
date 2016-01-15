@@ -1,16 +1,17 @@
 'use strict';
 
-var React = require('react-native');
-
-var {
+import {
   PixelRatio,
+  Platform,
   StyleSheet,
-} = React;
+} from 'react-native';
 
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: Platform.OS === 'ios' ? 20 : 0,
     flexDirection: 'column',
+    backgroundColor: 'black',
     paddingLeft: 15,
     paddingRight: 15,
   },

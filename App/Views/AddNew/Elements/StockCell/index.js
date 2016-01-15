@@ -1,31 +1,31 @@
 /* @flow */
 'use strict';
 
-var React = require('react-native');
-
-var {
+import React, {
   Text,
   TouchableHighlight,
-  TouchableOpacity,
   View,
-} = React;
+} from 'react-native';
+
+// 3rd party libraries
+import { Actions } from 'react-native-router-flux';
 
 // Flux
-var StockActions = require('../../../../Utils/Stock/actions');
+import StockActions from '../../../../Utils/Stock/actions';
 
 // Styles
-var styles = require('./style');
+import styles from './style';
 
 var StockCell = React.createClass({
   _onPressAdd: function(symbol: Object) {
     console.log('_onPressAdd', symbol);
     StockActions.addStock(symbol);
-    this.props.navigator.pop();
+    Actions.pop();
   },
 
   render: function() {
     return (
-      <TouchableHighlight onPress={() => this._onPressAdd(this.props.stock.symbol)} underlayColor='#202020'>
+      <TouchableHighlight onPress={() => this._onPressAdd(this.props.stock.symbol)} underlayColor="#202020">
         <View style={styles.container}>
           <View style={styles.element}>
             <View style={styles.stock}>

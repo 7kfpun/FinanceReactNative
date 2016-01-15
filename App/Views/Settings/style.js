@@ -1,21 +1,34 @@
 'use strict';
 
-var React = require('react-native');
-
-var {
+import {
+  Platform,
   PixelRatio,
   StyleSheet,
-} = React;
+} from 'react-native';
 
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    position: 'absolute',
-    top: 58,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    marginTop: Platform.OS === 'ios' ? 20 : 0,
+    backgroundColor: 'black',
+  },
+  navigatorTitle: {
+    backgroundColor: '#202020',
+    height: 39 - 12,
+  },
+  navigatorLeftButton: {
+    marginTop: -12,
+    paddingLeft: 10,
+    paddingRight: 50,
+  },
+  navigatorRightButton: {
+    marginTop: -12,
+    paddingLeft: 50,
+    paddingRight: 10,
+  },
+  toolbar: {
+    height: 56,
+    backgroundColor: '#E9EAED'
   },
   topBlock: {
     flex: 1

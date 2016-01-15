@@ -1,11 +1,9 @@
 'use strict';
 
-var React = require('react-native');
-
-var {
+import {
   PixelRatio,
   StyleSheet,
-} = React;
+} from 'react-native';
 
 module.exports = StyleSheet.create({
   container: {
@@ -62,6 +60,7 @@ module.exports = StyleSheet.create({
   },
   move: {
     flex: 1,
+    alignItems: 'flex-end',
   },
   separator: {
     height: 1.5 / PixelRatio.get(),

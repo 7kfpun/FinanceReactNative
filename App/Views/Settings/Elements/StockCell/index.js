@@ -1,21 +1,19 @@
 /* @flow */
 'use strict';
 
-var React = require('react-native');
-
-var {
-  Image,
+import React, {
   Text,
-  TouchableHighlight,
   TouchableOpacity,
   View,
-} = React;
+} from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // Flux
-var StockActions = require('../../../../Utils/Stock/actions');
+import StockActions from '../../../../Utils/Stock/actions';
 
 // Styles
-var styles = require('./style');
+import styles from './style';
 
 var StockCell = React.createClass({
   _onPressDeleteButton: function(symbol: Object) {
@@ -30,7 +28,7 @@ var StockCell = React.createClass({
           <TouchableOpacity
             style={styles.delete}
             onPress={() => this._onPressDeleteButton(this.props.stock.symbol)}>
-            <Image style={styles.icon} source={require('image!ic_remove_red')} />
+            <Icon name="remove-circle" color="red" size={22} />
           </TouchableOpacity>
           <View style={styles.stock}>
             <View style={styles.symbol}>
@@ -48,7 +46,7 @@ var StockCell = React.createClass({
             </View>
           </View>
           <View style={styles.move}>
-            <Image style={styles.icon} source={require('image!ic_three_lines_white')} />
+            <Icon name="menu" color="white" size={22} />
           </View>
         </View>
         <View style={styles.separator}/>

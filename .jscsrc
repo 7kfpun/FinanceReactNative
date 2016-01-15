@@ -1,5 +1,0 @@
-{
-  "preset": "google",
-  "fileExtensions": [".js", ".jscs"],
-  "maximumLineLength": null
-}

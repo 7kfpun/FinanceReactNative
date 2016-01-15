@@ -1,26 +1,32 @@
 /* @flow */
 'use strict';
 
-var React = require('react-native');
-var Reflux = require('reflux');
-var store = require('react-native-simple-store');
-
-var {
+import React, {
   ListView,
+  Platform,
   Text,
+  ToolbarAndroid,
   TouchableHighlight,
   View,
-} = React;
+} from 'react-native';
+
+// 3rd party libraries
+import { Actions } from 'react-native-router-flux';
+import store from 'react-native-simple-store';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import NavigationBar from 'react-native-navbar';
 
 // Flux
-var PropertyActions = require('../../Utils/Property/actions');
-var PropertyStore = require('../../Utils/Property/store');
-var StockStore = require('../../Utils/Stock/store');
+import Reflux from 'reflux';
+import PropertyActions from '../../Utils/Property/actions';
+import PropertyStore from '../../Utils/Property/store';
+import StockStore from '../../Utils/Stock/store';
 
 // Elements
-var StockCell = require('./Elements/StockCell');
+import StockCell from './Elements/StockCell';
 
-var styles = require('./style');
+// Styles
+import styles from './style';
 
 var SettingsView = React.createClass({
   mixins: [Reflux.ListenerMixin],
@@ -72,12 +78,6 @@ var SettingsView = React.createClass({
     });
   },
 
-  _renderStockCell: function(stock: Object) {
-    return(
-      <StockCell stock={stock} watchlistResult={this.state.watchlistResult}/>
-    );
-  },
-
   _setShowingProperty: function(value: string) {
     this.setState({
       showingProperty: value,
@@ -86,34 +86,69 @@ var SettingsView = React.createClass({
     PropertyActions.changeShowingProperty(value);
   },
 
+  onActionSelected: function(position) {
+    if (position === 0) {  // index of 'Add'
+      Actions.add();
+    } else if (position === 1) {  // index of 'Done'
+      Actions.pop();
+    }
+  },
+
+  renderToolbar: function() {
+    if (Platform.OS === 'ios') {
+      return (
+        <NavigationBar
+          style={styles.navigatorTitle}
+          tintColor="#202020"
+          title={{title: this.props.title, tintColor: 'white'}}
+          leftButton={<Icon style={styles.navigatorLeftButton} name="add" size={26} color="#3CABDA" onPress={() => Actions.add()} />}
+          rightButton={{title: 'Done', handler: () => Actions.pop(), tintColor: '#3CABDA', style: styles.navigatorRightButton}}
+        />
+      );
+    } else if (Platform.OS === 'android') {
+      return (
+        <ToolbarAndroid
+          style={styles.toolbar}
+          title={this.props.title}
+          actions={[
+            {title: 'Add', show: 'always'},
+            {title: 'Done', show: 'always'},
+          ]}
+          onActionSelected={(position) => this.onActionSelected(position)} />
+      );
+    }
+  },
+
   render: function() {
     return (
       <View style={styles.container}>
+        {this.renderToolbar()}
+
         <View style={styles.topBlock}>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={this._renderStockCell}
+            renderRow={(stock) => <StockCell stock={stock} watchlistResult={this.state.watchlistResult}/>}
           />
         </View>
         <View style={styles.bottomBlock}>
-          <TouchableHighlight style={[styles.buttonLeft, this.state.showingProperty === 'ChangeinPercent' ? styles.buttonSelected: null]}
-              underlayColor='#66CCFF'
+          <TouchableHighlight style={[styles.buttonLeft, this.state.showingProperty === 'ChangeinPercent' ? styles.buttonSelected : null]}
+              underlayColor="#66CCFF"
               onPress={() => this._setShowingProperty('ChangeinPercent')}>
-            <Text style={[styles.buttonText, this.state.showingProperty === 'ChangeinPercent' ? styles.buttonTextSelected: null]}>
+            <Text style={[styles.buttonText, this.state.showingProperty === 'ChangeinPercent' ? styles.buttonTextSelected : null]}>
               percentage
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight style={[styles.buttonMiddle, this.state.showingProperty === 'Change' ? styles.buttonSelected: null]}
-              underlayColor='#66CCFF'
+          <TouchableHighlight style={[styles.buttonMiddle, this.state.showingProperty === 'Change' ? styles.buttonSelected : null]}
+              underlayColor="#66CCFF"
               onPress={() => this._setShowingProperty('Change')}>
-            <Text style={[styles.buttonText, this.state.showingProperty === 'Change' ? styles.buttonTextSelected: null]}>
+            <Text style={[styles.buttonText, this.state.showingProperty === 'Change' ? styles.buttonTextSelected : null]}>
               price
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight style={[styles.buttonRight, this.state.showingProperty === 'MarketCapitalization' ? styles.buttonSelected: null]}
-              underlayColor='#66CCFF'
+          <TouchableHighlight style={[styles.buttonRight, this.state.showingProperty === 'MarketCapitalization' ? styles.buttonSelected : null]}
+              underlayColor="#66CCFF"
               onPress={() => this._setShowingProperty('MarketCapitalization')}>
-            <Text style={[styles.buttonText, this.state.showingProperty === 'MarketCapitalization' ? styles.buttonTextSelected: null]}>
+            <Text style={[styles.buttonText, this.state.showingProperty === 'MarketCapitalization' ? styles.buttonTextSelected : null]}>
               market cap
             </Text>
           </TouchableHighlight>

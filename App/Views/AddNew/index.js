@@ -1,23 +1,25 @@
 /* @flow */
 'use strict';
 
-var React = require('react-native');
-
-var {
+import React, {
   ListView,
   Text,
   TouchableHighlight,
   View,
   TextInput,
-} = React;
+} from 'react-native';
+
+// 3rd party libraries
+import { Actions } from 'react-native-router-flux';
 
 // Elements
-var StockCell = require('./Elements/StockCell');
+import StockCell from './Elements/StockCell';
 
 // Utils
-var finance = require('../../Utils/finance');
+import finance from '../../Utils/finance';
 
-var styles = require('./style');
+// Styles
+import styles from './style';
 
 var AddNewView = React.createClass({
   getInitialState() {
@@ -37,11 +39,12 @@ var AddNewView = React.createClass({
 
     var that = this;
     finance.symbolSuggest(text.text)
-      .then(function(response) {
-        var result = response.text();
-        result = result._12.replace(/(YAHOO\.util\.ScriptNodeDataSource\.callbacks\()(.*)(\);)/g, '$2');
+      .then((response) => response.text())
+      .then((result) => {
+        result = result.replace(/(YAHOO\.util\.ScriptNodeDataSource\.callbacks\()(.*)(\);)/g, '$2');
+        console.log(result);
         return JSON.parse(result);
-      }).then(function(json) {
+      }).then((json) => {
         that.setState({
           dataSource: that.state.dataSource.cloneWithRows(json.ResultSet.Result),
           loaded: true,
@@ -50,16 +53,6 @@ var AddNewView = React.createClass({
       }).catch((error) => {
         console.log('Request failed', error);
       });
-  },
-
-  renderStockCell: function(stock: Object) {
-    return(
-      <StockCell
-        stock={stock}
-        navigator={this.props.navigator}
-        watchlistCache={this.state.watchlistCache}
-      />
-    );
   },
 
   render: function() {
@@ -73,23 +66,23 @@ var AddNewView = React.createClass({
             style={styles.searchBarInput}
             autoCapitalize={'characters'}
             autoFocus={true}
-            placeholder='symbol..'
-            placeholderTextColor='gray'
+            placeholder="symbol.."
+            placeholderTextColor="gray"
             onChangeText={(text) => this._onTyping({text})}
             value={this.state.text}
           />
           <TouchableHighlight style={styles.cancelButton}
-  		    	underlayColor='black'
-  		    	onPress={() => this.props.navigator.pop()}>
-  		    	<Text style={styles.cancelButtonText}>
-  		    		Cancel
-  		    	</Text>
-  		  	</TouchableHighlight>
+            underlayColor="black"
+            onPress={() => Actions.pop()}>
+            <Text style={styles.cancelButtonText}>
+              Cancel
+            </Text>
+          </TouchableHighlight>
         </View>
         <View style={styles.suggestion}>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={this.renderStockCell}
+            renderRow={(stock) => <StockCell stock={stock} watchlistCache={this.state.watchlistCache} />}
           />
         </View>
       </View>
