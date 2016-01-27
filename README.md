@@ -14,6 +14,7 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 * [react-native-refreshable-listview](https://github.com/jsdf/react-native-refreshable-listview): A pull-to-refresh ListView which shows a loading spinner while your data reloads.
 * [react-native-router-flux](https://github.com/aksonov/react-native-router-flux): iOS/Android React Native Router based on exNavigator.
 * [react-native-simple-store](https://github.com/jasonmerino/react-native-simple-store): A minimalistic wrapper around React Native's AsyncStorage.
+* [react-native-swipeout](https://github.com/dancormier/react-native-swipeout) - iOS-style swipeout buttons behind component.
 * [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons): 3000 Customizable Icons for React Native with support for NavBar/TabBar, image source and full stying.
 * [react-native-viewpager](https://github.com/race604/react-native-viewpager) - ViewPager component for React Native.
 * [reflux](https://github.com/reflux/refluxjs): A simple library for uni-directional dataflow application architecture with React extensions inspired by Flux.
