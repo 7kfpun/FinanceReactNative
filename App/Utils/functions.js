@@ -12,16 +12,30 @@ exports.dynamicSort = function(property: string) : Function {
 };
 
 exports.removeObjectfromArray = function(array: Array<Object>, key: string, value: string | number) : Array<Object> {
-  return array.filter(function(el) {
-    return el[key] !== value;
-  });
+  return array.filter((el) => el[key] !== value);
 };
 
 exports.changeObjectinArray = function(array: Array<Object>, key: string, oldValue: string | number, newValue: string | number) : Array<Object> {
-  array.forEach(function(item) {
+  array.forEach((item) => {
     if (item[key] === oldValue) {
       item[key] = newValue;
     }
   });
+  return array;
+};
+
+exports.moveObjectinArray = function(array: Array<Object>, key: string, step: number) : Array<Object> {
+  let index = array.map((item) => item.symbol).indexOf(key);
+  let value = array[index];
+  let newPos = index + step;
+
+  if (newPos < 0) {
+    newPos = 0;
+  } else if (newPos > array.length) {
+    newPos = array.length;
+  }
+
+  array.splice(index,1);
+  array.splice(newPos, 0, value);
   return array;
 };

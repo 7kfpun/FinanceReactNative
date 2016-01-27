@@ -14,14 +14,40 @@ var Store = Reflux.createStore({
 
   onAddStock: function(symbol) {
     store.get('watchlist').then((result) => {
-      var symbols = result.map((item) => {
-        return item.symbol.toUpperCase();
-      });
+      var symbols = result.map((item) => item.symbol.toUpperCase());
 
       if (symbols.indexOf(symbol.toUpperCase()) === -1) {
         result.push({symbol: symbol.toUpperCase(), share: 100});
-        result.sort(UtilFuncs.dynamicSort('symbol'));
+        // result.sort(UtilFuncs.dynamicSort('symbol'));
         console.log('onAddStock', result, symbol);
+        store.save('watchlist', result).then(() => {
+          this.onUpdateStocks();
+        });
+      }
+    });
+  },
+
+  onMoveUpStock: function(symbol) {
+    store.get('watchlist').then((result) => {
+      var symbols = result.map((item) => item.symbol.toUpperCase());
+
+      if (symbols.indexOf(symbol.toUpperCase()) !== -1) {
+        UtilFuncs.moveObjectinArray(result, symbol, -1);
+        console.log('onMoveUpStock', result, symbol);
+        store.save('watchlist', result).then(() => {
+          this.onUpdateStocks();
+        });
+      }
+    });
+  },
+
+  onMoveDownStock: function(symbol) {
+    store.get('watchlist').then((result) => {
+      var symbols = result.map((item) => item.symbol.toUpperCase());
+
+      if (symbols.indexOf(symbol.toUpperCase()) !== -1) {
+        UtilFuncs.moveObjectinArray(result, symbol, 1);
+        console.log('onMoveUpStock', result, symbol);
         store.save('watchlist', result).then(() => {
           this.onUpdateStocks();
         });
@@ -45,7 +71,6 @@ var Store = Reflux.createStore({
 
   onUpdateStocks: function() {
     console.log('onUpdateStocks');
-    var that = this;
     store.get('watchlist').then((watchlist) => {
       if (!Array.isArray(watchlist) || watchlist.length === 0) {
         watchlist = [
@@ -55,15 +80,13 @@ var Store = Reflux.createStore({
         store.save('watchlist', watchlist);
       }
 
-      var symbols = watchlist.map((item) => {
-        return item.symbol;
-      });
+      var symbols = watchlist.map((item) => item.symbol.toUpperCase());
 
       finance.getStock({stock: symbols}, 'quotes')
         .then(function(response) {
           return response.json();
         }).then(function(json) {
-          var quotes = json.query.results.quote ;
+          var quotes = json.query.results.quote;
           quotes = Array.isArray(quotes) ? quotes : [quotes];
 
           var watchlistResult = {};

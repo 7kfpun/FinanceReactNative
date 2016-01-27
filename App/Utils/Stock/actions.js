@@ -4,6 +4,8 @@ var Reflux = require('reflux');
 var Actions = Reflux.createActions([
   'addStock',
   'deleteStock',
+  'moveUpStock',
+  'moveDownStock',
   'updateStocks',
 ]);
 
