@@ -5,8 +5,14 @@
 
 iOS's Stocks App clone written in [React Native](https://github.com/facebook/react-native) for demo purpose (available both iOS and Android). Data is pulled from [Yahoo Finance](finance.yahoo.com).
 
-![Preview](https://raw.github.com/7kfpun/FinanceReactNative/master/previewIOS.gif)
-![Preview](https://raw.github.com/7kfpun/FinanceReactNative/master/previewAndroid.gif)
+## Demo
+
+[![Play Store Button](https://raw.github.com/7kfpun/FinanceReactNative/master/google-play.png "Google Play Button")](https://play.google.com/store/apps/details?id=com.kfpun.finance)
+
+## App preview
+
+![Preview](https://raw.github.com/7kfpun/FinanceReactNative/master/previewIOS.gif "iOS app preview")
+![Preview](https://raw.github.com/7kfpun/FinanceReactNative/master/previewAndroid.gif "Android app preview")
 
 ## Plugins used
 
