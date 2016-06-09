@@ -1,33 +1,34 @@
-'use strict';
+import React from 'react';
 
-import React, {
-  Navigator,
-} from 'react-native';
-
+// 3rd party libraries
 import {
+  Actions,
   Router,
-  Route,
-  Schema,
+  Scene,
+  // Reducer,
 } from 'react-native-router-flux';
 
-var Main = require('./App/Views/Main');
-var Web = require('./App/Views/web');
-var Settings = require('./App/Views/Settings');
-var AddNew = require('./App/Views/AddNew');
+// Views
+import MainView from './app/views/main';
+import SettingsView from './app/views/settings';
+import AddView from './app/views/add';
 
-export default class Example extends React.Component {
+// @todo remove when RN upstream is fixed
+console.ignoredYellowBox = [
+  'Warning: In next release empty section headers will be rendered.',
+  'Warning: setState(...): Can only update a mounted or mounting component.',
+];
+
+const scenes = Actions.create(
+  <Scene key="root" hideNavBar={true}>
+    <Scene key="main" title="Main" component={MainView} initial={true} />
+    <Scene key="settings" direction="vertical" title="Stocks" component={SettingsView} />
+    <Scene key="add" direction="vertical" title="Add" component={AddView} />
+  </Scene>
+);
+
+export default class Periods extends React.Component {
   render() {
-    return (
-      <Router hideNavBar={true} >
-        <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottom}/>
-        <Schema name="default" sceneConfig={Navigator.SceneConfigs.FloatFromRight}/>
-        <Schema name="withoutAnimation"/>
-
-        <Route name="main" component={Main} title="Main" type="replace"/>
-        <Route name="web" component={Web} title="Yahoo" />
-        <Route name="settings" component={Settings} title="Settings" schema="modal" />
-        <Route name="add" component={AddNew} title="Add" schema="modal" />
-      </Router>
-    );
+    return <Router scenes={scenes} />;
   }
 }

@@ -4,7 +4,10 @@
   "description": "iOS's Stocks App clone written in React Native for demo purpose. Data is pulled from Yahoo Finance.",
   "main": "index.js",
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "build-android": "npm run release-android; osascript -e 'display notification \"DONE!\" with title \"Android built\"'",
+    "bundle-android": "$NVM_BIN/react-native bundle --platform android --dev false --entry-file ./index.android.js --bundle-output android/app/src/main/assets/index.android.bundle # --assets-dest android/app/src/main/res/",
+    "release-android": "cd android && ./gradlew assembleRelease && cd .."
   },
   "repository": {
     "type": "git",
@@ -25,20 +28,18 @@
   },
   "homepage": "https://github.com/7kfpun/FinanceReactNative#readme",
   "dependencies": {
-    "react-native": "0.18.0",
-    "react-native-navbar": "1.2.2",
-    "react-native-refreshable-listview": "^1.3.0",
-    "react-native-router-flux": "^2.0.9",
-    "react-native-simple-store": "^0.1.0",
-    "react-native-swipeout": "^2.0.12",
-    "react-native-vector-icons": "^1.0.4",
-    "react-native-viewpager": "^0.1.6",
-    "reflux": "^0.3.0"
+    "alt": "^0.18.4",
+    "react": "15.0.2",
+    "react-native": "0.26.3",
+    "react-native-navbar": "^1.5.0",
+    "react-native-router-flux": "^3.26.24",
+    "react-native-simple-store": "^1.0.1",
+    "react-native-vector-icons": "^2.0.3",
+    "rn-viewpager": "^1.1.2"
   },
   "devDependencies": {
-    "babel-eslint": "^6.0.0",
-    "babel-jest": "^9.0.3",
-    "eslint": "^2.4.0",
-    "eslint-plugin-react": "^4.2.3"
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.11.1",
+    "eslint-plugin-react": "^5.1.1"
   }
 }

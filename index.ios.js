@@ -1,10 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-'use strict';
+import {
+  AppRegistry,
+  StatusBar,
+} from 'react-native';
+import Finance from './finance';
 
-import {AppRegistry} from 'react-native';
-import Finance from './Finance';
+StatusBar.setBarStyle('light-content', true);
 
 AppRegistry.registerComponent('Finance', () => Finance);
