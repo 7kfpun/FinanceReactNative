@@ -7,8 +7,8 @@ import StockActions from '../actions/stock-action';
 import store from 'react-native-simple-store';
 
 // Utils
-var UtilFuncs = require('../utils/functions');
-var finance = require('../utils/finance');
+import UtilFuncs from '../utils/functions';
+import finance from '../utils/finance';
 
 class StockStore {
   constructor() {
@@ -76,10 +76,15 @@ class StockStore {
   handleAddStock(symbol) {
     console.log('handleAddStock', symbol);
     let watchlist = this.state.watchlist;
-    watchlist.push({symbol: symbol.toUpperCase(), share: 100});
+    let addedStock = {symbol: symbol.toUpperCase(), share: 100};
+    watchlist.push(addedStock);
     this.setState({watchlist: watchlist});
     store.save('watchlist', watchlist);
     this.handleUpdateStocks();
+
+    if (watchlist.length === 1) {
+      this.setState({selectedStock: addedStock});
+    }
   }
 
   handleDeleteStock(symbol) {

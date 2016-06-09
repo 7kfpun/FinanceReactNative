@@ -88,8 +88,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginRight: 10,
   },
-  separator: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: '#CCCCCC',
-  },
 });

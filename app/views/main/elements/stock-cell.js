@@ -150,8 +150,4 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
   },
-  separator: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: '#CCCCCC',
-  },
 });

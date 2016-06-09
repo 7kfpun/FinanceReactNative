@@ -23,6 +23,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import StockCell from './elements/stock-cell';
 import ChartPage from './elements/chart-page';
 import DetailsPage from './elements/details-page';
+import NewsPage from './elements/news-page';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -96,12 +97,10 @@ export default class Main extends React.Component {
               <DetailsPage stock={this.state.selectedStock} watchlistResult={this.state.watchlistResult} />
             </View>
             <View>
-              <ChartPage stock={this.state.selectedStock} watchlistResult={this.state.watchlistResult} />
+              <ChartPage stock={this.state.selectedStock} />
             </View>
-            <View style={{flex: 1, justifyContent: 'center'}}>
-              <Text style={{fontSize: 15, color: 'white', textAlign: 'center'}}>
-                {'Under construction (Stock: ' + this.state.selectedStock.symbol + ')'}
-              </Text>
+            <View>
+              <NewsPage key={this.state.key} stock={this.state.selectedStock} />
             </View>
           </IndicatorViewPager>
         </View>
