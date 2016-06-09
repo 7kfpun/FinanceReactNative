@@ -7,6 +7,8 @@ import {
   View,
 } from 'react-native';
 
+import moment from 'moment';
+
 export default class NewsCell extends React.Component {
   render() {
     return (
@@ -21,7 +23,7 @@ export default class NewsCell extends React.Component {
             {this.props.news.title}
           </Text>
           <Text style={styles.timeText}>
-            {this.props.news.publishedDate}
+            {moment(new Date(this.props.news.publishedDate)).format('D/M/YYYY') + ' at ' + moment(new Date(this.props.news.publishedDate)).format('LT')}
           </Text>
         </View>
       </TouchableHighlight>
