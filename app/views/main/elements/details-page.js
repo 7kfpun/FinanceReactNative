@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   separatorThin: {
-    height: StyleSheet.hairlineWidth / 2,
+    height: StyleSheet.hairlineWidth,
     backgroundColor: '#A6A6A6',
   },
   propertyText: {
