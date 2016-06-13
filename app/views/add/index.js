@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     paddingLeft: 2,
   },
   cancelButtonText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#3CABDA',
   },
   cancelButton: {
