@@ -9,6 +9,8 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 
 [![Play Store Button](google-play.png "Google Play Button")](https://play.google.com/store/apps/details?id=com.kfpun.finance)
 
+* Rejected by Apple reviewer :smile:: "Your app is too similar to App Stock app, which creates a misleading association with Apple products."
+
 ## App preview
 
 ![Preview](previewIOS.gif "iOS app preview")
