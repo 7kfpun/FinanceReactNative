@@ -1,7 +1,6 @@
 # FinanceReactNative
 
-[![Dependency Status](https://img.shields.io/david/7kfpun/FinanceReactNative.svg)](https://img.shields.io/david/7kfpun/FinanceReactNative)
-[![devDependency Status](https://img.shields.io/david/dev/7kfpun/FinanceReactNative.svg)](https://github.com/7kfpun/FinanceReactNative#info=devDependencies)
+[![Dependency Status](https://david-dm.org/7kfpun/FinanceReactNative.svg)](https://david-dm.org/7kfpun/FinanceReactNative) [![devDependency Status](https://david-dm.org/7kfpun/FinanceReactNative/dev-status.svg)](https://david-dm.org/7kfpun/FinanceReactNative#info=devDependencies)
 
 iOS's Stocks App clone written in [React Native](https://github.com/facebook/react-native) for demo purpose (available both iOS and Android). Data is pulled from [Yahoo Finance](finance.yahoo.com).
 
@@ -29,8 +28,8 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 
 ## React and React Native version
 
-* react: 15.0.2
-* react-native: 0.26.3
+* [react](https://github.com/facebook/react): 15.0.2
+* [react-native](https://github.com/facebook/react-native): 0.26.3
 
 ## Plugins used
 
