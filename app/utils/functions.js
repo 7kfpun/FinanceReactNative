@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 exports.dynamicSort = function(property: string) : Function {
   var sortOrder = 1;
   if (property[0] === '-') {
