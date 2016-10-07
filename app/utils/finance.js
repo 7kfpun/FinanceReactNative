@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 exports.getStock = function(opts: Object, type: string) : Object {
   var defs = {
     baseURL: 'http://query.yahooapis.com/v1/public/yql?q=',

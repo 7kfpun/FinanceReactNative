@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 exports.mock = [{
   AfterHoursChangeRealtime: null,
   AnnualizedGain: null,
