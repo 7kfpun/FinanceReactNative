@@ -5,47 +5,11 @@ import {
   View,
 } from 'react-native';
 
-// Flux
-import StockActions from '../../../actions/stock-action';
-
 // 3rd party libraries
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default class StockCell extends React.Component {
-  _onPressDelete(symbol) {
-    console.log('_onPressDelete', symbol);
-    StockActions.deleteStock(symbol);
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Icon
-          style={styles.deleteIcon}
-          name="remove-circle"
-          color="red"
-          size={22}
-          onPress={() => this._onPressDelete(this.props.stock.symbol)} />
-        <View style={styles.stock}>
-          <View style={styles.symbol}>
-            <Text style={styles.symbolText}>
-              {this.props.stock.symbol}
-            </Text>
-            <Text style={styles.marketText}>
-              {this.props.watchlistResult && this.props.watchlistResult[this.props.stock.symbol] && this.props.watchlistResult[this.props.stock.symbol].StockExchange}
-            </Text>
-          </View>
-          <View style={styles.name}>
-            <Text style={styles.nameText}>
-              {this.props.watchlistResult && this.props.watchlistResult[this.props.stock.symbol] && this.props.watchlistResult[this.props.stock.symbol].Name}
-            </Text>
-          </View>
-        </View>
-        <Icon style={styles.move} name="menu" color="white" size={22} />
-      </View>
-    );
-  }
-}
+// Flux
+import StockActions from '../../../actions/stock-action';
 
 const styles = StyleSheet.create({
   container: {
@@ -118,3 +82,52 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 });
+
+export default class StockCell extends React.Component {
+  onPressDelete(symbol) {
+    console.log('onPressDelete', symbol);
+    StockActions.deleteStock(symbol);
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Icon
+          style={styles.deleteIcon}
+          name="remove-circle"
+          color="red"
+          size={22}
+          onPress={() => this.onPressDelete(this.props.stock.symbol)}
+        />
+        <View style={styles.stock}>
+          <View style={styles.symbol}>
+            <Text style={styles.symbolText}>
+              {this.props.stock.symbol}
+            </Text>
+            <Text style={styles.marketText}>
+              {this.props.watchlistResult && this.props.watchlistResult[this.props.stock.symbol] && this.props.watchlistResult[this.props.stock.symbol].StockExchange}
+            </Text>
+          </View>
+          <View style={styles.name}>
+            <Text style={styles.nameText}>
+              {this.props.watchlistResult && this.props.watchlistResult[this.props.stock.symbol] && this.props.watchlistResult[this.props.stock.symbol].Name}
+            </Text>
+          </View>
+        </View>
+        <Icon style={styles.move} name="menu" color="white" size={22} />
+      </View>
+    );
+  }
+}
+
+StockCell.propTypes = {
+  watchlistResult: React.PropTypes.shape({}),
+  stock: React.PropTypes.shape({
+    symbol: React.PropTypes.string,
+  }),
+};
+
+StockCell.defaultProps = {
+  watchlistResult: [],
+  stock: {},
+};

@@ -6,43 +6,11 @@ import {
   View,
 } from 'react-native';
 
-// Flux
-import StockActions from '../../../actions/stock-action';
-
 // 3rd party libraries
 import { Actions } from 'react-native-router-flux';
 
-export default class StockCell extends React.Component {
-  _onPressAdd(symbol) {
-    console.log('_onPressAdd', symbol);
-    StockActions.addStock(symbol);
-    Actions.pop();
-  }
-
-  render() {
-    return (
-      <TouchableHighlight onPress={() => this._onPressAdd(this.props.stock.symbol)} underlayColor="#202020">
-        <View style={styles.container}>
-          <View style={styles.stock}>
-            <View style={styles.symbol}>
-              <Text style={styles.symbolText}>
-                {this.props.stock.symbol}
-              </Text>
-              <Text style={styles.marketText}>
-                {this.props.stock.exchDisp}
-              </Text>
-            </View>
-            <View style={styles.name}>
-              <Text style={styles.nameText}>
-                {this.props.stock.name}
-              </Text>
-            </View>
-          </View>
-        </View>
-      </TouchableHighlight>
-    );
-  }
-}
+// Flux
+import StockActions from '../../../actions/stock-action';
 
 const styles = StyleSheet.create({
   container: {
@@ -89,3 +57,47 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 });
+
+export default class StockCell extends React.Component {
+  onPressAdd(symbol) {
+    console.log('_onPressAdd', symbol);
+    StockActions.addStock(symbol);
+    Actions.pop();
+  }
+
+  render() {
+    return (
+      <TouchableHighlight onPress={() => this.onPressAdd(this.props.stock.symbol)} underlayColor="#202020">
+        <View style={styles.container}>
+          <View style={styles.stock}>
+            <View style={styles.symbol}>
+              <Text style={styles.symbolText}>
+                {this.props.stock.symbol}
+              </Text>
+              <Text style={styles.marketText}>
+                {this.props.stock.exchDisp}
+              </Text>
+            </View>
+            <View style={styles.name}>
+              <Text style={styles.nameText}>
+                {this.props.stock.name}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+}
+
+StockCell.propTypes = {
+  stock: React.PropTypes.shape({
+    symbol: React.PropTypes.string,
+    exchDisp: React.PropTypes.string,
+    name: React.PropTypes.string,
+  }),
+};
+
+StockCell.defaultProps = {
+  stock: {},
+};
