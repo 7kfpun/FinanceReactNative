@@ -33,7 +33,7 @@ export default class NewsPage extends React.Component {
     rss(`https://feeds.finance.yahoo.com/rss/2.0/headline?s=${this.props.stock.symbol}&region=US&lang=en-US`).then((json) => {
       console.log(json);
       that.setState({
-        dataSource: that.state.dataSource.cloneWithRows(json.responseData.feed.entries),
+        dataSource: that.state.dataSource.cloneWithRows(json.query.results.item),
         key: Math.random(),
       });
     });

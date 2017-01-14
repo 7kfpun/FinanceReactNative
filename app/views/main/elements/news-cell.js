@@ -42,7 +42,7 @@ export default class NewsCell extends React.Component {
             {this.props.news.title}
           </Text>
           <Text style={styles.timeText}>
-            {`${moment(new Date(this.props.news.publishedDate)).format('D/M/YYYY')} at ${moment(new Date(this.props.news.publishedDate)).format('LT')}`}
+            {`${moment(new Date(this.props.news.pubDate)).format('D/M/YYYY')} at ${moment(new Date(this.props.news.pubDate)).format('LT')}`}
           </Text>
         </View>
       </TouchableHighlight>
@@ -54,7 +54,7 @@ NewsCell.propTypes = {
   news: React.PropTypes.shape({
     title: React.PropTypes.string,
     link: React.PropTypes.string,
-    publishedDate: React.PropTypes.string,
+    pubDate: React.PropTypes.string,
   }),
 };
 
