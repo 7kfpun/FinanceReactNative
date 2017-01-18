@@ -7,6 +7,7 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 ## Demo
 
 [![Play Store Button](google-play.png "Google Play Button")](https://play.google.com/store/apps/details?id=com.kfpun.finance)
+[![Apk Download Button](apk-download.png "Apk Download Button")](https://github.com/7kfpun/FinanceReactNative/releases/download/v1.0.2/app-release.apk)
 
 * Rejected by Apple reviewer :smile:: "Your app is too similar to App**le** Stock app, which creates a misleading association with Apple products."
 
@@ -34,6 +35,7 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 ## Plugins used
 
 * [alt](https://github.com/goatslacker/alt) - Isomorphic flux implementation.
+* [moment](https://github.com/moment/moment) - Parse, validate, manipulate, and display dates in javascript.
 * [react-native-navbar](https://github.com/Kureev/react-native-navbar) - Navbar component for React Native.
 * [react-native-router-flux](https://github.com/aksonov/react-native-router-flux) - React Native Router based on new React Native Navigation API (0.26)
 * [react-native-simple-store](https://github.com/jasonmerino/react-native-simple-store) - A minimalistic wrapper around React Native's AsyncStorage.
