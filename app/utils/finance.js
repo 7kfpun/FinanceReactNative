@@ -1,6 +1,6 @@
 exports.getStock = function getStock(opts, type) {
   const defs = {
-    baseURL: 'http://query.yahooapis.com/v1/public/yql?q=',
+    baseURL: 'https://query.yahooapis.com/v1/public/yql?q=',
     query: {
       quotes: 'select * from yahoo.finance.quotes where symbol in ("{stock}")',
       historicaldata: 'select * from yahoo.finance.historicaldata where symbol = "{stock}" and startDate = "{startDate}" and endDate = "{endDate}"',
@@ -120,7 +120,7 @@ exports.properties = [
 ];
 
 exports.getNews = function getNews(symbol) {
-  const url = `http://feeds.finance.yahoo.com/rss/2.0/headline?s=${symbol}&region=US&lang=en-US`;
+  const url = `https://feeds.finance.yahoo.com/rss/2.0/headline?s=${symbol}&region=US&lang=en-US`;
   console.log(url);
   return fetch(url)  // eslint-disable-line no-undef
     .then(response => response.text())

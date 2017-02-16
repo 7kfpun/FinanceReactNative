@@ -106,7 +106,7 @@ export default class ChartPage extends React.Component {
           <Image
             style={styles.image}
             source={{
-              uri: `http://chart.finance.yahoo.com/z?s=${this.props.stock.symbol}&t=${this.state.timeSpan.toLowerCase()}&key=${Math.random()}`,
+              uri: `https://chart.finance.yahoo.com/z?s=${this.props.stock.symbol}&t=${this.state.timeSpan.toLowerCase()}&key=${Math.random()}`,
             }}
           />
         </View>
