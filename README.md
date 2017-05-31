@@ -19,18 +19,14 @@ iOS's Stocks App clone written in [React Native](https://github.com/facebook/rea
 
 ## Screenshots
 
-<img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot0.png" width="280">
-<img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot1.png" width="280">
-<img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot2.png" width="280">
-<br />
-<img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot3.png" width="280">
-<img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot4.png" width="280">
-<img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot5.png" width="280">
+<img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot0.png" width="280"> <img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot1.png" width="280"> <img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot2.png" width="280">
+
+<img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot3.png" width="280"> <img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot4.png" width="280"> <img src="https://raw.github.com/7kfpun/FinanceReactNative/master/screenshots/screenshot5.png" width="280">
 
 ## React and React Native version
 
-* [react](https://github.com/facebook/react): 15.4.2
-* [react-native](https://github.com/facebook/react-native): 0.42.0
+* [react](https://github.com/facebook/react): 16.0.0-alpha.6
+* [react-native](https://github.com/facebook/react-native): 0.44.2
 
 ## Plugins used
 

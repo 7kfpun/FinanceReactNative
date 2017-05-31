@@ -29,22 +29,22 @@
   "homepage": "https://github.com/7kfpun/FinanceReactNative#readme",
   "dependencies": {
     "alt": "^0.18.6",
-    "moment": "^2.17.1",
-    "react": "^15.4.2",
-    "react-native": "^0.42.0",
-    "react-native-navbar": "^1.6.2",
-    "react-native-router-flux": "^3.38.0",
-    "react-native-simple-store": "^1.1.0",
-    "react-native-vector-icons": "^4.0.0",
-    "rn-viewpager": "^1.1.3"
+    "moment": "^2.18.1",
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.44.2",
+    "react-native-navbar": "^1.7.1",
+    "react-native-router-flux": "^3.39.2",
+    "react-native-simple-store": "^1.2.0",
+    "react-native-vector-icons": "^4.2.0",
+    "rn-viewpager": "^1.2.3"
   },
   "devDependencies": {
-    "eslint": "^3.6.1",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-flowtype-errors": "^3.0.0",
-    "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.3.0",
-    "flow-bin": "^0.40.0"
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-flowtype-errors": "^3.3.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "flow-bin": "^0.47.0"
   }
 }
