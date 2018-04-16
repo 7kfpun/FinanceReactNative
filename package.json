@@ -30,8 +30,8 @@
   "dependencies": {
     "alt": "^0.18.6",
     "moment": "^2.18.1",
-    "react": "16.0.0-alpha.6",
-    "react-native": "0.44.2",
+    "react": "^16.3.0-alpha.1",
+    "react-native": "0.55.2",
     "react-native-navbar": "^1.7.1",
     "react-native-router-flux": "^3.39.2",
     "react-native-simple-store": "^1.2.0",
