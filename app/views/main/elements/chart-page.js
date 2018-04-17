@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Image,
   StyleSheet,
@@ -116,8 +117,8 @@ export default class ChartPage extends React.Component {
 }
 
 ChartPage.propTypes = {
-  stock: React.PropTypes.shape({
-    symbol: React.PropTypes.string,
+  stock: PropTypes.shape({
+    symbol: PropTypes.string,
   }),
 };
 

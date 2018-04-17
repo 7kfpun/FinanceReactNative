@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   ListView,
   Platform,
@@ -210,7 +211,7 @@ export default class Settings extends React.Component {
 }
 
 Settings.propTypes = {
-  title: React.PropTypes.string,
+  title: PropTypes.string,
 };
 
 Settings.defaultProps = {

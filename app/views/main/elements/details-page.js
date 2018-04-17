@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
@@ -189,9 +190,9 @@ export default class DetailsPage extends React.Component {
 }
 
 DetailsPage.propTypes = {
-  watchlistResult: React.PropTypes.shape({}),
-  stock: React.PropTypes.shape({
-    symbol: React.PropTypes.string,
+  watchlistResult: PropTypes.shape({}),
+  stock: PropTypes.shape({
+    symbol: PropTypes.string,
   }),
 };
 

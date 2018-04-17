@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Linking,
   StyleSheet,
@@ -51,10 +52,10 @@ export default class NewsCell extends React.Component {
 }
 
 NewsCell.propTypes = {
-  news: React.PropTypes.shape({
-    title: React.PropTypes.string,
-    link: React.PropTypes.string,
-    pubDate: React.PropTypes.string,
+  news: PropTypes.shape({
+    title: PropTypes.string,
+    link: PropTypes.string,
+    pubDate: PropTypes.string,
   }),
 };
 

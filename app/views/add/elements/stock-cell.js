@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
@@ -91,10 +92,10 @@ export default class StockCell extends React.Component {
 }
 
 StockCell.propTypes = {
-  stock: React.PropTypes.shape({
-    symbol: React.PropTypes.string,
-    exchDisp: React.PropTypes.string,
-    name: React.PropTypes.string,
+  stock: PropTypes.shape({
+    symbol: PropTypes.string,
+    exchDisp: PropTypes.string,
+    name: PropTypes.string,
   }),
 };
 
