@@ -29,7 +29,7 @@
   "homepage": "https://github.com/7kfpun/FinanceReactNative#readme",
   "dependencies": {
     "alt": "^0.18.6",
-    "moment": "^2.18.1",
+    "moment": "^2.29.4",
     "react": "^16.3.0-alpha.1",
     "react-native": "0.55.2",
     "react-native-navbar": "^1.7.1",
